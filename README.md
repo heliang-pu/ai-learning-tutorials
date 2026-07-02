@@ -1,14 +1,35 @@
-# Transformer 交互式教学
+# AI Interactive Tutorials
 
-一个面向初学者的 Transformer 中文交互式图解教程。
-
-内容从一句话进入模型开始，逐步拆解分词与嵌入、位置编码、注意力机制、多头注意力、Transformer Block、训练、生成采样以及模型家族全景。
+中文 AI 交互式教学页面集合，用来托管 Transformer、VLA、WAM 等主题的可视化教程。
 
 ## 在线学习
 
-GitHub Pages 发布后可直接在浏览器中访问：
+GitHub Pages:
 
-https://heliang-pu.github.io/transformer-interactive-tutorial/
+https://heliang-pu.github.io/ai-interactive-tutorials/
+
+当前已发布：
+
+- [Transformer 完全图解](https://heliang-pu.github.io/ai-interactive-tutorials/tutorials/transformer/)
+
+## 目录结构
+
+```text
+.
+├── index.html
+├── tutorials/
+│   └── transformer/
+│       ├── index.html
+│       └── support.js
+└── docs/
+    └── adding-tutorials.md
+```
+
+约定：
+
+- 顶层 `index.html` 是教程集合首页。
+- 每个主题一个目录，例如 `tutorials/transformer/`、`tutorials/vla/`、`tutorials/wam/`。
+- 每个主题目录内放自己的 `index.html` 和导出依赖文件，便于直接从 Claude/其他工具导出的 HTML 迁移过来。
 
 ## 本地预览
 
@@ -20,11 +41,4 @@ python3 -m http.server 8000
 
 http://localhost:8000/
 
-## 文件说明
-
-- `index.html`：教程主页面。
-- `support.js`：交互组件运行时依赖。
-
 页面会从 CDN 加载 React、ReactDOM、Babel 和 Google Fonts，因此首次打开需要联网。
-
-Last updated: 2026-07-02

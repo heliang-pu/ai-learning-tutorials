@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=["https://claude.ai","https://preview.claude.ai","https://6cef08f2-564d-492a-89ce-23bb2a206de9.claudeusercontent.com"];var v=true;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformer 交互式教学</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: #0A0E16; }
+    body { font-family: 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,180,84,.35); }
+    @keyframes kfPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    @keyframes kfGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,180,84,0); } 50% { box-shadow: 0 0 22px 2px rgba(255,180,84,.25); } }
+    @keyframes kfBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+</helmet>
+
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px)"></div>
+{{ rail }}
+
+<div style="position:relative;z-index:1;color:#C7CEDF">
+<div style="max-width:1060px;margin:0 auto;padding:0 32px">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" data-ch="top" data-screen-label="引言" style="padding:88px 0 40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">INTERACTIVE GUIDE · 交互式图解</div>
+    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:64px;line-height:1.18;color:#F2F4FA;margin:16px 0 14px">Transformer<br>完全图解</h1>
+    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:640px;margin:0 0 10px">从一句话进去，到下一个字出来——把这台驱动所有大模型的机器，拆到最后一颗螺丝。</p>
+    <div style="display:flex;gap:18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#5F6C86;margin:14px 0 8px">
+      <span>9 个章节</span><span>·</span><span>16 个可动手的实验</span><span>·</span><span>公式与代码可在 Tweaks 中关闭</span>
+    </div>
+    <div style="min-height:340px;margin:30px 0 26px">{{ hero }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">2017 年，一篇叫 <strong style="color:#E9EDF6">《Attention Is All You Need》</strong> 的论文提出了 Transformer。今天，GPT、Claude、Gemini、Llama……几乎所有你听说过的大模型，骨架都是它。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">这份教程只追踪一个问题：当模型读到「<strong style="color:#E9EDF6">小明喂了猫，它很开心。</strong>」这句话时，里面到底发生了什么？——每一章拆一层，配一个能亲手玩的实验。</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px">
+      <a href="#ch0" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">00</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">总览：一台预测机器</div></a>
+      <a href="#ch1" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">01</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">分词与嵌入</div></a>
+      <a href="#ch2" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">02</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">位置编码</div></a>
+      <a href="#ch3" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">03</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">注意力机制 ★</div></a>
+      <a href="#ch4" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">04</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">多头注意力</div></a>
+      <a href="#ch5" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">05</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">Transformer 积木块</div></a>
+      <a href="#ch6" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">06</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">训练：预测下一个词</div></a>
+      <a href="#ch7" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">07</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">生成与采样</div></a>
+      <a href="#ch8" style="text-decoration:none;background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:14px;padding:16px 18px;display:block"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">08</span><div style="color:#E9EDF6;font-weight:700;font-size:15px;margin-top:4px">家族与全景</div></a>
+    </div>
+  </section>
+
+  <!-- ============ CH0 总览 ============ -->
+  <section id="ch0" data-ch="ch0" data-screen-label="第0章 总览" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 00 章 · OVERVIEW</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">总览：一台预测机器</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">剥掉所有神秘感，Transformer 干的事只有一件：<strong style="color:#E9EDF6">读入一串 token，输出「下一个 token 是什么」的概率分布</strong>。写诗、翻译、写代码、聊天，全是这一个动作反复执行的结果。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">整条流水线长这样——后面每一章负责其中一段：</p>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;overflow-x:auto">
+      <div style="display:flex;align-items:center;gap:10px;min-width:860px">
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#0B1322;border:1px solid rgba(148,166,210,.2);border-radius:10px;padding:12px 14px;color:#E9EDF6;font-size:14px">「小明喂了猫…」</div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#5F6C86;margin-top:6px">原始文本</div></div>
+        <div style="color:#5F6C86">→</div>
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#0B1322;border:1px solid rgba(148,166,210,.2);border-radius:10px;padding:12px 14px;color:#E9EDF6;font-size:14px">分词 + 嵌入</div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFB454;margin-top:6px">第 01 章</div></div>
+        <div style="color:#5F6C86">→</div>
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#0B1322;border:1px solid rgba(148,166,210,.2);border-radius:10px;padding:12px 14px;color:#E9EDF6;font-size:14px">+ 位置信息</div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFB454;margin-top:6px">第 02 章</div></div>
+        <div style="color:#5F6C86">→</div>
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#131E36;border:1px solid rgba(255,180,84,.4);border-radius:10px;padding:12px 14px;color:#FFD9A0;font-size:14px;font-weight:700">N × Transformer 块<div style="font-weight:400;font-size:12px;color:#9BA6BD;margin-top:2px">注意力 + 前馈网络</div></div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#FFB454;margin-top:6px">第 03–05 章</div></div>
+        <div style="color:#5F6C86">→</div>
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#0B1322;border:1px solid rgba(148,166,210,.2);border-radius:10px;padding:12px 14px;color:#E9EDF6;font-size:14px">线性层 + softmax</div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#5F6C86;margin-top:6px">变回词表概率</div></div>
+        <div style="color:#5F6C86">→</div>
+        <div style="flex:0 0 auto;text-align:center"><div style="background:#0F2318;border:1px solid rgba(122,223,168,.4);border-radius:10px;padding:12px 14px;color:#7ADFA8;font-size:14px">「它」 62%<br>「猫」 12% …</div><div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#5F6C86;margin-top:6px">下一个 token 的分布</div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">核心想法 ①</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">含义来自上下文</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">「它」单独看毫无意义。每个词的表示必须吸收周围词的信息才能确定——这正是注意力要解决的。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">核心想法 ②</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">一切都是向量运算</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">词变成向量，「理解」变成矩阵乘法与加权平均。没有 if-else，没有语法规则表。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">核心想法 ③</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">训练目标简单到离谱</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">只做一件事：猜下一个词。规模够大之后，语法、事实、推理都作为「猜得更准的副产品」涌现。</div></div>
+    </div>
+  </section>
+
+  <!-- ============ CH1 分词与嵌入 ============ -->
+  <section id="ch1" data-ch="ch1" data-screen-label="第1章 分词与嵌入" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · TOKENS &amp; EMBEDDINGS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">分词与嵌入：从文字到数字</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">模型不认识汉字，只认识数字。进门要过两道手续：<strong style="color:#E9EDF6">分词</strong>（查一本固定的「词表」，把文本切成 token，每个 token 有一个编号）和<strong style="color:#E9EDF6">嵌入</strong>（凭编号领取一根代表它的向量）。</p>
+    <div style="min-height:230px;margin:26px 0">{{ tok }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">真实世界是怎么切的：BPE 子词</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">上面的演示按「字」切，真实模型用 <strong style="color:#E9EDF6">BPE（字节对编码）</strong>：从字节开始，反复把语料中最常一起出现的相邻片段合并成新 token。结果是——高频词整个是一个 token（「今天」），生僻词被拆成几段（「魑魅魍魉」→ 4 段甚至更多）。词表大小是门权衡：切得细 → 词表小但序列长；切得粗 → 序列短但词表爆炸。主流模型词表约 5 万～25 万。</div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">编号本身没有含义（「猫」是 3721 还是 8964 无所谓）。真正的表示是<strong style="color:#E9EDF6">嵌入向量</strong>：一张巨大的查询表 E，第 i 行就是 token i 的向量。这些向量是训练出来的，训练完成后，<strong style="color:#E9EDF6">语义相近的词，向量方向也相近</strong>：</p>
+    <div style="min-height:330px;margin:26px 0">{{ emb }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:22px;color:#F2F4FA">x<sub style="font-size:13px">i</sub> = E[ t<sub style="font-size:13px">i</sub> ]&nbsp;&nbsp;,&nbsp;&nbsp;E ∈ ℝ<sup style="font-size:13px">V×d</sup></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">V = 词表大小，d = 模型维度。GPT-3：V=50257, d=12288 → 光这张嵌入表就有 6.2 亿参数</div>
+      </div>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 分词 = 查固定词表切段编号；嵌入 = 凭编号领向量<br><span style="color:#FFB454">▸</span> 向量是学出来的，几何关系（方向、距离）承载语义<br><span style="color:#FFB454">▸</span> 从此整句话 = 一个 n×d 的矩阵 X，后面全部是对 X 的运算</div>
+    </div>
+  </section>
+
+  <!-- ============ CH2 位置编码 ============ -->
+  <section id="ch2" data-ch="ch2" data-screen-label="第2章 位置编码" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · POSITIONAL ENCODING</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">位置编码：顺序从哪来</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">这里有个尴尬的事实：下一章的注意力机制对所有词<strong style="color:#E9EDF6">一视同仁</strong>——它天生看不见顺序。对它来说「猫咬了狗」和「狗咬了猫」是同一袋词。顺序必须被明确地「注入」进去。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">最经典的方案（原论文）：给每个位置生成一根固定的<strong style="color:#E9EDF6">位置向量 P<sub>pos</sub></strong>，直接加到词向量上。它由一组频率递减的正弦/余弦波构成——快波区分相邻位置，慢波区分远近段落，像「个位、十位、百位」的多尺度刻度尺：</p>
+    <div style="min-height:360px;margin:26px 0">{{ pe }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:21px;color:#F2F4FA">PE(pos, 2i) = sin( pos / 10000<sup style="font-size:12px">2i/d</sup> )&nbsp;&nbsp;&nbsp;PE(pos, 2i+1) = cos( pos / 10000<sup style="font-size:12px">2i/d</sup> )</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">输入模型的最终表示：x<sub>i</sub> = E[t<sub>i</sub>] + P<sub>i</sub> —— 词义与位置直接相加，混进同一根向量</div>
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">正弦式（2017）</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">固定公式、不用学，理论上可外推到没见过的长度。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">学习式（GPT-2）</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">每个位置一根可训练向量，简单直接，但超出训练长度就没有编码可用。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(255,180,84,.3);border-radius:14px;padding:18px"><div style="color:#FFD9A0;font-weight:700;font-size:14.5px;margin-bottom:6px">RoPE 旋转式（现代主流）</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">不加向量，而是按位置「旋转」Q 和 K，让注意力分数天然只依赖相对距离。Llama、Qwen、DeepSeek 都用它。</div></div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 注意力本身不分先后，顺序信息必须显式注入<br><span style="color:#FFB454">▸</span> 多尺度正弦波 = 给每个位置一个独一无二、且能体现相对距离的「坐标」<br><span style="color:#FFB454">▸</span> 现代模型多用 RoPE，思想不变：让模型感知「谁在谁前面、隔多远」</div>
+    </div>
+  </section>
+
+  <!-- ============ CH3 注意力 ============ -->
+  <section id="ch3" data-ch="ch3" data-screen-label="第3章 注意力机制" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · ATTENTION ★ 全书核心</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">注意力：一场加权的信息聚会</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">回到我们的句子：「小明喂了猫，<strong style="color:#E9EDF6">它</strong>很开心。」——「它」指谁？你几乎瞬间锁定「猫」。注意力机制就是把这个「按相关性去别的词那里取信息」的动作，变成可微分的数学。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">每个 token 从自己的向量派生出三张牌：</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;max-width:800px">
+      <div style="background:rgba(86,200,245,.07);border:1px solid rgba(86,200,245,.35);border-radius:14px;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#56C8F5;font-size:15px">Q · Query</div><div style="font-size:13.5px;line-height:1.75;color:#B9C2D8;margin-top:6px">「我在找什么？」<br>「它」的 Q ≈ <em>我需要一个前文提到的动物</em></div></div>
+      <div style="background:rgba(240,110,180,.07);border:1px solid rgba(240,110,180,.35);border-radius:14px;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#F06EB4;font-size:15px">K · Key</div><div style="font-size:13.5px;line-height:1.75;color:#B9C2D8;margin-top:6px">「我是什么？」<br>「猫」的 K ≈ <em>我是名词、动物、被喂的对象</em></div></div>
+      <div style="background:rgba(255,180,84,.07);border:1px solid rgba(255,180,84,.35);border-radius:14px;padding:16px 18px"><div style="font-family:'JetBrains Mono',monospace;font-weight:600;color:#FFB454;font-size:15px">V · Value</div><div style="font-size:13.5px;line-height:1.75;color:#B9C2D8;margin-top:6px">「我能提供什么？」<br>真正被搬走的信息内容</div></div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">拿自己的 <span style="color:#56C8F5;font-weight:700">Q</span> 去和每个词的 <span style="color:#F06EB4;font-weight:700">K</span> 做点积——方向越对得上，分数越高；分数经 softmax 变成权重；再按权重把大家的 <span style="color:#FFB454;font-weight:700">V</span> 加权平均搬回来。点一个词试试：</p>
+    <div style="min-height:330px;margin:26px 0">{{ arcs }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">一个精准的类比：图书馆检索</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD"><span style="color:#56C8F5">Q</span> 是你输入的搜索词，<span style="color:#F06EB4">K</span> 是每本书的书脊标签，<span style="color:#FFB454">V</span> 是书的内容。区别在于：注意力不是取最匹配的那一本，而是把<strong style="color:#E9EDF6">所有书按匹配度加权混合</strong>——所以整个过程可导、可训练。</div>
+    </div>
+    <h3 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:26px;color:#F2F4FA;margin:44px 0 12px">亲手算一遍</h3>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">用一个小到能口算的例子：5 个 token、d=4、d<sub>k</sub>=2。下面是完整的四步，每一步的矩阵都摆在桌面上（数字是真实算出来的）：</p>
+    <div style="min-height:520px;margin:26px 0">{{ steps }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:28px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:24px;color:#F2F4FA;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
+          <span>Attention(<span style="color:#56C8F5">Q</span>, <span style="color:#F06EB4">K</span>, <span style="color:#FFB454">V</span>) = softmax</span>
+          <span style="display:inline-flex;align-items:center;gap:8px">(<span style="display:inline-flex;flex-direction:column;align-items:center;line-height:1.35"><span><span style="color:#56C8F5">Q</span><span style="color:#F06EB4">K</span><sup style="font-size:13px">T</sup></span><span style="border-top:1.5px solid #8FA0C0;padding:2px 10px 0;font-size:19px">√d<sub style="font-size:12px">k</sub></span></span>)</span>
+          <span>· <span style="color:#FFB454">V</span></span>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:14px">Q,K ∈ ℝ<sup>n×dk</sup>　V ∈ ℝ<sup>n×dv</sup>　QK<sup>T</sup> ∈ ℝ<sup>n×n</sup>（n² 的来源！）　输出 ∈ ℝ<sup>n×dv</sup></div>
+      </div>
+    </sc-if>
+    <h3 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:26px;color:#F2F4FA;margin:44px 0 12px">为什么要除以 √d<sub>k</sub>？</h3>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">维度越高，点积的数值天然越大（d<sub>k</sub> 个随机项相加，方差 ∝ d<sub>k</sub>）。分数一大，softmax 就会变成「赢家通吃」——权重挤成 one-hot，梯度几乎为零，训练卡死。除以 √d<sub>k</sub> 正好把方差拉回 1。亲手拖拖看：</p>
+    <div style="min-height:250px;margin:26px 0">{{ scale }}</div>
+    <sc-if value="{{ showPseudocode }}" hint-placeholder-val="{{ true }}">
+      <pre style="background:#0B111F;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:22px 26px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85;color:#C7CEDF;overflow-x:auto"><span style="color:#5E6B85"># 自注意力（单头）—— 全部家当就这几行</span>
+Q = X @ W_Q        <span style="color:#5E6B85"># [n, d] @ [d, dk] -> [n, dk]</span>
+K = X @ W_K        <span style="color:#5E6B85"># [n, dk]</span>
+V = X @ W_V        <span style="color:#5E6B85"># [n, dv]</span>
+S = Q @ K.T / sqrt(dk)      <span style="color:#5E6B85"># [n, n] 两两相关性</span>
+A = softmax(S, dim=-1)      <span style="color:#5E6B85"># 每行归一化成权重</span>
+out = A @ V                 <span style="color:#5E6B85"># [n, dv] 加权搬运信息</span></pre>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 注意力 = 用 Q·K 打相关性分数 → softmax 变权重 → 加权平均 V<br><span style="color:#FFB454">▸</span> 每个词的新表示都是「按需混合了全句信息」的版本，「它」从此含有「猫」<br><span style="color:#FFB454">▸</span> n×n 的分数矩阵是长文本变慢变贵的根源；√d<sub>k</sub> 是为了梯度健康</div>
+    </div>
+  </section>
+
+  <!-- ============ CH4 多头 ============ -->
+  <section id="ch4" data-ch="ch4" data-screen-label="第4章 多头注意力" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · MULTI-HEAD</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">多头注意力：同时开几场会</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">一次注意力只能表达<strong style="color:#E9EDF6">一种</strong>关系模式——但「它」既要找指代对象（猫），也关心邻近的字、句法上的搭配。解决办法简单粗暴：把 d 维切成 h 份，<strong style="color:#E9EDF6">每份配一套独立的 W<sub>Q</sub>/W<sub>K</sub>/W<sub>V</sub>，各开各的会</strong>，最后把结果拼回来。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">下面是同一句话在 4 个头里的注意力矩阵（行 = 谁在看，列 = 看谁，越亮权重越大）。切换看看每个头「性格」有多不同：</p>
+    <div style="min-height:430px;margin:26px 0">{{ heads }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:21px;color:#F2F4FA">head<sub style="font-size:12px">i</sub> = Attention(XW<sub style="font-size:12px">Q</sub><sup style="font-size:12px">(i)</sup>, XW<sub style="font-size:12px">K</sub><sup style="font-size:12px">(i)</sup>, XW<sub style="font-size:12px">V</sub><sup style="font-size:12px">(i)</sup>)&nbsp;&nbsp;&nbsp;MultiHead = Concat(head<sub style="font-size:12px">1..h</sub>) W<sub style="font-size:12px">O</sub></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">d<sub>k</sub> = d / h（例：d=768, h=12 → 每头 64 维）→ 总计算量与单个大头相同，表达力却翻倍</div>
+      </div>
+    </sc-if>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">真实模型里的头都在干嘛？</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">可视化研究（BertViz 等）发现：有的头专盯上一个词，有的头追指代链，有的头总看标点，还有不少头几乎躺平全看首 token（「attention sink」现象）。没人给它们分工——全是训练自己长出来的。GPT-3 每层 96 个头，共 96 层。</div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 多头 = 在 h 个低维子空间里并行做注意力，各学一种关系<br><span style="color:#FFB454">▸</span> Concat + W<sub>O</sub> 把各头见闻汇总回 d 维<br><span style="color:#FFB454">▸</span> 分工不是设计出来的，是训练涌现的</div>
+    </div>
+  </section>
+
+  <!-- ============ CH5 Block ============ -->
+  <section id="ch5" data-ch="ch5" data-screen-label="第5章 Transformer积木块" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 05 章 · THE BLOCK</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">积木块：注意力 + 前馈网络</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">注意力负责「<strong style="color:#E9EDF6">交流</strong>」——词与词之间搬运信息；它身后还跟着一个前馈网络 FFN，负责「<strong style="color:#E9EDF6">消化</strong>」——每个位置独立地把刚收到的信息加工一遍。两者用残差连接和 LayerNorm 粘起来，就是一个标准积木块：</p>
+    <div style="min-height:460px;margin:26px 0">{{ block }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 22px">
+        <div style="color:#E9EDF6;font-weight:700;margin-bottom:8px">残差连接：默认直通</div>
+        <div style="font-size:14.5px;line-height:1.85;color:#9BA6BD">输出 = x + 子层(x)。每一层只需学「要往 x 上<strong style="color:#E9EDF6">加</strong>点什么修正」，而不是重新发明 x。梯度也能沿着这条高速公路直达底层——没有它，几十层根本训不动。</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 22px">
+        <div style="color:#E9EDF6;font-weight:700;margin-bottom:8px">LayerNorm：音量校准</div>
+        <div style="font-size:14.5px;line-height:1.85;color:#9BA6BD">把每个位置的向量拉回「均值 0、方差 1」再进子层，防止数值越叠越飘。现代模型多用更简的 RMSNorm，且放在子层<strong style="color:#E9EDF6">之前</strong>（Pre-LN），训练更稳。右下实验可亲手归一化一次 →</div>
+      </div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">FFN 本身极其朴素：升维 4 倍 → GELU 激活 → 降回来，且<strong style="color:#E9EDF6">对每个位置独立同样地执行</strong>（词与词互不通信）。别小看它——模型约 <strong style="color:#E9EDF6">2/3 的参数</strong>都在 FFN 里，主流观点认为事实性知识主要存在这儿。</p>
+    <div style="min-height:230px;margin:26px 0">{{ ln }}</div>
+    <sc-if value="{{ showPseudocode }}" hint-placeholder-val="{{ true }}">
+      <pre style="background:#0B111F;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:22px 26px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85;color:#C7CEDF;overflow-x:auto"><span style="color:#5E6B85"># 一个 Transformer 块（Pre-LN 版，现代标准）</span>
+x = x + MultiHeadAttention( LayerNorm(x) )   <span style="color:#5E6B85"># 交流：token 间搬信息</span>
+x = x + FFN( LayerNorm(x) )                  <span style="color:#5E6B85"># 消化：逐位置加工</span>
+
+<span style="color:#5E6B85"># 其中 FFN（d -> 4d -> d）</span>
+FFN(x) = W2 @ gelu(W1 @ x + b1) + b2
+
+<span style="color:#5E6B85"># 整个模型 = 把这个块叠 N 次</span>
+for block in blocks:   <span style="color:#5E6B85"># GPT-2: N=12/24/48, GPT-3: N=96</span>
+    x = block(x)</pre>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 一块 = 交流（注意力）+ 消化（FFN），残差与归一化保驾护航<br><span style="color:#FFB454">▸</span> 堆 N 块：底层看局部搭配，越往上表示越抽象（短语 → 指代 → 语义 → 任务）<br><span style="color:#FFB454">▸</span> 参数大头在 FFN；「知识」多存于此</div>
+    </div>
+  </section>
+
+  <!-- ============ CH6 训练 ============ -->
+  <section id="ch6" data-ch="ch6" data-screen-label="第6章 训练" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · TRAINING</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">训练：文本自己就是题库</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">不需要任何人工标注。拿一句话，<strong style="color:#E9EDF6">把它右移一位就是标准答案</strong>：读到「小明」该猜「喂」，读到「小明喂了猫，它很」该猜「开心」。互联网上的每一句话都自动成为无数道练习题——这叫自监督学习。</p>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:24px 26px;margin:24px 0;overflow-x:auto">
+      <div style="display:flex;gap:8px;align-items:center;min-width:700px;font-size:15px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5F6C86;width:64px;flex:0 0 auto">输入</div>
+        <div style="display:flex;gap:8px"><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">小明</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">喂</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">了</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">猫</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">，</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">它</span><span style="background:#0B1322;border:1px solid rgba(148,166,210,.25);border-radius:8px;padding:6px 12px;color:#E9EDF6">很</span></div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;min-width:700px;margin-top:10px;font-size:15px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#5F6C86;width:64px;flex:0 0 auto">目标 ↓</div>
+        <div style="display:flex;gap:8px"><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">喂</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">了</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">猫</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">，</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">它</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">很</span><span style="background:rgba(122,223,168,.08);border:1px solid rgba(122,223,168,.35);border-radius:8px;padding:6px 12px;color:#7ADFA8">开心</span></div>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5F6C86;margin-top:14px">同一句话，7 个位置 = 7 道题，同时练</div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">但有个作弊漏洞：算「它」的注意力时，全句都在桌面上——它能直接看到答案「很」。所以要盖上<strong style="color:#E9EDF6">因果掩码</strong>：每个位置只许看自己和左边，未来一律遮住（分数设为 −∞，softmax 后权重恰好为 0）：</p>
+    <div style="min-height:420px;margin:26px 0">{{ mask }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">掩码带来一个天大的好处：训练时<strong style="color:#E9EDF6">所有位置的预测可以一次前向全部算完</strong>，不用像 RNN 那样一个字一个字排队。这才是 Transformer 取代 RNN、吃下全部算力红利的真正原因：</p>
+    <div style="min-height:250px;margin:26px 0">{{ parallel }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">「猜得准不准」用<strong style="color:#E9EDF6">交叉熵</strong>衡量：只看你分给正确答案的概率 p，损失 = −log p。给对的词的概率越小，惩罚增长越狠——拖动下面的滑杆感受这条曲线的脾气：</p>
+    <div style="min-height:300px;margin:26px 0">{{ loss }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:22px;color:#F2F4FA">L = − (1/n) Σ<sub style="font-size:13px">i</sub> log p<sub style="font-size:13px">θ</sub>( t<sub style="font-size:13px">i+1</sub> | t<sub style="font-size:13px">1..i</sub> )</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">对每个位置：正确的下一个词分到的概率取 −log，再平均。训练 = 用梯度下降把它推到最低</div>
+      </div>
+    </sc-if>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">预训练之后还有两步（现代 LLM 流水线）</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD"><strong style="color:#E9EDF6">① 预训练</strong>：万亿 token 上猜下一个词 → 得到「什么都见过」的基座模型；<strong style="color:#E9EDF6">② 指令微调 SFT</strong>：在「问题-优质回答」对上继续训练 → 学会听话；<strong style="color:#E9EDF6">③ 人类反馈强化学习 RLHF</strong>：人类给回答排序，训练它偏向被喜欢的风格。架构从头到尾没变，变的只是数据和目标。</div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 目标只有一个：最小化「下一个词」的交叉熵<br><span style="color:#FFB454">▸</span> 因果掩码防作弊，还让训练完全并行——算力红利全靠它<br><span style="color:#FFB454">▸</span> ChatGPT 式助手 = 同一架构 + 三阶段数据（预训练 / SFT / RLHF）</div>
+    </div>
+  </section>
+
+  <!-- ============ CH7 生成 ============ -->
+  <section id="ch7" data-ch="ch7" data-screen-label="第7章 生成与采样" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 07 章 · GENERATION</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">生成：一次一个词的循环</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">训练可以并行，生成却必须排队：<strong style="color:#E9EDF6">前向一次 → 得到分布 → 挑一个词 → 拼回输入 → 再来</strong>。你看到的每一个字，都是一整次前向传播的产出。看着它把我们的句子写完：</p>
+    <div style="min-height:360px;margin:26px 0">{{ gen }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">「挑一个词」的策略决定了模型的性格。永远拿最大概率（贪心）安全但容易复读；纯按分布抽签则偶尔口吐胡言。真正的旋钮是<strong style="color:#E9EDF6">温度</strong>与 <strong style="color:#E9EDF6">top-k / top-p 截断</strong>——下面是一台真实的采样机，拖一拖再连抽几次：</p>
+    <div style="min-height:420px;margin:26px 0">{{ sampler }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">还有一个工程关键：第 t 步时，前 t−1 个词的 K、V 和上一步一模一样——重算是纯浪费。把它们缓存起来（<strong style="color:#E9EDF6">KV cache</strong>），每步只算新词的那一份：</p>
+    <div style="min-height:300px;margin:26px 0">{{ kv }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 生成 = 自回归循环，逐 token 产出<br><span style="color:#FFB454">▸</span> 温度调分布的「尖锐度」，top-k/top-p 砍掉长尾——创造力与稳定性的旋钮<br><span style="color:#FFB454">▸</span> KV cache 拿显存换速度：长对话越来越慢、显存吃紧，都源于这里</div>
+    </div>
+  </section>
+
+  <!-- ============ CH8 家族 ============ -->
+  <section id="ch8" data-ch="ch8" data-screen-label="第8章 家族与全景" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 08 章 · THE FAMILY</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">家族与全景</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">原论文是「编码器 + 解码器」的翻译架构，后来家族按用途分了三支：</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#101828;border:1px solid rgba(86,200,245,.3);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#56C8F5;margin-bottom:8px">ENCODER-ONLY</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">BERT 系 · 理解</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">双向注意力（无掩码），训练靠「完形填空」。适合分类、检索、抽取。如今的 embedding 模型多属此支。</div></div>
+      <div style="background:#101828;border:1px solid rgba(255,180,84,.4);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">DECODER-ONLY ★</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">GPT 系 · 生成</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">因果掩码 + 猜下一个词——本教程讲的正是它。GPT、Claude、Llama、Qwen、DeepSeek……当代 LLM 几乎一统于此。</div></div>
+      <div style="background:#101828;border:1px solid rgba(240,110,180,.3);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:8px">ENCODER–DECODER</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">T5 系 · 转换</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">编码器读原文，解码器边看它（交叉注意力）边写译文。翻译、摘要的经典形态，也是原论文的样子。</div></div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">同一套积木，还搭出了语言之外的一切：</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">ViT · 把图当句子读</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">图像切成 16×16 的小块，每块当一个 token 排队进同一个 Transformer。视觉从此告别卷积垄断；多模态模型把图文 token 混进同一个序列。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">MoE · 专家分诊</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">把 FFN 换成几十个「专家」，路由器每个 token 只叫醒 1–2 个。参数总量巨大、每步计算稀疏——Mixtral、DeepSeek-V3 等走这条路。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">长上下文工程</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">n² 注意力是瓶颈：FlashAttention 重排显存访问，RoPE 外推 + 滑窗 / 稀疏注意力把上下文从 2K 推到百万级。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">缩放定律 Scaling Laws</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">损失随参数、数据、算力按幂律平滑下降，可预测。「继续变大就会继续变好」——这条经验曲线是过去几年 AI 竞赛的总剧本。</div></div>
+    </div>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:24px 26px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">时间线</div>
+      <div style="display:flex;gap:0;overflow-x:auto;font-size:13px;line-height:1.7">
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(255,180,84,.5);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2017</div><div style="color:#E9EDF6;font-weight:700">Transformer</div><div style="color:#8FA0C0">Attention Is All You Need</div></div>
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2018</div><div style="color:#E9EDF6;font-weight:700">BERT / GPT-1</div><div style="color:#8FA0C0">两条路线分岔</div></div>
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2020</div><div style="color:#E9EDF6;font-weight:700">GPT-3 / ViT</div><div style="color:#8FA0C0">规模出奇迹；图像入席</div></div>
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2022</div><div style="color:#E9EDF6;font-weight:700">ChatGPT</div><div style="color:#8FA0C0">RLHF 让它走进所有人</div></div>
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2023+</div><div style="color:#E9EDF6;font-weight:700">开源与 MoE</div><div style="color:#8FA0C0">Llama、Mixtral、DeepSeek…</div></div>
+        <div style="flex:1;min-width:110px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">今天</div><div style="color:#E9EDF6;font-weight:700">多模态 · 推理</div><div style="color:#8FA0C0">骨架未变，仍是这套积木</div></div>
+      </div>
+    </div>
+    <h3 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:26px;color:#F2F4FA;margin:44px 0 12px">一页速查</h3>
+    <div style="background:#0D1424;border:1px solid rgba(255,180,84,.25);border-radius:16px;padding:26px 28px;margin:20px 0">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;font-size:14.5px;line-height:2.05;color:#B9C2D8">
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">01</span> 文本 → BPE 分词 → 嵌入向量（查表）</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">02</span> 加位置信息（正弦 / 学习式 / RoPE）</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">03</span> 注意力：softmax(QK<sup>T</sup>/√d<sub>k</sub>)V，按相关性搬信息</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">04</span> 多头并行，各学一种关系，Concat 后 W<sub>O</sub> 汇总</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">05</span> 块 = 注意力 + FFN（残差 + LayerNorm），叠 N 层</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">06</span> 训练：因果掩码下并行猜下一个词，最小化 −log p</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">07</span> 生成：自回归循环 + 温度/top-p 采样 + KV cache</div>
+        <div><span style="color:#FFB454;font-family:'JetBrains Mono',monospace;font-size:12px">08</span> 同一积木 → GPT / BERT / T5 / ViT / MoE</div>
+      </div>
+    </div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">下一步去哪</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">① 读原文《Attention Is All You Need》（读起来会异常顺畅）；② 看 Karpathy 的 <em>Let's build GPT</em>，300 行代码手撸一个 nanoGPT；③ 用 BertViz 看看真实模型的注意力头都在盯什么。到这一步，你已经不是在「学」Transformer，而是在「用」它了。</div>
+    </div>
+    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · 「小明喂了猫，它很开心。」 —</div>
+  </section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showMath&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;showPseudocode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;reduceMotion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;动效&quot;}}">
+class Component extends DCLogic {
+  ensure() {
+    if (this.W) return;
+    const h = React.createElement;
+    const { useState, useEffect, useRef, useMemo } = React;
+    const C = { bg:'#0A0E16', card:'#101828', card2:'#0B1322', line:'rgba(148,166,210,.14)', txt:'#E9EDF6', sub:'#9BA6BD', faint:'#5F6C86', amber:'#FFB454', q:'#56C8F5', k:'#F06EB4', v:'#FFB454', g:'#7ADFA8' };
+    const mono = "'JetBrains Mono',monospace";
+    const serif = "'Noto Serif SC',serif";
+    this.C = C; this.mono = mono; this.serif = serif;
+
+    // ---------- shared helpers ----------
+    const useVis = (th=0.2) => {
+      const ref = useRef(null); const [v, setV] = useState(false);
+      useEffect(() => {
+        const el = ref.current; if (!el) return;
+        const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setV(true); io.disconnect(); } }), { threshold: th });
+        io.observe(el); return () => io.disconnect();
+      }, []);
+      return [ref, v];
+    };
+    const softmax = (a, t=1) => { const m = Math.max(...a.map(x=>x/t)); const e = a.map(x => Math.exp(x/t - m)); const s = e.reduce((p,c)=>p+c,0); return e.map(x=>x/s); };
+    const matmul = (A,B) => A.map(r => B[0].map((_,j) => r.reduce((s,v,k)=>s+v*B[k][j],0)));
+    const fmt = (x,d=2) => (Math.round(x*10**d)/10**d).toFixed(d).replace('-0.00','0.00');
+    const cardSty = { background:C.card, border:`1px solid ${C.line}`, borderRadius:16, padding:24 };
+    const btnSty = (on) => ({ fontFamily:mono, fontSize:12.5, padding:'7px 14px', borderRadius:8, cursor:'pointer', border:`1px solid ${on?'rgba(255,180,84,.6)':'rgba(148,166,210,.25)'}`, background:on?'rgba(255,180,84,.12)':'#0B1322', color:on?C.amber:C.sub });
+    const lblSty = { fontFamily:mono, fontSize:11, letterSpacing:'.18em', color:C.faint };
+    const Slider = ({v, set, min, max, step, w=220}) => h('input', { type:'range', min, max, step, value:v, onChange:e=>set(parseFloat(e.target.value)), style:{ width:w, accentColor:C.amber, cursor:'pointer' } });
+    this.$ = { useVis, softmax, matmul, fmt, cardSty, btnSty, lblSty, Slider, h, useState, useEffect, useRef, useMemo };
+
+    const W = this.W = {};
+    const Stub = (hgt=200) => () => h('div', { style: { ...cardSty, minHeight: hgt, display:'flex', alignItems:'center', justifyContent:'center', color:C.faint, fontFamily:mono, fontSize:12 } }, '…');
+
+    // ---------- RailNav + progress ----------
+    W.Rail = () => {
+      const [active, setActive] = useState('top');
+      const [prog, setProg] = useState(0);
+      const [wide, setWide] = useState(typeof window !== 'undefined' && window.innerWidth >= 1420);
+      useEffect(() => {
+        let raf = 0;
+        const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => {
+          raf = 0;
+          const y = window.scrollY, wh = window.innerHeight, dh = document.documentElement.scrollHeight;
+          setProg(Math.min(1, y / Math.max(1, dh - wh)));
+          const secs = document.querySelectorAll('[data-ch]');
+          let cur = 'top';
+          secs.forEach(s => { if (s.getBoundingClientRect().top < wh * 0.45) cur = s.getAttribute('data-ch'); });
+          setActive(cur);
+        }); };
+        const onResize = () => setWide(window.innerWidth >= 1420);
+        window.addEventListener('scroll', onScroll, { passive:true }); window.addEventListener('resize', onResize);
+        onScroll();
+        return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+      }, []);
+      const items = [['top','引言'],['ch0','00 总览'],['ch1','01 分词嵌入'],['ch2','02 位置编码'],['ch3','03 注意力'],['ch4','04 多头'],['ch5','05 积木块'],['ch6','06 训练'],['ch7','07 生成'],['ch8','08 家族']];
+      return h(React.Fragment, null,
+        h('div', { style:{ position:'fixed', top:0, left:0, height:3, width:`${prog*100}%`, background:C.amber, zIndex:50, transition:'width .1s linear' } }),
+        wide ? h('nav', { style:{ position:'fixed', top:'50%', transform:'translateY(-50%)', left:'calc(50vw - 530px - 150px)', zIndex:40, display:'flex', flexDirection:'column', gap:10 } },
+          items.map(([id, label]) => h('a', { key:id, href:'#'+id, style:{ display:'flex', alignItems:'center', gap:8, textDecoration:'none' } },
+            h('span', { style:{ width:6, height:6, borderRadius:3, background: active===id ? C.amber : 'rgba(148,166,210,.35)', boxShadow: active===id ? `0 0 8px ${C.amber}` : 'none' } }),
+            h('span', { style:{ fontFamily:mono, fontSize:11.5, color: active===id ? C.amber : C.faint } }, label)
+          ))
+        ) : null
+      );
+    };
+
+    // ---------- Hero: 生成循环动画 ----------
+    W.Hero = ({ rm }) => {
+      const base = ['小明','喂','了','猫','，'];
+      const genSeq = [
+        { tok:'它',  dist:[['它',.62],['猫',.12],['小明',.10],['它们',.09],['门',.07]] },
+        { tok:'很',  dist:[['很',.48],['就',.18],['十分',.14],['不',.12],['。',.08]] },
+        { tok:'开',  dist:[['开',.55],['高',.20],['快',.15],['生',.06],['伤',.04]] },
+        { tok:'心',  dist:[['心',.87],['门',.04],['花',.04],['水',.03],['朗',.02]] },
+        { tok:'。',  dist:[['。',.72],['！',.18],['了',.06],['呢',.04]] },
+      ];
+      const [ref, vis] = useVis(0.3);
+      const [st, setSt] = useState({ i:0, phase:0 }); // phase 0=forward 1=dist 2=pick
+      useEffect(() => {
+        if (!vis || rm) return;
+        const t = setTimeout(() => {
+          setSt(s => {
+            if (s.phase < 2) return { ...s, phase: s.phase+1 };
+            if (s.i < genSeq.length-1) return { i: s.i+1, phase: 0 };
+            return { i: 0, phase: 0 };
+          });
+        }, st.phase === 2 ? 1100 : (st.phase === 1 ? 1300 : 900));
+        return () => clearTimeout(t);
+      }, [vis, st, rm]);
+      const cur = genSeq[st.i];
+      const done = genSeq.slice(0, st.i).map(g => g.tok);
+      const picked = st.phase === 2;
+      const chip = (t, kind, key) => h('span', { key, style:{
+        display:'inline-flex', alignItems:'center', padding:'8px 13px', borderRadius:10, fontSize:16, fontWeight:500,
+        background: kind==='new' ? 'rgba(255,180,84,.14)' : kind==='gen' ? 'rgba(255,180,84,.08)' : '#0B1322',
+        border: `1px solid ${kind==='new' ? 'rgba(255,180,84,.7)' : kind==='gen' ? 'rgba(255,180,84,.3)' : 'rgba(148,166,210,.25)'}`,
+        color: kind==='base' ? C.txt : '#FFD9A0', transition:'all .3s' } }, t);
+      const maxP = cur.dist[0][1];
+      return h('div', { ref, style:{ ...cardSty, padding:'26px 28px', display:'flex', flexDirection:'column', gap:20 } },
+        h('div', { style:{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:8 } },
+          h('div', { style: lblSty }, 'LIVE · 自回归生成循环'),
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, `第 ${st.i+1} / ${genSeq.length} 步 · ${['① 前向传播','② 得到下一词分布','③ 采样并拼回'][st.phase]}`)),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:18, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 300px', display:'flex', flexWrap:'wrap', gap:7, alignItems:'center' } },
+            base.map((t,i) => chip(t,'base','b'+i)),
+            done.map((t,i) => chip(t,'gen','g'+i)),
+            picked ? chip(cur.tok,'new','new') : h('span', { style:{ width:12, height:24, background:C.amber, borderRadius:2, animation:'kfBlink 1s infinite' } })),
+          h('div', { style:{ flex:'0 0 auto', textAlign:'center' } },
+            h('div', { style:{ padding:'16px 20px', borderRadius:14, border:'1px solid rgba(255,180,84,.45)', background:'#131E36', color:'#FFD9A0', fontWeight:700, fontSize:15, animation: (!rm && st.phase===0) ? 'kfGlow 1s infinite' : 'none' } }, 'Transformer', h('div',{style:{fontSize:11.5,fontWeight:400,color:C.sub,marginTop:2,fontFamily:mono}},'× N 层')),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:6 } }, st.phase===0 ? '计算中…' : '就绪')),
+          h('div', { style:{ flex:'1 1 260px', display:'flex', flexDirection:'column', gap:6 } },
+            cur.dist.map(([t,p], i) => {
+              const on = st.phase >= 1;
+              const win = picked && i === 0;
+              return h('div', { key:st.i+'-'+i, style:{ display:'flex', alignItems:'center', gap:10 } },
+                h('span', { style:{ width:38, textAlign:'right', fontSize:14, color: win ? C.amber : C.txt, fontWeight: win?700:400 } }, t),
+                h('div', { style:{ flex:1, height:16, background:'#0B1322', borderRadius:5, overflow:'hidden' } },
+                  h('div', { style:{ height:'100%', width: on ? `${p/maxP*100}%` : '0%', background: win ? C.amber : 'rgba(86,200,245,.55)', borderRadius:5, transition:'width .55s cubic-bezier(.2,.8,.2,1), background .3s' } })),
+                h('span', { style:{ fontFamily:mono, fontSize:11, color: win ? C.amber : C.faint, width:40 } }, on ? `${Math.round(p*100)}%` : ''));
+            }))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint } }, rm ? '（已按 Tweaks 关闭动效）' : '循环：把选中的词拼回句尾，整句重新进入模型，预测再下一个词……'));
+    };
+
+    // ---------- Ch1 Tokenizer ----------
+    W.Tok = () => {
+      const [txt, setTxt] = useState('小明喂了猫，它很开心。');
+      const toks = Array.from(txt).filter(c => c.trim() !== '');
+      const idOf = c => ((c.codePointAt(0) * 2654435761) >>> 0) % 49000 + 1000;
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:14 } }, '实验 · 亲手分词（本演示按「字」切）'),
+        h('input', { value:txt, onChange:e=>setTxt(e.target.value.slice(0,40)), spellCheck:false, style:{ width:'100%', boxSizing:'border-box', background:'#0B1322', border:'1px solid rgba(148,166,210,.25)', borderRadius:10, padding:'12px 16px', fontSize:16, color:C.txt, fontFamily:'inherit', outline:'none' } }),
+        h('div', { style:{ display:'flex', flexWrap:'wrap', gap:8, marginTop:18 } },
+          toks.map((t,i) => h('div', { key:i, style:{ textAlign:'center' } },
+            h('div', { style:{ background:'#0B1322', border:'1px solid rgba(86,200,245,.4)', borderRadius:9, padding:'7px 13px', fontSize:16, color:C.txt } }, t),
+            h('div', { style:{ fontFamily:mono, fontSize:10, color:C.q, marginTop:4 } }, idOf(t))))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14 } }, `→ ${toks.length} 个 token，交给模型的其实是这串编号：[${toks.map(idOf).join(', ')}]`));
+    };
+
+    // ---------- Ch1 Embedding: strips + semantic map ----------
+    W.Emb = ({ rm }) => {
+      const words = [
+        { w:'猫', g:0, x:.16, y:.30 }, { w:'狗', g:0, x:.24, y:.38 }, { w:'鱼', g:0, x:.30, y:.24 },
+        { w:'苹果', g:1, x:.72, y:.28 }, { w:'香蕉', g:1, x:.80, y:.37 }, { w:'梨', g:1, x:.66, y:.40 },
+        { w:'跑', g:2, x:.42, y:.78 }, { w:'游', g:2, x:.52, y:.84 }, { w:'吃', g:2, x:.60, y:.72 },
+      ];
+      const gc = [C.q, C.amber, C.k];
+      const gn = ['动物', '水果', '动作'];
+      const [sel, setSel] = useState(0);
+      const [ref, vis] = useVis(0.25);
+      const seedVec = (s, n=14) => Array.from({length:n}, (_,i) => { const x = Math.sin(s*37.7 + i*12.9) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; });
+      const vecs = useMemo(() => words.map((w,i) => {
+        const base = seedVec(w.g*7+3); const self = seedVec(i+11);
+        return base.map((b,j) => b*0.75 + self[j]*0.25);
+      }), []);
+      const valColor = v => v >= 0 ? `rgba(255,180,84,${0.12+Math.abs(v)*0.8})` : `rgba(86,140,245,${0.12+Math.abs(v)*0.8})`;
+      const Wd = 380, Ht = 240;
+      const start = i => ({ x: (Math.sin(i*97.3)*0.5+0.5), y: (Math.sin(i*57.1)*0.5+0.5) });
+      return h('div', { ref, style:{ ...cardSty, display:'flex', gap:26, flexWrap:'wrap' } },
+        h('div', { style:{ flex:'1 1 320px', minWidth:300 } },
+          h('div', { style:{ ...lblSty, marginBottom:12 } }, '每个 TOKEN 一根向量（点词切换）'),
+          h('div', { style:{ display:'flex', gap:6, flexWrap:'wrap', marginBottom:16 } },
+            words.map((w,i) => h('button', { key:i, onClick:()=>setSel(i), style:{ ...btnSty(sel===i), padding:'5px 12px', fontFamily:'inherit', fontSize:14 } }, w.w))),
+          h('div', { style:{ display:'flex', gap:3 } },
+            vecs[sel].map((v,i) => h('div', { key:i, title:fmt(v), style:{ flex:1, height:44, borderRadius:4, background:valColor(v), border:'1px solid rgba(148,166,210,.12)', transition:'background .35s' } }))),
+          h('div', { style:{ display:'flex', justifyContent:'space-between', fontFamily:mono, fontSize:10, color:C.faint, marginTop:5 } }, h('span',null,'维度 1'), h('span',null,'… 真实模型 768 ~ 16384 维')),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:14, lineHeight:1.8 } }, '「', h('span',{style:{color:gc[words[sel].g]}}, words[sel].w), `」 ∈ ℝ^d — 橙=正值，蓝=负值。同类词的「条纹」相似。`)),
+        h('div', { style:{ flex:'1 1 340px', minWidth:320 } },
+          h('div', { style:{ ...lblSty, marginBottom:12 } }, '语义空间鸟瞰（真实空间的 2D 投影示意）'),
+          h('svg', { viewBox:`0 0 ${Wd} ${Ht}`, style:{ width:'100%', background:'#0B1322', borderRadius:12, border:'1px solid rgba(148,166,210,.12)' } },
+            words.map((w,i) => {
+              const s0 = start(i);
+              const cx = (vis ? w.x : s0.x) * (Wd-70) + 35, cy = (vis ? w.y : s0.y) * (Ht-60) + 30;
+              return h('g', { key:i, transform:`translate(${cx},${cy})`, style:{ transition: rm ? 'none' : `transform 1.2s ${0.08*i}s cubic-bezier(.2,.8,.2,1)`, cursor:'pointer' }, onClick:()=>setSel(i) },
+                h('circle', { r: sel===i ? 7 : 5, fill: gc[w.g], opacity: sel===i ? 1 : .75 }),
+                h('text', { x:10, y:4, fill: sel===i ? C.txt : C.sub, fontSize:13 }, w.w));
+            })),
+          h('div', { style:{ display:'flex', gap:14, marginTop:10 } },
+            gn.map((n,i) => h('span', { key:i, style:{ fontFamily:mono, fontSize:11, color:C.sub, display:'flex', alignItems:'center', gap:6 } }, h('span',{style:{width:8,height:8,borderRadius:4,background:gc[i]}}), n))),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:10, lineHeight:1.8 } }, '训练前是随机散点；训练后同类自动聚团。经典彩蛋：国王 − 男 + 女 ≈ 女王')));
+    };
+
+    // ---------- Ch2 PE heatmap ----------
+    W.PE = ({ rm }) => {
+      const [pos, setPos] = useState(12);
+      const [ref, vis] = useVis(0.2);
+      const cvs = useRef(null);
+      const NP = 56, ND = 64;
+      const peVal = (p, i) => { const half = Math.floor(i/2); const w = Math.pow(10000, 2*half/ND); return i%2===0 ? Math.sin(p/w) : Math.cos(p/w); };
+      useEffect(() => {
+        const c = cvs.current; if (!c || !vis) return;
+        const dpr = 2; const wpx = c.clientWidth; const hpx = 230;
+        c.width = wpx*dpr; c.height = hpx*dpr;
+        const ctx = c.getContext('2d'); ctx.scale(dpr,dpr);
+        const cw = wpx/ND, ch = hpx/NP;
+        for (let p=0;p<NP;p++) for (let i=0;i<ND;i++) {
+          const v = peVal(p,i);
+          ctx.fillStyle = v>=0 ? `rgba(255,180,84,${0.06+v*0.75})` : `rgba(86,140,245,${0.06-v*0.75})`;
+          ctx.fillRect(i*cw, p*ch, cw+0.5, ch+0.5);
+        }
+        ctx.strokeStyle = 'rgba(242,244,250,.9)'; ctx.lineWidth = 1.5;
+        ctx.strokeRect(0.5, pos*ch+0.5, wpx-1, ch-1);
+      }, [vis, pos]);
+      return h('div', { ref, style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
+          h('div', { style:lblSty }, '位置编码矩阵 · 行=位置 0–55，列=维度 0–63'),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '选择位置'),
+            h(Slider, { v:pos, set:v=>setPos(Math.round(v)), min:0, max:NP-1, step:1 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:30 } }, pos))),
+        h('canvas', { ref:cvs, style:{ width:'100%', height:230, borderRadius:10, display:'block', background:'#0B1322' } }),
+        h('div', { style:{ marginTop:16 } },
+          h('div', { style:{ ...lblSty, marginBottom:8 } }, `P${pos} 的前 16 维（这就是要加到第 ${pos} 个词向量上的「位置指纹」）`),
+          h('div', { style:{ display:'flex', gap:3 } },
+            Array.from({length:16},(_,i)=>peVal(pos,i)).map((v,i) => h('div', { key:i, style:{ flex:1, textAlign:'center' } },
+              h('div', { style:{ height:34, borderRadius:4, background: v>=0?`rgba(255,180,84,${0.1+v*0.75})`:`rgba(86,140,245,${0.1-v*0.75})`, border:'1px solid rgba(148,166,210,.12)', transition:'background .2s' } }),
+              h('div', { style:{ fontFamily:mono, fontSize:9.5, color:C.faint, marginTop:3 } }, fmt(v,1)))))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12, lineHeight:1.8 } }, '左侧列（高频波）逐行快速翻转 → 区分相邻位置；右侧列（低频波）慢慢变化 → 编码大尺度远近。任意两行都不相同，且相距越远差异越大。'));
+    };
+
+    // ---------- Ch3 attention arcs ----------
+    W.Arcs = () => {
+      const TA = ['小明','喂','了','猫','，','它','很','开心'];
+      const raw = [
+        [.50,.20,.05,.10,.02,.05,.03,.05],
+        [.45,.30,.05,.12,.02,.02,.02,.02],
+        [.10,.50,.20,.12,.02,.02,.02,.02],
+        [.28,.30,.06,.28,.02,.02,.02,.02],
+        [.15,.20,.05,.30,.22,.02,.03,.03],
+        [.20,.03,.02,.60,.02,.08,.02,.03],
+        [.06,.04,.02,.10,.02,.50,.20,.06],
+        [.12,.05,.02,.12,.02,.42,.15,.10],
+      ].map(r => { const s = r.reduce((a,b)=>a+b,0); return r.map(x=>x/s); });
+      const [sel, setSel] = useState(5);
+      const Wd = 860, Ht = 250, y0 = 178;
+      const xOf = i => 70 + i * (Wd-140)/(TA.length-1);
+      const wRow = raw[sel];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:8, marginBottom:6 } },
+          h('div', { style:lblSty }, '实验 · 点一个词，看它的注意力分配'),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint } }, '弧线粗细 = 权重大小')),
+        h('svg', { viewBox:`0 0 ${Wd} ${Ht}`, style:{ width:'100%', display:'block' } },
+          wRow.map((w, j) => {
+            if (j === sel) return null;
+            const x1 = xOf(sel), x2 = xOf(j);
+            const lift = Math.min(130, Math.abs(x2-x1)*0.42 + 26);
+            return h('path', { key:j, d:`M ${x1} ${y0-26} Q ${(x1+x2)/2} ${y0-26-lift} ${x2} ${y0-26}`, fill:'none', stroke:C.amber, strokeWidth:Math.max(0.7, w*13), opacity:0.2+w*0.8, strokeLinecap:'round', style:{ transition:'all .4s' } });
+          }),
+          h('circle', { cx:xOf(sel), cy:y0-38, r:4+wRow[sel]*12, fill:'none', stroke:C.amber, strokeWidth:2, opacity:.5, style:{ transition:'all .4s' } }),
+          TA.map((t, i) => h('g', { key:i, onClick:()=>setSel(i), style:{ cursor:'pointer' } },
+            h('rect', { x:xOf(i)-30, y:y0-22, width:60, height:40, rx:10, fill: i===sel ? 'rgba(86,200,245,.14)' : '#0B1322', stroke: i===sel ? C.q : 'rgba(148,166,210,.3)', strokeWidth:i===sel?1.8:1, style:{ transition:'all .3s' } }),
+            h('text', { x:xOf(i), y:y0+4, textAnchor:'middle', fill: i===sel ? C.q : C.txt, fontSize:16, fontWeight:i===sel?700:400 }, t),
+            h('text', { x:xOf(i), y:y0+40, textAnchor:'middle', fill: raw[sel][i] > 0.15 ? C.amber : C.faint, fontSize:12, fontFamily:mono, style:{ transition:'all .3s' } }, `${Math.round(raw[sel][i]*100)}%`)))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, lineHeight:1.8 } },
+          sel===5 ? h('span', null, '「它」的 Q 与「猫」的 K 方向最合 → 60% 的信息从「猫」搬来。这一步之后，「它」的新向量里已经写着「≈ 那只猫」。') :
+          `「${TA[sel]}」正在按右下角的比例，从全句加权收集信息（含自己）。`));
+    };
+
+    // ===WIDGETS_C===
+    // ---------- Ch3 step-through calculator ----------
+    W.Steps = ({ rm }) => {
+      const toks = ['猫','坐','在','垫','上'];
+      const X = [[0.9,0.1,-0.3,0.6],[0.2,0.8,0.5,-0.1],[-0.4,0.3,0.9,0.2],[0.7,-0.2,0.1,0.8],[-0.1,0.5,0.7,0.3]];
+      const WQ = [[0.5,-0.3],[0.2,0.6],[-0.4,0.1],[0.3,0.5]];
+      const WK = [[0.4,0.2],[-0.3,0.5],[0.6,-0.2],[0.1,0.4]];
+      const WV = [[0.3,0.6],[0.5,-0.2],[-0.1,0.4],[0.6,0.1]];
+      const { Q, K, V, S, Ssc, A, O } = useMemo(() => {
+        const Q = matmul(X, WQ), K = matmul(X, WK), V = matmul(X, WV);
+        const S = matmul(Q, K[0].map((_,j)=>K.map(r=>r[j]))); // Q K^T
+        const Ssc = S.map(r => r.map(v => v/Math.SQRT2));
+        const A = Ssc.map(r => softmax(r));
+        const O = matmul(A, V);
+        return { Q, K, V, S, Ssc, A, O };
+      }, []);
+      const [step, setStep] = useState(0);
+      const [auto, setAuto] = useState(false);
+      const [hov, setHov] = useState(null); // [i,j] on S/A
+      useEffect(() => {
+        if (!auto || rm) return;
+        const t = setInterval(() => setStep(s => (s+1) % 5), 2600);
+        return () => clearInterval(t);
+      }, [auto, rm]);
+      const steps = [
+        { t:'第 0 步 · 输入 X', d:'5 个词各一根 4 维向量（已含位置信息），堆成矩阵 X。' },
+        { t:'第 1 步 · 派生三张牌', d:'X 分别乘三个可训练矩阵 W_Q、W_K、W_V，得到每个词的 Q、K、V（各 2 维）。这三个 W 就是这一层「学到的东西」。' },
+        { t:'第 2 步 · 两两打分 S = QKᵀ', d:'每个词的 Q 与每个词的 K 做点积 → 5×5 分数表。悬停任意格子，看它由哪一行 Q、哪一行 K 相乘而来。' },
+        { t:'第 3 步 · ÷√dₖ 再 softmax', d:'分数除以 √2 防饱和，然后逐行 softmax：每行变成一组和为 1 的权重。亮的格子 = 强关注。' },
+        { t:'第 4 步 · 加权搬运 O = A·V', d:'用权重把所有词的 V 加权平均。第 i 行输出 = 词 i 按需混合全句信息后的新表示。注意力到此完成。' },
+      ];
+      const Mat = ({ label, dims, data, color, rl, cl, hlR, hlC, heat, dim }) => h('div', { style:{ opacity: dim ? .32 : 1, transition:'opacity .4s' } },
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color: color || C.sub, marginBottom:6, textAlign:'center' } }, label, h('span',{style:{color:C.faint,marginLeft:6,fontSize:10}}, dims)),
+        h('div', { style:{ display:'grid', gridTemplateColumns:`${rl?'auto ':''}repeat(${data[0].length}, auto)`, gap:2, justifyContent:'center' } },
+          (cl ? [null] : []).length ? null : null,
+          data.flatMap((row, i) => {
+            const cells = row.map((v, j) => {
+              const hl = (hlR===i) || (hlC===j) || (hov && heat===false);
+              const heatBg = heat ? (v>=0 ? `rgba(255,180,84,${0.05+Math.min(1,Math.abs(v))*0.72})` : `rgba(86,140,245,${0.05+Math.min(1,Math.abs(v))*0.72})`) : '#0B1322';
+              return h('div', { key:i+'-'+j,
+                onMouseEnter: heat==='S' ? ()=>setHov([i,j]) : undefined,
+                onMouseLeave: heat==='S' ? ()=>setHov(null) : undefined,
+                style:{ width:44, height:26, display:'flex', alignItems:'center', justifyContent:'center', fontFamily:mono, fontSize:10.5, borderRadius:4,
+                  color: Math.abs(v) > 0.55 && heat ? '#0A0E16' : '#D5DCEC',
+                  background: heatBg,
+                  border: `1px solid ${(hlR===i||hlC===j) ? (color||C.amber) : 'rgba(148,166,210,.14)'}`,
+                  cursor: heat==='S' ? 'crosshair' : 'default', transition:'all .15s' } }, fmt(v));
+            });
+            return rl ? [h('div',{key:'r'+i,style:{fontFamily:mono,fontSize:11,color: hlR===i ? (color||C.amber) : C.faint,display:'flex',alignItems:'center',justifyContent:'flex-end',paddingRight:6}}, rl[i]), ...cells] : cells;
+          })));
+      const arrow = h('div', { style:{ color:C.faint, fontSize:18, alignSelf:'center' } }, '→');
+      const hovNote = hov ? `S[${hov[0]}][${hov[1]}] = Q 第 ${hov[0]} 行（${toks[hov[0]]}）· K 第 ${hov[1]} 行（${toks[hov[1]]}） = ${fmt(S[hov[0]][hov[1]])}` : null;
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10 } },
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>{setAuto(false);setStep(s=>Math.max(0,s-1));}, style:btnSty(false) }, '← 上一步'),
+            h('button', { onClick:()=>{setAuto(false);setStep(s=>Math.min(4,s+1));}, style:btnSty(false) }, '下一步 →'),
+            h('button', { onClick:()=>setAuto(a=>!a), style:btnSty(auto) }, auto ? '⏸ 停' : '▶ 自动播放')),
+          h('div', { style:{ display:'flex', gap:5 } }, steps.map((_,i) => h('button', { key:i, onClick:()=>{setAuto(false);setStep(i);}, style:{ width:26, height:26, borderRadius:13, border:`1px solid ${i===step?C.amber:'rgba(148,166,210,.25)'}`, background:i===step?'rgba(255,180,84,.15)':'transparent', color:i===step?C.amber:C.faint, fontFamily:mono, fontSize:11, cursor:'pointer' } }, i)))),
+        h('div', { style:{ margin:'18px 0 6px', color:C.txt, fontWeight:700, fontSize:16 } }, steps[step].t),
+        h('div', { style:{ color:C.sub, fontSize:13.5, lineHeight:1.8, maxWidth:760, minHeight:44 } }, steps[step].d),
+        h('div', { style:{ display:'flex', gap:18, flexWrap:'wrap', justifyContent:'center', alignItems:'flex-start', marginTop:18, minHeight:220 } },
+          step===0 && h(Mat, { label:'X · 输入', dims:'5×4', data:X, rl:toks }),
+          step===1 && h(React.Fragment, null,
+            h(Mat, { label:'X', dims:'5×4', data:X, rl:toks, dim:true }), arrow,
+            h(Mat, { label:'Q = XW_Q', dims:'5×2', data:Q, color:C.q, rl:toks }),
+            h(Mat, { label:'K = XW_K', dims:'5×2', data:K, color:C.k, rl:toks }),
+            h(Mat, { label:'V = XW_V', dims:'5×2', data:V, color:C.v, rl:toks })),
+          step===2 && h(React.Fragment, null,
+            h(Mat, { label:'Q', dims:'5×2', data:Q, color:C.q, rl:toks, hlR: hov?hov[0]:undefined }),
+            h('div',{style:{alignSelf:'center',fontFamily:mono,color:C.faint,fontSize:13}},'·'),
+            h(Mat, { label:'Kᵀ', dims:'2×5', data:K[0].map((_,j)=>K.map(r=>r[j])), color:C.k, hlC: hov?hov[1]:undefined }), arrow,
+            h(Mat, { label:'S = QKᵀ', dims:'5×5', data:S, rl:toks, heat:'S', hlR:hov?hov[0]:undefined, hlC:hov?hov[1]:undefined })),
+          step===3 && h(React.Fragment, null,
+            h(Mat, { label:'S / √2', dims:'5×5', data:Ssc, rl:toks, heat:true }), arrow,
+            h(Mat, { label:'A = softmax(每行)', dims:'5×5 · 每行和=1', data:A, color:C.amber, rl:toks, heat:true })),
+          step===4 && h(React.Fragment, null,
+            h(Mat, { label:'A · 权重', dims:'5×5', data:A, color:C.amber, rl:toks, heat:true }),
+            h('div',{style:{alignSelf:'center',fontFamily:mono,color:C.faint,fontSize:13}},'·'),
+            h(Mat, { label:'V', dims:'5×2', data:V, color:C.v }), arrow,
+            h(Mat, { label:'O · 新表示', dims:'5×2', data:O, color:C.g, rl:toks }))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color: hovNote ? C.amber : C.faint, marginTop:10, minHeight:18, textAlign:'center' } }, step===2 ? (hovNote || '↑ 悬停 S 的格子，看它的出处') : ''));
+    };
+
+    // ---------- Ch3 scale/softmax demo ----------
+    W.Scale = () => {
+      const logits = [2.0, 1.2, 0.6, 0.1, -0.6];
+      const [c, setC] = useState(1);
+      const p = softmax(logits.map(x => x*c));
+      const ent = -p.reduce((s,x)=>s + (x>1e-9 ? x*Math.log(x) : 0), 0);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 分数放大 c 倍后，softmax 会怎样？'),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'c ='),
+            h(Slider, { v:c, set:setC, min:0.2, max:8, step:0.1 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:36 } }, fmt(c,1)))),
+        h('div', { style:{ display:'flex', alignItems:'flex-end', gap:14, height:120, padding:'0 8px' } },
+          p.map((v,i) => h('div', { key:i, style:{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:6, height:'100%', justifyContent:'flex-end' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color: v>0.5?C.amber:C.sub } }, `${Math.round(v*100)}%`),
+            h('div', { style:{ width:'100%', maxWidth:70, height:`${Math.max(2,v*100)}%`, background: v>0.5 ? C.amber : 'rgba(86,200,245,.5)', borderRadius:'6px 6px 2px 2px', transition:'height .25s, background .25s' } }),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint } }, `logit ${fmt(logits[i]*c,1)}`)))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:14, lineHeight:1.8 } },
+          `熵 = ${fmt(ent,2)} nat　`,
+          c > 4 ? h('span',{style:{color:C.k}},'→ 几乎 one-hot：其他词的梯度≈0，学不到东西。这就是不除 √dₖ 时高维点积的下场。') :
+          c < 0.5 ? h('span',{style:{color:C.q}},'→ 接近均匀：谁都差不多，注意力失去选择性。') :
+          '→ 适中：主次分明，又留有梯度。√dₖ 缩放就是为了让分数落在这个健康区间。'));
+    };
+
+    // ---------- Ch4 multi-head ----------
+    W.Heads = () => {
+      const TA = ['小明','喂','了','猫','，','它','很','开心'];
+      const n = TA.length;
+      const build = fn => { const M = Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>fn(i,j))); return M.map(r=>{const s=r.reduce((a,b)=>a+b,0);return r.map(x=>x/s);}); };
+      const heads = [
+        { name:'头 1 · 指代追踪', desc:'专抓「谁指谁」：看「它」那一行——权重几乎全押在「猫」。', m: build((i,j)=> (i===5&&j===3)?3.2 : (i===7&&j===5)?1.8 : (i===7&&j===3)?0.9 : (j===i)?0.5 : (j===i-1)?0.35 : 0.06) },
+        { name:'头 2 · 盯上一个词', desc:'最常见的「局部头」：每个词主要看紧邻的前一个词，学习局部搭配。', m: build((i,j)=> j===i-1?3.0 : j===i?0.8 : j===i-2?0.35 : 0.05) },
+        { name:'头 3 · 动词找搭档', desc:'句法头：「喂」回看施事「小明」、盯受事「猫」；「开心」找主语「它」。', m: build((i,j)=> (i===1&&j===0)?2.2 : (i===1&&j===3)?1.6 : (i===7&&j===5)?2.0 : (i===3&&j===1)?1.2 : j===i?0.5 : 0.08) },
+        { name:'头 4 · 全看第一个', desc:'真实模型常见的「attention sink」：没啥可看时，大家默契地把注意力堆到首个 token 上待机。', m: build((i,j)=> j===0?2.6 : j===i?0.6 : 0.08) },
+      ];
+      const [hi, setHi] = useState(0);
+      const [cell, setCell] = useState(null);
+      const m = heads[hi].m;
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:14 } },
+          heads.map((hd,i) => h('button', { key:i, onClick:()=>setHi(i), style:btnSty(hi===i) }, hd.name))),
+        h('div', { style:{ display:'flex', gap:24, flexWrap:'wrap', alignItems:'flex-start' } },
+          h('div', { style:{ flex:'0 0 auto' } },
+            h('div', { style:{ display:'grid', gridTemplateColumns:`52px repeat(${n}, 34px)`, gap:2 } },
+              h('div', null),
+              TA.map((t,j) => h('div', { key:'c'+j, style:{ fontSize:11, color: cell&&cell[1]===j ? C.amber : C.faint, textAlign:'center', paddingBottom:4 } }, t)),
+              m.flatMap((row,i) => [
+                h('div', { key:'r'+i, style:{ fontSize:12, color: cell&&cell[0]===i ? C.amber : C.sub, display:'flex', alignItems:'center', justifyContent:'flex-end', paddingRight:8 } }, TA[i]),
+                ...row.map((v,j) => h('div', { key:i+'-'+j, onMouseEnter:()=>setCell([i,j]), onMouseLeave:()=>setCell(null),
+                  style:{ width:34, height:30, borderRadius:4, background:`rgba(255,180,84,${0.04+v*0.9})`, border:`1px solid ${cell&&cell[0]===i&&cell[1]===j?C.amber:'rgba(148,166,210,.1)'}`, cursor:'crosshair', transition:'background .45s' } }))
+              ]))),
+          h('div', { style:{ flex:'1 1 260px', minWidth:250 } },
+            h('div', { style:{ color:C.txt, fontWeight:700, marginBottom:8, fontSize:15 } }, heads[hi].name),
+            h('div', { style:{ color:C.sub, fontSize:13.5, lineHeight:1.85 } }, heads[hi].desc),
+            h('div', { style:{ fontFamily:mono, fontSize:11.5, color: cell ? C.amber : C.faint, marginTop:14, minHeight:36, lineHeight:1.7 } },
+              cell ? `「${TA[cell[0]]}」→「${TA[cell[1]]}」 权重 ${Math.round(m[cell[0]][cell[1]]*100)}%` : '悬停矩阵格子查看具体权重'),
+            h('div', { style:{ marginTop:14, padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid ${C.line}`, fontFamily:mono, fontSize:11.5, color:C.sub, lineHeight:1.9 } },
+              '4 个头各输出 8×2 → 拼接成 8×8 → 乘 W_O 融合。', h('br'), '行=谁在看 · 列=看谁 · 越亮权重越大'))));
+    };
+    // ===WIDGETS_D===
+    // ---------- Ch5 block flow + N-layer stack ----------
+    W.Block = ({ rm }) => {
+      const [ref, vis] = useVis(0.25);
+      const [act, setAct] = useState(-1);
+      const [N, setN] = useState(6);
+      const nodes = [
+        { id:0, t:'x 输入', c:C.sub },
+        { id:1, t:'LayerNorm', c:C.sub },
+        { id:2, t:'多头注意力', c:C.q, note:'交流' },
+        { id:3, t:'⊕ 加回 x（残差）', c:C.g },
+        { id:4, t:'LayerNorm', c:C.sub },
+        { id:5, t:'FFN（d→4d→d）', c:C.amber, note:'消化' },
+        { id:6, t:'⊕ 再加回（残差）', c:C.g },
+        { id:7, t:'输出 → 下一层', c:C.txt },
+      ];
+      useEffect(() => {
+        if (!vis || rm) { setAct(rm ? 99 : -1); return; }
+        const t = setInterval(() => setAct(a => (a+1) % (nodes.length+2)), 620);
+        return () => clearInterval(t);
+      }, [vis, rm]);
+      return h('div', { ref, style:{ ...cardSty, display:'flex', gap:30, flexWrap:'wrap' } },
+        h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+          h('div', { style:{ ...lblSty, marginBottom:16 } }, '数据在一个块里的旅程（自动循环）'),
+          h('div', { style:{ position:'relative', paddingLeft:26 } },
+            h('div', { style:{ position:'absolute', left:60, top:14, bottom:14, width:2, background:'rgba(148,166,210,.15)' } }),
+            h('div', { style:{ position:'absolute', left:8, top:40, bottom:190, width:2, borderLeft:'2px dashed rgba(122,223,168,.4)' } }),
+            h('div', { style:{ position:'absolute', left:8, top:'56%', bottom:36, width:2, borderLeft:'2px dashed rgba(122,223,168,.4)' } }),
+            nodes.map((nd,i) => h('div', { key:nd.id, style:{ display:'flex', alignItems:'center', gap:12, margin:'9px 0' } },
+              h('div', { style:{ width:68, textAlign:'right', fontFamily:mono, fontSize:10, color: nd.note ? nd.c : 'transparent' } }, nd.note || '·'),
+              h('div', { style:{
+                padding:'9px 16px', borderRadius:10, fontSize:13.5, fontWeight: nd.note?700:400, minWidth:150,
+                background: act>=i ? (nd.note ? 'rgba(255,180,84,.1)' : '#0B1322') : '#0B1322',
+                border:`1.5px solid ${act===i ? C.amber : act>i ? 'rgba(148,166,210,.35)' : 'rgba(148,166,210,.12)'}`,
+                color: act>=i ? (nd.c==='#9BA6BD'?C.txt:nd.c) : C.faint,
+                boxShadow: act===i ? '0 0 16px rgba(255,180,84,.25)' : 'none', transition:'all .3s' } }, nd.t))),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.g, position:'absolute', left:-14, top:'42%', transform:'rotate(-90deg)' } }, '残差高速路')),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:10, lineHeight:1.8 } }, '虚线 = 原始 x 绕过子层直达 ⊕。子层学的只是「修正量」。')),
+        h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+          h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:14, flexWrap:'wrap', gap:8 } },
+            h('div', { style:lblSty }, '把块叠起来'),
+            h('div', { style:{ display:'flex', alignItems:'center', gap:10 } },
+              h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'N ='),
+              h(Slider, { v:N, set:v=>setN(Math.round(v)), min:1, max:12, step:1, w:150 }),
+              h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:24 } }, N))),
+          h('div', { style:{ display:'flex', flexDirection:'column-reverse', gap:5, minHeight:250, justifyContent:'flex-start' } },
+            Array.from({length:N},(_,i) => h('div', { key:i, style:{
+              padding:'8px 14px', borderRadius:8, fontFamily:mono, fontSize:11,
+              background:`rgba(255,180,84,${0.05 + i/N*0.13})`, border:'1px solid rgba(255,180,84,.28)',
+              color: i===N-1 ? C.amber : C.sub, display:'flex', justifyContent:'space-between' } },
+              h('span', null, `Block ${i+1}`),
+              h('span', { style:{ color:C.faint } }, i===0 ? '词形·局部搭配' : i < N*0.5 ? '短语·句法' : i < N*0.85 ? '指代·语义' : '任务·抽象')))),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12, lineHeight:1.8 } }, 'GPT-2: 12–48 层 · GPT-3: 96 层。层数越深，表示越抽象——右侧标注是探针研究的大致发现。')));
+    };
+
+    // ---------- Ch5 LayerNorm mini ----------
+    W.LN = () => {
+      const raw = [2.8, -0.4, 1.1, 6.5, -1.8, 0.3, 1.9, -0.9];
+      const [on, setOn] = useState(false);
+      const mean = raw.reduce((a,b)=>a+b,0)/raw.length;
+      const sd = Math.sqrt(raw.reduce((s,x)=>s+(x-mean)**2,0)/raw.length);
+      const data = on ? raw.map(x => (x-mean)/sd) : raw;
+      const lim = on ? 2.2 : 7;
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
+          h('div', { style:lblSty }, '实验 · 对一根向量做一次 LayerNorm'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setOn(true), style:btnSty(on) }, '归一化'),
+            h('button', { onClick:()=>setOn(false), style:btnSty(!on) }, '还原'))),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:10, height:110 } },
+          h('div', { style:{ fontFamily:mono, fontSize:10, color:C.faint, height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between' } }, h('span',null,`+${lim}`), h('span',null,'0'), h('span',null,`−${lim}`)),
+          data.map((v,i) => h('div', { key:i, style:{ flex:1, height:'100%', position:'relative' } },
+            h('div', { style:{ position:'absolute', top:'50%', left:0, right:0, height:1, background:'rgba(148,166,210,.2)' } }),
+            h('div', { style:{ position:'absolute', left:'15%', right:'15%',
+              top: v>=0 ? `${50 - Math.min(48, v/lim*50)}%` : '50%',
+              height:`${Math.min(48, Math.abs(v)/lim*50)}%`,
+              background: Math.abs(raw[i]) > 5 ? C.k : 'rgba(86,200,245,.6)', borderRadius:3, transition:'all .5s cubic-bezier(.2,.8,.2,1)' } }),
+            h('div', { style:{ position:'absolute', bottom:-20, left:0, right:0, textAlign:'center', fontFamily:mono, fontSize:9.5, color:C.faint } }, fmt(v,1))))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:30, lineHeight:1.8 } },
+          on ? `已减去均值 μ=${fmt(mean,2)}、除以标准差 σ=${fmt(sd,2)} → 均值 0、方差 1。那个 6.5 的「大嗓门」被拉回了合唱队。（实际还有可学的缩放 γ 和偏移 β）`
+             : '注意粉色那格：一个异常大的分量会在层层叠加中越滚越大——点「归一化」看 LayerNorm 怎么治它。'));
+    };
+
+    // ---------- Ch6 causal mask ----------
+    W.Mask = () => {
+      const TA = ['小明','喂','了','猫','，','它','很','开心'];
+      const n = TA.length;
+      const [causal, setCausal] = useState(true);
+      const [row, setRow] = useState(5);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 因果掩码（悬停行试试）'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setCausal(true), style:btnSty(causal) }, '因果 · GPT'),
+            h('button', { onClick:()=>setCausal(false), style:btnSty(!causal) }, '双向 · BERT'))),
+        h('div', { style:{ display:'flex', gap:26, flexWrap:'wrap', alignItems:'flex-start' } },
+          h('div', { style:{ flex:'0 0 auto' } },
+            h('div', { style:{ display:'grid', gridTemplateColumns:`52px repeat(${n}, 36px)`, gap:2 } },
+              h('div', null),
+              TA.map((t,j) => h('div', { key:'c'+j, style:{ fontSize:11, color:C.faint, textAlign:'center', paddingBottom:4 } }, t)),
+              Array.from({length:n},(_,i) => [
+                h('div', { key:'r'+i, onMouseEnter:()=>setRow(i), style:{ fontSize:12, color: row===i ? C.amber : C.sub, display:'flex', alignItems:'center', justifyContent:'flex-end', paddingRight:8, cursor:'pointer' } }, TA[i]),
+                ...Array.from({length:n},(_,j) => {
+                  const blocked = causal && j > i;
+                  return h('div', { key:i+'-'+j, onMouseEnter:()=>setRow(i), style:{ width:36, height:32, borderRadius:4, display:'flex', alignItems:'center', justifyContent:'center',
+                    fontFamily:mono, fontSize:9, color: blocked ? 'rgba(240,110,180,.75)' : 'rgba(122,223,168,.8)',
+                    background: blocked ? 'rgba(240,110,180,.06)' : `rgba(122,223,168,${row===i?0.2:0.08})`,
+                    border:`1px solid ${row===i ? (blocked?'rgba(240,110,180,.4)':'rgba(122,223,168,.5)') : 'rgba(148,166,210,.1)'}`, transition:'all .3s' } }, blocked ? '−∞' : '✓');
+                })
+              ]).flat())),
+          h('div', { style:{ flex:'1 1 250px', minWidth:240 } },
+            h('div', { style:{ color:C.txt, fontWeight:700, fontSize:15, marginBottom:10 } }, causal ? `「${TA[row]}」能看见谁？` : '双向模式：全都能看'),
+            h('div', { style:{ color:C.sub, fontSize:13.5, lineHeight:1.9 } },
+              causal
+                ? h(React.Fragment, null, `位置 ${row} 只能看见 [${TA.slice(0,row+1).join('，')}]。右上角被 −∞ 封死——softmax 后权重恰好为 0，未来彻底不可见。`, h('br'), h('br'), '于是同一次前向里，每个位置都在诚实地做「只凭过去猜下一个」的练习。')
+                : '去掉掩码，每个词都能看到全句——适合理解任务（BERT 的完形填空），但没法用来学「预测下一个词」：答案就摆在桌上。'),
+            h('div', { style:{ marginTop:14, fontFamily:mono, fontSize:11.5, color:C.faint, lineHeight:1.8 } }, 'softmax(S + M)：M 里 0=放行，−∞=封杀'))));
+    };
+
+    // ---------- Ch6 RNN vs Transformer parallel ----------
+    W.Parallel = ({ rm }) => {
+      const TA = ['小明','喂','了','猫','，','它','很','开心'];
+      const [ref, vis] = useVis(0.3);
+      const [t, setT] = useState(0);
+      useEffect(() => {
+        if (!vis || rm) { setT(rm ? 9 : 0); return; }
+        const iv = setInterval(() => setT(x => (x+1) % 12), 420);
+        return () => clearInterval(iv);
+      }, [vis, rm]);
+      const rnnOn = i => t >= 9 ? true : i <= t;
+      const tfOn = t >= 2;
+      const cell = (txt, on, color) => h('div', { style:{ padding:'7px 0', width:64, textAlign:'center', borderRadius:8, fontSize:13,
+        background: on ? (color==='g'?'rgba(122,223,168,.12)':'rgba(86,200,245,.12)') : '#0B1322',
+        border:`1px solid ${on ? (color==='g'?'rgba(122,223,168,.5)':'rgba(86,200,245,.5)') : 'rgba(148,166,210,.15)'}`,
+        color: on ? C.txt : C.faint, transition:'all .25s' } }, txt);
+      return h('div', { ref, style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:16 } }, '训练一句话（8 个位置）需要几步？'),
+        h('div', { style:{ display:'flex', flexDirection:'column', gap:16 } },
+          h('div', null,
+            h('div', { style:{ display:'flex', justifyContent:'space-between', marginBottom:8 } },
+              h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'RNN · 必须排队'),
+              h('span', { style:{ fontFamily:mono, fontSize:12, color: t<9 ? C.q : C.faint } }, `${Math.min(8, t+1)} / 8 步`)),
+            h('div', { style:{ display:'flex', gap:8, alignItems:'center', flexWrap:'wrap' } },
+              TA.map((x,i) => h(React.Fragment, { key:i }, cell(x, rnnOn(i), 'b'), i<7 ? h('span',{style:{color: rnnOn(i+1)?C.q:C.faint, fontSize:12}},'→') : null)))),
+          h('div', null,
+            h('div', { style:{ display:'flex', justifyContent:'space-between', marginBottom:8 } },
+              h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'Transformer · 一次全算'),
+              h('span', { style:{ fontFamily:mono, fontSize:12, color: tfOn ? C.g : C.faint } }, tfOn ? '1 步 ✓' : '…')),
+            h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap' } }, TA.map((x,i) => h('div',{key:i},cell(x, tfOn, 'g')))))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:16, lineHeight:1.8 } }, '序列长 n，RNN 深度 = n（无法并行）；Transformer 深度 = 1 次矩阵运算，GPU 正好最擅长这个。代价：n×n 注意力的平方开销。'));
+    };
+
+    // ---------- Ch6 cross-entropy ----------
+    W.Loss = () => {
+      const [p, setP] = useState(0.35);
+      const others = [['饿',.30],['乖',.25],['可爱',.25],['累',.20]];
+      const rest = 1 - p; const os = others.map(([w,x]) => [w, rest * x]);
+      const loss = -Math.log(p);
+      const Wd = 320, Ht = 150;
+      const cx = x => 20 + x * (Wd-40);
+      const cy = l => Ht-18 - Math.min(1, l/4.7) * (Ht-36);
+      const pts = Array.from({length:97},(_,i) => { const x = 0.02+i*0.01; return `${cx(x)},${cy(-Math.log(x))}`; }).join(' ');
+      return h('div', { style:{ ...cardSty, display:'flex', gap:26, flexWrap:'wrap' } },
+        h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+          h('div', { style:{ ...lblSty, marginBottom:12 } }, '模型对「小明喂了猫，它很 ___」的预测'),
+          [ ['开心', p, true], ...os ].map(([w,v,ok],i) => h('div', { key:i, style:{ display:'flex', alignItems:'center', gap:10, margin:'7px 0' } },
+            h('span', { style:{ width:44, textAlign:'right', fontSize:14, color: ok ? C.g : C.txt, fontWeight: ok?700:400 } }, w, ok ? ' ✓' : ''),
+            h('div', { style:{ flex:1, height:15, background:'#0B1322', borderRadius:5, overflow:'hidden' } },
+              h('div', { style:{ height:'100%', width:`${v*100}%`, background: ok ? C.g : 'rgba(148,166,210,.35)', transition:'width .2s' } })),
+            h('span', { style:{ fontFamily:mono, fontSize:11, color: ok ? C.g : C.faint, width:38 } }, `${Math.round(v*100)}%`))),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12, marginTop:16 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '拖动 p(开心)'),
+            h(Slider, { v:p, set:setP, min:0.02, max:0.98, step:0.01, w:180 }))),
+        h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+          h('div', { style:{ ...lblSty, marginBottom:12 } }, '损失 = −log p　（只看给正确答案的概率）'),
+          h('svg', { viewBox:`0 0 ${Wd} ${Ht}`, style:{ width:'100%', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
+            h('polyline', { points:pts, fill:'none', stroke:'rgba(86,200,245,.7)', strokeWidth:2 }),
+            h('line', { x1:cx(p), y1:cy(loss), x2:cx(p), y2:Ht-18, stroke:'rgba(255,180,84,.4)', strokeDasharray:'3 3' }),
+            h('circle', { cx:cx(p), cy:cy(loss), r:6, fill:C.amber }),
+            h('text', { x:cx(p)+(p>0.7?-72:10), y:cy(loss)-10, fill:C.amber, fontSize:13, fontFamily:mono }, `loss=${fmt(loss,2)}`),
+            h('text', { x:Wd-36, y:Ht-5, fill:C.faint, fontSize:10, fontFamily:mono }, 'p→1'),
+            h('text', { x:6, y:Ht-5, fill:C.faint, fontSize:10, fontFamily:mono }, 'p→0')),
+          h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:10, lineHeight:1.8 } },
+            p < 0.1 ? '把正确答案压到几乎为 0 → 损失爆炸，梯度猛推参数改正。' : p > 0.8 ? '猜得很准 → 损失趋近 0，这道题没什么可学的了。' : '中间地带：损失温和地督促模型继续把 p 推高。')));
+    };
+    // ===WIDGETS_E===
+    // ---------- Ch7 autoregressive loop ----------
+    W.Gen = ({ rm }) => {
+      const base = ['小明','喂','了','猫','，'];
+      const seq = [
+        { tok:'它', dist:[['它',.62],['猫',.12],['小明',.10],['它们',.09],['门',.07]] },
+        { tok:'很', dist:[['很',.48],['就',.18],['十分',.14],['不',.12],['。',.08]] },
+        { tok:'开', dist:[['开',.55],['高',.20],['快',.15],['生',.06],['伤',.04]] },
+        { tok:'心', dist:[['心',.87],['门',.04],['花',.04],['水',.03],['朗',.02]] },
+        { tok:'。', dist:[['。',.72],['！',.18],['了',.06],['呢',.04]] },
+      ];
+      const [st, setSt] = useState({ i:0, phase:0 });
+      const [auto, setAuto] = useState(false);
+      useEffect(() => {
+        if (!auto || rm) return;
+        const t = setTimeout(() => setSt(s => {
+          if (s.phase < 2) return { ...s, phase:s.phase+1 };
+          if (s.i < seq.length-1) return { i:s.i+1, phase:0 };
+          setAuto(false); return s;
+        }), st.phase===1 ? 1200 : 850);
+        return () => clearTimeout(t);
+      }, [auto, st, rm]);
+      const stepOnce = () => setSt(s => {
+        if (s.phase < 2) return { ...s, phase:s.phase+1 };
+        if (s.i < seq.length-1) return { i:s.i+1, phase:0 };
+        return s;
+      });
+      const reset = () => { setAuto(false); setSt({ i:0, phase:0 }); };
+      const finished = st.i === seq.length-1 && st.phase === 2;
+      const cur = seq[st.i];
+      const maxP = cur.dist[0][1];
+      const stages = ['① 整句进入模型，前向传播', '② 取最后位置 → 词表分布', '③ 选定一个词，拼回句尾'];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 自回归生成，一步一步看'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:stepOnce, style:btnSty(false) }, '单步 →'),
+            h('button', { onClick:()=>setAuto(a=>!a), style:btnSty(auto) }, auto ? '⏸ 暂停' : '▶ 自动'),
+            h('button', { onClick:reset, style:btnSty(false) }, '↺ 重置'))),
+        h('div', { style:{ display:'flex', gap:20, flexWrap:'wrap', alignItems:'flex-start' } },
+          h('div', { style:{ flex:'1 1 320px', minWidth:300 } },
+            h('div', { style:{ padding:'16px 18px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}`, minHeight:60, display:'flex', flexWrap:'wrap', gap:7, alignItems:'center' } },
+              base.map((t,i) => h('span', { key:'b'+i, style:{ padding:'6px 11px', borderRadius:8, background:'#101828', border:'1px solid rgba(148,166,210,.25)', color:C.txt, fontSize:15 } }, t)),
+              seq.slice(0, st.i + (st.phase===2?1:0)).map((g,i) => h('span', { key:'g'+i, style:{ padding:'6px 11px', borderRadius:8, background:'rgba(255,180,84,.1)', border:'1px solid rgba(255,180,84,.4)', color:'#FFD9A0', fontSize:15 } }, g.tok)),
+              !finished && h('span', { style:{ width:11, height:22, background:C.amber, borderRadius:2, animation: rm?'none':'kfBlink 1s infinite' } })),
+            h('div', { style:{ fontFamily:mono, fontSize:11.5, color: finished ? C.g : C.amber, marginTop:12, minHeight:20 } }, finished ? '✓ 生成完毕（遇到句号/终止符便停）' : stages[st.phase]),
+            h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:6, lineHeight:1.8 } }, `已生成 ${st.i + (st.phase===2?1:0)} 个 token · 每个 token 都花了一整次前向传播`)),
+          h('div', { style:{ flex:'1 1 260px', minWidth:250 } },
+            h('div', { style:{ ...lblSty, marginBottom:10 } }, '当前分布 p(下一个词 | 上文)'),
+            cur.dist.map(([t,pv], i) => {
+              const on = st.phase >= 1; const win = st.phase===2 && i===0;
+              return h('div', { key:st.i+'-'+i, style:{ display:'flex', alignItems:'center', gap:10, margin:'6px 0' } },
+                h('span', { style:{ width:40, textAlign:'right', fontSize:14, color: win?C.amber:C.txt, fontWeight:win?700:400 } }, t),
+                h('div', { style:{ flex:1, height:15, background:'#0B1322', borderRadius:5, overflow:'hidden' } },
+                  h('div', { style:{ height:'100%', width: on ? `${pv/maxP*100}%` : '0%', background: win?C.amber:'rgba(86,200,245,.55)', borderRadius:5, transition:'width .5s cubic-bezier(.2,.8,.2,1)' } })),
+                h('span', { style:{ fontFamily:mono, fontSize:11, color: win?C.amber:C.faint, width:38 } }, on ? `${Math.round(pv*100)}%` : ''));
+            }))));
+    };
+
+    // ---------- Ch7 sampling lab ----------
+    W.Sampler = () => {
+      const cands = [['好',2.2],['不错',1.4],['冷',0.9],['热',0.7],['糟',0.3],['蓝',-0.2],['香',-0.6],['硬',-1.0]];
+      const [T, setT] = useState(1);
+      const [k, setK] = useState(8);
+      const [out, setOut] = useState([]);
+      const p0 = softmax(cands.map(c=>c[1]), T);
+      const order = p0.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]);
+      const kept = new Set(order.slice(0,k).map(x=>x[1]));
+      const keptSum = p0.reduce((s,v,i)=>s+(kept.has(i)?v:0),0);
+      const p = p0.map((v,i)=>kept.has(i)? v/keptSum : 0);
+      const sample = () => {
+        const draws = Array.from({length:10}, () => {
+          let r = Math.random(), acc = 0;
+          for (let i=0;i<p.length;i++) { acc += p[i]; if (r <= acc) return cands[i][0]; }
+          return cands[0][0];
+        });
+        setOut(draws);
+      };
+      const maxP = Math.max(...p);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:6 } }, '实验 · 采样机：「今天天气真 ___」'),
+        h('div', { style:{ display:'flex', gap:26, flexWrap:'wrap', margin:'12px 0 18px' } },
+          h('div', { style:{ display:'flex', alignItems:'center', gap:10 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '温度 T'),
+            h(Slider, { v:T, set:setT, min:0.1, max:3, step:0.05, w:170 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:36 } }, fmt(T,2))),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:10 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'top-k'),
+            h(Slider, { v:k, set:v=>setK(Math.round(v)), min:1, max:8, step:1, w:130 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:20 } }, k)),
+          h('button', { onClick:sample, style:{ ...btnSty(true), fontWeight:600 } }, '🎲 连抽 10 次')),
+        h('div', { style:{ display:'flex', alignItems:'flex-end', gap:10, height:130, padding:'0 4px' } },
+          p.map((v,i) => h('div', { key:i, style:{ flex:1, display:'flex', flexDirection:'column', alignItems:'center', gap:5, height:'100%', justifyContent:'flex-end' } },
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color: v===0 ? 'rgba(240,110,180,.6)' : v===maxP ? C.amber : C.sub } }, v===0 ? '砍' : `${Math.round(v*100)}%`),
+            h('div', { style:{ width:'100%', maxWidth:56, height:`${Math.max(1.5,v*100)}%`, background: v===0 ? 'rgba(240,110,180,.18)' : v===maxP ? C.amber : 'rgba(86,200,245,.5)', borderRadius:'5px 5px 2px 2px', transition:'height .25s, background .25s' } }),
+            h('div', { style:{ fontSize:13, color: v===0 ? C.faint : C.txt } }, cands[i][0])))),
+        h('div', { style:{ marginTop:16, minHeight:40, display:'flex', gap:7, flexWrap:'wrap', alignItems:'center' } },
+          out.length === 0
+            ? h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint } }, '点「连抽 10 次」看看这套设置下模型会说什么')
+            : out.map((w,i) => h('span', { key:i, style:{ padding:'5px 11px', borderRadius:8, background:'rgba(255,180,84,.09)', border:'1px solid rgba(255,180,84,.35)', color:'#FFD9A0', fontSize:14 } }, w))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:12, lineHeight:1.85 } },
+          T < 0.4 ? 'T→0：分布挤成尖峰 ≈ 贪心。稳定、保守，写代码/查事实用这档。' :
+          T > 1.8 ? 'T 很高：分布被压平，长尾词频繁出场——「创造力」和「胡说」一起来了。' :
+          'T=1 是模型原本的分布。调低 → 尖锐可靠；调高 → 平坦大胆。top-k/top-p 负责把不像话的长尾直接砍掉。'));
+    };
+
+    // ---------- Ch7 KV cache ----------
+    W.KV = ({ rm }) => {
+      const toks = ['小明','喂','了','猫','，','它'];
+      const [ref, vis] = useVis(0.3);
+      const [t, setT] = useState(1);
+      useEffect(() => {
+        if (!vis || rm) { setT(rm ? toks.length : 1); return; }
+        const iv = setInterval(() => setT(x => x >= toks.length ? 1 : x+1), 1100);
+        return () => clearInterval(iv);
+      }, [vis, rm]);
+      const withCache = t, without = t*(t+1)/2;
+      return h('div', { ref, style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:8, marginBottom:16 } },
+          h('div', { style:lblSty }, 'KV CACHE · 只算新的那一份'),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, `正在生成第 ${t} 个 token`)),
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', alignItems:'flex-end', minHeight:86 } },
+          toks.slice(0,t).map((x,i) => {
+            const isNew = i === t-1;
+            return h('div', { key:i, style:{ textAlign:'center' } },
+              h('div', { style:{ fontFamily:mono, fontSize:9.5, color: isNew ? C.amber : C.faint, marginBottom:4 } }, isNew ? '新算' : '缓存'),
+              h('div', { style:{ padding:'8px 12px', borderRadius:9, fontSize:14,
+                background: isNew ? 'rgba(255,180,84,.13)' : 'rgba(86,200,245,.06)',
+                border:`1.5px solid ${isNew ? C.amber : 'rgba(86,200,245,.3)'}`,
+                color: isNew ? '#FFD9A0' : C.sub, transition:'all .4s' } }, x),
+              h('div', { style:{ fontFamily:mono, fontSize:9.5, color: isNew ? C.amber : 'rgba(86,200,245,.55)', marginTop:4 } }, isNew ? 'q·K·V' : 'K,V ✓'));
+          })),
+        h('div', { style:{ display:'flex', gap:20, flexWrap:'wrap', marginTop:18 } },
+          h('div', { style:{ flex:1, minWidth:220, padding:'12px 16px', background:'#0B1322', borderRadius:10, border:'1px solid rgba(122,223,168,.3)' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.g, marginBottom:4 } }, '有缓存'),
+            h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.7 } }, `本步只为新 token 算 K/V，再用它的 q 查一遍缓存 → 代价 ∝ ${withCache}`)),
+          h('div', { style:{ flex:1, minWidth:220, padding:'12px 16px', background:'#0B1322', borderRadius:10, border:'1px solid rgba(240,110,180,.3)' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.k, marginBottom:4 } }, '无缓存'),
+            h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.7 } }, `每步把整句从头重算一遍 → 累计代价 ∝ ${without}，越写越慢得多`))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14, lineHeight:1.8 } }, '代价：缓存本身很占显存（层数 × 头数 × 序列长 × 维度）。「上下文越长越贵」说的就是它。'));
+    };
+  }
+
+  renderVals() {
+    this.ensure();
+    const h = React.createElement;
+    const rm = this.props.reduceMotion ?? false;
+    const W = this.W;
+    return {
+      showMath: this.props.showMath ?? true,
+      showPseudocode: this.props.showPseudocode ?? true,
+      rail: h(W.Rail, {}),
+      hero: h(W.Hero, { rm }),
+      tok: h(W.Tok, {}),
+      emb: h(W.Emb, { rm }),
+      pe: h(W.PE, { rm }),
+      arcs: h(W.Arcs, {}),
+      steps: h(W.Steps, { rm }),
+      scale: h(W.Scale, { rm }),
+      heads: h(W.Heads, { rm }),
+      block: h(W.Block, { rm }),
+      ln: h(W.LN, { rm }),
+      mask: h(W.Mask, { rm }),
+      parallel: h(W.Parallel, { rm }),
+      loss: h(W.Loss, { rm }),
+      gen: h(W.Gen, { rm }),
+      sampler: h(W.Sampler, { rm }),
+      kv: h(W.KV, { rm }),
+    };
+  }
+}
+</script>
+<script type="text/plain" data-disabled-print-export="true">
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Transformer 交互式教学";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
