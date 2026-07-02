@@ -26,3 +26,5 @@ http://localhost:8000/
 - `support.js`：交互组件运行时依赖。
 
 页面会从 CDN 加载 React、ReactDOM、Babel 和 Google Fonts，因此首次打开需要联网。
+
+Last updated: 2026-07-02
