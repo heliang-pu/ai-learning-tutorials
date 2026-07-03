@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=["https://claude.ai","https://preview.claude.ai","https://6cef08f2-564d-492a-89ce-23bb2a206de9.claudeusercontent.com"];var v=true;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WAM DreamZero 论文交互教学</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: #0A0E16; }
+    body { font-family: 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,180,84,.35); }
+    @keyframes kfGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,180,84,0); } 50% { box-shadow: 0 0 22px 2px rgba(255,180,84,.25); } }
+    @keyframes kfBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+</helmet>
+
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px)"></div>
+{{ rail }}
+
+<div style="position:relative;z-index:1;color:#C7CEDF">
+<div style="max-width:1060px;margin:0 auto;padding:0 32px">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" data-ch="top" data-screen-label="引言" style="padding:88px 0 40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">PAPER WALKTHROUGH · 论文图解 · 系列第 4 篇</div>
+    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:60px;line-height:1.2;color:#F2F4FA;margin:16px 0 14px">WAM：先在梦里<br>看见未来，再动手</h1>
+    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:700px;margin:0 0 10px">DreamZero 是一个 14B 的<strong style="color:#E9EDF6">世界动作模型（World Action Model）</strong>：底座不是语言模型，而是视频生成模型。它一边「想象」接下来的画面，一边输出与画面对齐的动作——没学过的任务，零样本泛化比最强 VLA 高 2 倍。</p>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#5F6C86;margin:14px 0 8px">
+      <span>NVIDIA</span><span>·</span><span>arXiv 2602.15922 · 2026.02</span><span>·</span><span>底座：Wan2.1 视频扩散 14B</span>
+    </div>
+    <div style="min-height:340px;margin:30px 0 26px">{{ hero }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 24px;max-width:820px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">先修</span>
+      <span style="font-size:14.5px;color:#9BA6BD">上一篇的主角 π0.5，在这篇里成了被超越的基线：</span>
+      <a href="../transformer/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《Transformer》</a>
+      <a href="../pi05/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《π0.5》</a>
+      <a href="../ego-pi/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《Ego-Pi》</a>
+    </div>
+  </section>
+
+  <!-- ============ W0 十秒版 ============ -->
+  <section id="w0" data-ch="w0" data-screen-label="第0章 十秒版" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 00 章 · TL;DR</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">十秒版：VLA 的天花板，WAM 的起点</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">VLA 从网页图文继承了「语义」：它能执行「把可乐罐移到 Taylor Swift 照片旁」——认得出照片，接得上学过的「移动」技能。但让它「解鞋带」就完了：<strong style="color:#E9EDF6">这个动作没在机器人数据里出现过，语义先验帮不上运动</strong>。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">DreamZero 换了个底座：用看过整个互联网视频的<strong style="color:#E9EDF6">视频扩散模型</strong>起家。视频模型「见过」无数物体怎么被推、被倒、被折叠——物理动力学已经在权重里。剩下的事：让它顺便把动作也生成出来。</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ①</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">预测未来 = 隐式规划</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">联合生成「未来画面 + 动作」，动作学习从死记模仿变成逆动力学——对着自己想象的未来对齐动作。新任务 2 倍于 SOTA VLA。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ②</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">14B 视频模型能实时控制</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">从 5.7 秒/块优化到 150 毫秒——38 倍加速，7Hz 闭环控制。视频扩散第一次跑进实时控制回路。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ③</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">视频就是通用语</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">别的机器人或人类的「纯视频」（无动作标签）10–20 分钟就能提升 42%；30 分钟玩耍数据适配一台全新机器人。</div></div>
+    </div>
+  </section>
+
+  <!-- ============ W1 范式 ============ -->
+  <section id="w1" data-ch="w1" data-screen-label="第1章 VLA vs WAM" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · TWO PARADIGMS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">两种底座：从哪继承，就擅长什么</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">机器人基础模型的配方都是「拿一个见过世面的大模型 + 教它输出动作」。关键分歧在于<strong style="color:#E9EDF6">拿哪个大模型</strong>——它决定了什么知识能免费继承。切换对比：</p>
+    <div style="min-height:400px;margin:26px 0">{{ paradigm }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">还有第三条路要交代：<strong style="color:#E9EDF6">隐空间世界模型</strong>（Dreamer、V-JEPA 一系）也预测未来，为什么 WAM 不走那条路？</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">隐空间世界模型</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">在紧凑的隐向量里学动力学，便宜快速——但动力学要从自己的机器人数据<strong style="color:#E9EDF6">从零学起</strong>，没有免费先验。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(255,180,84,.3);border-radius:14px;padding:18px"><div style="color:#FFD9A0;font-weight:700;font-size:14.5px;margin-bottom:6px">像素空间 WAM ★</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">直接续用视频扩散模型的表示——互联网级物理先验<strong style="color:#E9EDF6">免费入账</strong>。代价：整帧去噪，算力昂贵。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="color:#E9EDF6;font-weight:700;font-size:14.5px;margin-bottom:6px">DreamZero 的赌注</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">先验 &gt; 效率：宁可背上 14B 扩散的算力债，再用第 3 章的工程手段把速度追回来。</div></div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> VLM 底座继承「是什么」（语义），视频底座继承「怎么变」（动力学）<br><span style="color:#FFB454">▸</span> WAM = 预测未来世界状态 + 动作，两者对齐生成<br><span style="color:#FFB454">▸</span> 名字故意不叫「视频动作模型」：未来的世界建模目标可以是触觉、力反馈、隐空间</div>
+    </div>
+  </section>
+
+  <!-- ============ W2 架构 ============ -->
+  <section id="w2" data-ch="w2" data-screen-label="第2章 架构" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · ARCHITECTURE ★ 论文核心</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">联合去噪：画面与动作一起从噪声里长出来</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">DreamZero 把「预测未来 H 帧画面」和「预测未来 H 步动作」写成<strong style="color:#E9EDF6">同一个流匹配去噪问题</strong>：两团噪声共用一个去噪时间表，在同一个 14B DiT 骨干里一起变清晰。因为是一起去噪，画面和动作天然对齐——动作就是「让世界变成那个画面」的操作。拖动去噪进度：</p>
+    <div style="min-height:420px;margin:26px 0">{{ denoise }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:20px;color:#F2F4FA;line-height:1.9">π( o<sub style="font-size:12px">l:l+H</sub> , a<sub style="font-size:12px">l:l+H</sub> | o<sub style="font-size:12px">0:l</sub> , c , q<sub style="font-size:12px">l</sub> ) = <span style="color:#56C8F5">π( o<sub style="font-size:12px">l:l+H</sub> | 历史, 指令 )</span> · <span style="color:#FFB454">π( a<sub style="font-size:12px">l:l+H</sub> | 全部画面 )</span></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px"><span style="color:#56C8F5">视频预测</span> ×  <span style="color:#FFB454">逆动力学 IDM</span> —— 但不拆成两个模型，一个模型端到端学联合分布</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:6px">z<sub>t</sub> = t·z₁ + (1−t)·z₀ ，  a<sub>t</sub> = t·a₁ + (1−t)·a₀ —— 视频与动作共享时间步 t，损失 = 联合速度场回归</div>
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">为什么自回归、按块生成</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">不是一口气生成整段视频，而是像 LLM 吐 token 一样<strong style="color:#E9EDF6">一块一块地吐</strong>（每块 = K 帧 + 对应动作，训练用 teacher forcing）。好处：KV cache 加速、能吃任意长历史、保住原生帧率让画面-动作严格对齐。消融证实：自回归比双向结构动作更顺滑。</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(122,223,168,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:8px">闭环妙招：用现实覆盖梦境</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">自回归视频生成的死穴是误差滚雪球——越梦越歪。但机器人是闭环的：每执行完一块动作，<strong style="color:#E9EDF6">真实相机画面就把 KV cache 里「想象的帧」替换掉</strong>。梦境每 1.6 秒被现实校准一次，误差无从积累。这是 WAM 独有的免费午餐。</div>
+      </div>
+    </div>
+    <h3 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:26px;color:#F2F4FA;margin:44px 0 12px">动手改了哪些零件</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">动什么 · 冻什么</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">底座 Wan2.1-I2V-14B。<strong style="color:#E9EDF6">冻结</strong>文本编码器、图像编码器、VAE；<strong style="color:#E9EDF6">全量更新</strong>所有 DiT 块 + 新加的状态/动作编解码器。试过 LoRA 省钱——效果不行，放弃。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">多路相机怎么进</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">头部 + 双腕多视角<strong style="color:#E9EDF6">拼成一张大图</strong>喂进去——不改骨干一行结构，视频模型当它是一帧普通画面。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">动作与训练配置</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">动作 = <strong style="color:#E9EDF6">相对关节位置</strong>；训练前滤掉发呆片段。100K 步 × batch 128，AgiBot 与 DROID 各训一份。</div></div>
+    </div>
+    <sc-if value="{{ showPseudocode }}" hint-placeholder-val="{{ true }}">
+      <pre style="background:#0B111F;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:22px 26px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85;color:#C7CEDF;overflow-x:auto"><span style="color:#5E6B85"># 训练一步（teacher forcing · 每块独立时间步）</span>
+z1 = VAE.encode(未来K帧)          <span style="color:#5E6B85"># 画面 → 潜空间</span>
+a1 = normalize(未来H步动作)
+t  = uniform(0,1)                 <span style="color:#5E6B85"># Flash 训练: 视频改用 t=1−Beta(7,1)</span>
+zt = t*z1 + (1-t)*noise_z         <span style="color:#5E6B85"># 流匹配线性加噪（见 Transformer 篇 ch7）</span>
+at = t*a1 + (1-t)*noise_a
+v  = DiT_14B([zt, at]; 干净历史块, 指令c, 本体状态q, t)
+loss = ‖ v − ([z1,a1] − [noise_z,noise_a]) ‖²   <span style="color:#5E6B85"># 回归联合速度场</span>
+
+<span style="color:#5E6B85"># 推理循环（异步 · 每块 1.6s）</span>
+for 每个动作块:
+    梦境帧, 动作块 = 去噪(噪声; KV_cache, c, q)   <span style="color:#5E6B85"># Flash 后只需 1 步</span>
+    机器人.执行(动作块)                            <span style="color:#5E6B85"># 48 步 @30Hz，GPU 同时算下一块</span>
+    KV_cache[想象的帧] = 真实相机帧                <span style="color:#5E6B85"># 现实覆盖梦境，误差清零</span></pre>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 一个 14B DiT 同时去噪画面与动作，共享时间步 → 天然对齐<br><span style="color:#FFB454">▸</span> 自回归按块吐未来，KV cache 提速 + 任意长历史 + 原生帧率<br><span style="color:#FFB454">▸</span> 闭环回填真实观测：自回归视频最怕的误差累积被现实抹掉</div>
+    </div>
+  </section>
+
+  <!-- ============ W3 实时化 ============ -->
+  <section id="w3" data-ch="w3" data-screen-label="第3章 实时化" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · REAL-TIME ENGINEERING</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">反应鸿沟：5.7 秒 → 150 毫秒</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">视频扩散模型天生是个慢性子：16 步迭代去噪 × 14B 参数，朴素实现一块动作要 <strong style="color:#F06EB4">5.7 秒</strong>——机器人早撞墙了。第一步解法是<strong style="color:#E9EDF6">异步执行</strong>：手上执行着上一块动作（48 步 @30Hz = 1.6 秒），GPU 同时在算下一块。只要推理比 1.6 秒快，机器人就永不停顿。拖动推理延迟感受这个约束：</p>
+    <div style="min-height:330px;margin:26px 0">{{ async }}</div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">然后是一整套从系统到内核的压榨，把延迟一路打下来（点击每一层看做了什么）：</p>
+    <div style="min-height:380px;margin:26px 0">{{ speedup }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">最后一道工序：动作抛光</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">少步去噪的动作难免带高频毛刺。出厂前先把动作块<strong style="color:#E9EDF6">上采样 2 倍 → Savitzky-Golay 滤波 → 降回原采样率</strong>——机械臂拿到手的是一条平滑曲线，不是锯齿。</div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 异步执行把约束从「算完才能动」松成「1.6 秒内算完就行」<br><span style="color:#FFB454">▸</span> 系统级（CFG 并行、DiT 缓存）+ 实现级（编译、量化、内核）≈ 16×<br><span style="color:#FFB454">▸</span> 剩下的 2.3× 靠改训练本身——Flash，下一章</div>
+    </div>
+  </section>
+
+  <!-- ============ W4 Flash ============ -->
+  <section id="w4" data-ch="w4" data-screen-label="第4章 Flash" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · DREAMZERO-FLASH</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">Flash：让动作先醒，画面继续做梦</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">最后的瓶颈是去噪步数本身。直接砍步数会翻车：视频没去干净的噪声会污染动作。Flash 的洞察——<strong style="color:#E9EDF6">其实我们只需要干净的「动作」，画面模糊点无所谓</strong>。于是训练时故意把两个时间表拆开：视频常驻高噪声区（Beta 分布偏置），动作照常均匀采样——逼模型学会「从模糊的梦里提取清醒的动作」：</p>
+    <div style="min-height:400px;margin:26px 0">{{ flash }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 标准训练：视频/动作同步去噪 → 少步推理时动作被残余视觉噪声拖累<br><span style="color:#FFB454">▸</span> Flash 训练：视频偏向纯噪声（E[t]≈0.125），动作均匀 → 训练态 = 推理态<br><span style="color:#FFB454">▸</span> 去噪 4 步 → 1 步，350ms → 150ms，性能几乎无损；外加 Savitzky-Golay 滤波抹平动作毛刺</div>
+    </div>
+  </section>
+
+  <!-- ============ W5 数据哲学 ============ -->
+  <section id="w5" data-ch="w5" data-screen-label="第5章 数据哲学" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 05 章 · DATA PHILOSOPHY</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">数据哲学：要「干活」，不要「排练」</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">传统 VLA 的数据像排练：同一个任务反复演示几十遍，模型靠重复背下状态→动作映射。DreamZero 反其道：500 小时数据来自 22 个真实场所（家庭、餐馆、超市、咖啡店、办公室），操作员<strong style="color:#E9EDF6">连续干真实的活</strong>——平均一条轨迹 4.4 分钟、约 42 个子任务，几乎不重复。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">为什么 WAM 吃得下这种「乱」数据？因为世界建模目标从<strong style="color:#E9EDF6">每一对相邻帧</strong>里都能学到东西——不重复恰恰意味着信息密度高。消融实验：同样 500 小时，多样性数据完胜重复演示：</p>
+    <div style="min-height:330px;margin:26px 0">{{ datamix }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">一条轨迹长什么样</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">不是「抓一次积木」的 15 秒片段，而是「进厨房→开冰箱→取物→擦台面→摆盘」的连续作业：<strong style="color:#E9EDF6">导航、躯干升降、双臂操作混在一条流里</strong>——正因为要伺候真实场所的货架高低与房间布局。</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">可复现性：DROID + 开源</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">自采数据发布前，先在公开的 <strong style="color:#E9EDF6">DROID</strong>（Franka 单臂、最杂的开源机器人数据集之一）上复训验证了整套结论，并开源权重、推理代码与 PolaRiS / Genie Sim 3.0 评测脚本——不是「仅供参观」的论文。</div>
+      </div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 世界建模目标让「每对相邻帧」都成为监督——不重复 = 高信息密度<br><span style="color:#FFB454">▸</span> 数据采集从「排练任务」转向「记录劳动」，成本结构完全不同<br><span style="color:#FFB454">▸</span> 结论在自采 AgiBot 数据和公开 DROID 上双重成立</div>
+    </div>
+  </section>
+
+  <!-- ============ W6 实验 ============ -->
+  <section id="w6" data-ch="w6" data-screen-label="第6章 实验" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · RESULTS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">实验：默认考「双重陌生」</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">评测哲学延续 π0.5 又更激进：<strong style="color:#E9EDF6">默认设定就是陌生环境 + 陌生物体</strong>（训练与评测在不同地理位置），再分「见过的任务」和「没见过的任务」。基线是 GR00T N1.6 和 π0.5，喂完全相同的 500 小时数据、同等算力预算——纯粹比架构。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">「任务」按<strong style="color:#E9EDF6">运动 + 物体类型</strong>定义粒度：叠过红衬衫、考叠黑衬衫算「见过」；考叠袜子（运动不同）算「没见过」。10 个见过的任务（易/难抓放、堆叠、擦拭、折叠）× 4 台机器人 × 不同环境不同物体 × 8 次 = 每个模型 80 次实测。切换标签页：</p>
+    <div style="min-height:480px;margin:26px 0">{{ results }}</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5F6C86;margin-top:10px">* 加速数据为论文表 1 原始数值；成功率条形为按论文结论的定性重绘（2×、+10%、+42% 等为论文原文数字）。</div>
+  </section>
+
+  <!-- ============ W7 结论 ============ -->
+  <section id="w7" data-ch="w7" data-screen-label="第7章 局限与展望" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 07 章 · DISCUSSION</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">诚实的边界，和范式之争</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:10px">代价与短板</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 14B 扩散模型，实时推理要双 GPU + 顶级硬件（完整 38× 需 GB200）<br>▸ 需要记忆的任务未评测（虽然架构天然带历史）<br>▸ 预训练仍是单本体，多本体联训留作未来<br>▸ 策略上限被视频生成质量锁死——梦不清楚就做不对</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(122,223,168,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:10px">它真正改变的认知</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 运动泛化的钥匙在视频先验里，不在语言先验里<br>▸ 「提升机器人 = 提升视频生成」——两个领域从此绑定<br>▸ 数据可以「乱采」：干活数据 &gt; 排练数据<br>▸ 纯视频（无动作标签）就能教机器人——数据金矿一下子大了几个数量级</div>
+      </div>
+    </div>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:24px 26px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">WAM 谱系一瞥</div>
+      <div style="display:flex;gap:0;overflow-x:auto;font-size:13px;line-height:1.7">
+        <div style="flex:1;min-width:150px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2023</div><div style="color:#E9EDF6;font-weight:700">UniPi</div><div style="color:#8FA0C0">视频规划 + 单独的逆动力学模型，两截式</div></div>
+        <div style="flex:1;min-width:150px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2024</div><div style="color:#E9EDF6;font-weight:700">VPP / GR-2</div><div style="color:#8FA0C0">视频模型的预测表示喂给策略网络</div></div>
+        <div style="flex:1;min-width:150px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025</div><div style="color:#E9EDF6;font-weight:700">UWM / WorldVLA</div><div style="color:#8FA0C0">视频与动作在一个模型里联合扩散/交错生成</div></div>
+        <div style="flex:1;min-width:150px;border-left:2px solid rgba(255,180,84,.5);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2026</div><div style="color:#E9EDF6;font-weight:700">DreamZero ★</div><div style="color:#8FA0C0">自回归 + 闭环回填 + 实时 7Hz + 零样本泛化，范式定名 WAM</div></div>
+        <div style="flex:1;min-width:150px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">未来</div><div style="color:#E9EDF6;font-weight:700">超越视频</div><div style="color:#8FA0C0">论文点名：触觉、力反馈、隐表示都可以当「未来」来预测</div></div>
+      </div>
+    </div>
+    <div style="background:#0D1424;border:1px solid rgba(255,180,84,.25);border-radius:16px;padding:26px 28px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">一句话回顾全篇</div>
+      <div style="font-size:16.5px;line-height:2;color:#B9C2D8">DreamZero = <span style="color:#56C8F5">14B 视频扩散底座</span> + <span style="color:#FFB454">视频-动作联合去噪</span>（自回归按块生成，真实观测回填 KV cache 防止梦境跑偏）+ <span style="color:#7ADFA8">38× 推理加速</span>（异步执行 → 系统/内核优化 → Flash 解耦噪声表）——于是一个「会做梦」的模型，在从没见过的环境里做从没学过的任务，比最强 VLA 高一倍，还能看别人的视频学新活。</div>
+    </div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">系列阅读</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">骨架 → 泛化 → 人类数据 → 世界模型：<a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">① Transformer 完全图解</a>　<a href="../pi05/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">② π0.5：开放世界泛化</a>　<a href="../ego-pi/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">③ Ego-Pi：人类数据</a>　④ WAM/DreamZero（本篇）。模型权重与推理代码已开源：github.com/dreamzero0/dreamzero，项目主页 dreamzero0.github.io 有实机视频。</div>
+    </div>
+    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · 先看见未来，再伸出手 —</div>
+  </section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showMath&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;showPseudocode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;reduceMotion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;动效&quot;}}">
+class Component extends DCLogic {
+  ensure() {
+    if (this.W) return;
+    const h = React.createElement;
+    const { useState, useEffect, useRef, useMemo } = React;
+    const C = { card:'#101828', card2:'#0B1322', line:'rgba(148,166,210,.14)', txt:'#E9EDF6', sub:'#9BA6BD', faint:'#5F6C86', amber:'#FFB454', q:'#56C8F5', k:'#F06EB4', g:'#7ADFA8' };
+    const mono = "'JetBrains Mono',monospace";
+    const useVis = (th=0.2) => {
+      const ref = useRef(null); const [v, setV] = useState(false);
+      useEffect(() => {
+        const el = ref.current; if (!el) return;
+        const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setV(true); io.disconnect(); } }), { threshold: th });
+        io.observe(el); return () => io.disconnect();
+      }, []);
+      return [ref, v];
+    };
+    const cardSty = { background:C.card, border:`1px solid ${C.line}`, borderRadius:16, padding:24 };
+    const btnSty = (on) => ({ fontFamily:mono, fontSize:12.5, padding:'7px 14px', borderRadius:8, cursor:'pointer', border:`1px solid ${on?'rgba(255,180,84,.6)':'rgba(148,166,210,.25)'}`, background:on?'rgba(255,180,84,.12)':'#0B1322', color:on?C.amber:C.sub });
+    const lblSty = { fontFamily:mono, fontSize:11, letterSpacing:'.18em', color:C.faint };
+    const Slider = ({v, set, min, max, step, w=220}) => h('input', { type:'range', min, max, step, value:v, onChange:e=>set(parseFloat(e.target.value)), style:{ width:w, accentColor:C.amber, cursor:'pointer' } });
+    // deterministic pseudo-random
+    const rnd = (s) => { const x = Math.sin(s*127.1+311.7)*43758.5453; return x - Math.floor(x); };
+    // target "video frame": 6x9 grid of a simple scene (table + cup gradient)
+    const FRAME = Array.from({length:54},(_,i) => {
+      const r = Math.floor(i/9), c = i%9;
+      if (r >= 4) return [58,72,104];               // table
+      if (r >= 2 && c >= 3 && c <= 5) return [255,180,84]; // cup (amber)
+      return [22,32,54];                            // background
+    });
+    const lerp = (a,b,t) => a + (b-a)*t;
+    const cellColor = (i, t, seed) => {
+      const n = [rnd(i+seed)*255, rnd(i+seed+99)*255, rnd(i+seed+777)*255];
+      const f = FRAME[i];
+      return `rgb(${Math.round(lerp(n[0],f[0],t))},${Math.round(lerp(n[1],f[1],t))},${Math.round(lerp(n[2],f[2],t))})`;
+    };
+    // action trajectory: smooth reach curve; noisy version blends jitter
+    const actPts = (t, seed, W2=300, H2=90) => {
+      const pts = [];
+      for (let i=0;i<=24;i++) {
+        const x = i/24;
+        const clean = Math.sin(x*Math.PI)*0.75 + x*0.2;
+        const noise = (rnd(i+seed)*2-1) * (1-t);
+        const y = clean*t + (rnd(i+seed+5)*1.6-0.8)*(1-t) + noise*0.25;
+        pts.push(`${8 + x*(W2-16)},${H2-12 - Math.max(-0.1,Math.min(1.05,y))*(H2-24)}`);
+      }
+      return pts.join(' ');
+    };
+    this.$ = { h, useState, useEffect, useRef, useMemo, C, mono, useVis, cardSty, btnSty, lblSty, Slider, rnd, cellColor, actPts };
+    const W = this.W = {};
+    const Stub = (hgt=200) => () => h('div', { style:{ ...cardSty, minHeight:hgt, display:'flex', alignItems:'center', justifyContent:'center', color:C.faint, fontFamily:mono, fontSize:12 } }, '…');
+
+    // ---------- Rail ----------
+    W.Rail = () => {
+      const [active, setActive] = useState('top');
+      const [prog, setProg] = useState(0);
+      const [wide, setWide] = useState(typeof window !== 'undefined' && window.innerWidth >= 1420);
+      useEffect(() => {
+        let raf = 0;
+        const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => {
+          raf = 0;
+          const y = window.scrollY, wh = window.innerHeight, dh = document.documentElement.scrollHeight;
+          setProg(Math.min(1, y / Math.max(1, dh - wh)));
+          let cur = 'top';
+          document.querySelectorAll('[data-ch]').forEach(s => { if (s.getBoundingClientRect().top < wh * 0.45) cur = s.getAttribute('data-ch'); });
+          setActive(cur);
+        }); };
+        const onResize = () => setWide(window.innerWidth >= 1420);
+        window.addEventListener('scroll', onScroll, { passive:true }); window.addEventListener('resize', onResize);
+        onScroll();
+        return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+      }, []);
+      const items = [['top','引言'],['w0','00 十秒版'],['w1','01 两种底座'],['w2','02 联合去噪'],['w3','03 实时化'],['w4','04 Flash'],['w5','05 数据哲学'],['w6','06 实验'],['w7','07 边界']];
+      return h(React.Fragment, null,
+        h('div', { style:{ position:'fixed', top:0, left:0, height:3, width:`${prog*100}%`, background:C.amber, zIndex:50, transition:'width .1s linear' } }),
+        wide ? h('nav', { style:{ position:'fixed', top:'50%', transform:'translateY(-50%)', left:'calc(50vw - 530px - 150px)', zIndex:40, display:'flex', flexDirection:'column', gap:10 } },
+          items.map(([id, label]) => h('a', { key:id, href:'#'+id, style:{ display:'flex', alignItems:'center', gap:8, textDecoration:'none' } },
+            h('span', { style:{ width:6, height:6, borderRadius:3, background: active===id ? C.amber : 'rgba(148,166,210,.35)', boxShadow: active===id ? `0 0 8px ${C.amber}` : 'none' } }),
+            h('span', { style:{ fontFamily:mono, fontSize:11.5, color: active===id ? C.amber : C.faint } }, label)))) : null);
+    };
+
+    // ---------- Hero: dream loop ----------
+    W.Hero = ({ rm }) => {
+      const [ref, vis] = useVis(0.3);
+      const [clk, setClk] = useState(0); // 100ms 时钟；一圈 = 63 拍
+      useEffect(() => {
+        if (!vis || rm) return;
+        const iv = setInterval(() => setClk(c => (c + 1) % 63), 100);
+        return () => clearInterval(iv);
+      }, [vis, rm]);
+      // 相位：观察 0–10 · 做梦 11–32 · 执行 33–48 · 校准 49–62
+      const ph = rm ? 1 : (clk <= 10 ? 0 : clk <= 32 ? 1 : clk <= 48 ? 2 : 3);
+      const dt = rm ? 1 : (ph === 0 ? 0 : ph === 1 ? Math.min(1, (clk - 11) / 21) : 1);
+      const seed = 3;
+      const box = (title, color, active, body, flexb='1 1 230px') => h('div', { style:{ flex:flexb, minWidth:220, padding:'16px 18px', borderRadius:14, background: active?`${color}0d`:'#0B1322', border:`1.5px solid ${active?color:'rgba(148,166,210,.18)'}`, transition:'all .35s', boxShadow: active?`0 0 18px ${color}22`:'none' } },
+        h('div', { style:{ fontFamily:mono, fontSize:11, color, marginBottom:10 } }, title), body);
+      return h('div', { ref, style:{ ...cardSty, padding:'26px 28px' } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:8, marginBottom:18 } },
+          h('div', { style:lblSty }, 'LIVE · WAM 推理循环 —— 指令:「把杯子放到桌上」'),
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, ['① 观察','② 做梦：联合去噪未来','③ 执行动作块','④ 现实覆盖梦境'][ph])),
+        h('div', { style:{ display:'flex', gap:14, flexWrap:'wrap', alignItems:'stretch' } },
+          box('相机观测 + 本体状态', C.sub==='#9BA6BD'?'#9BA6BD':C.sub, ph===0, h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(9,1fr)', gap:2, borderRadius:8, overflow:'hidden' } },
+            Array.from({length:54},(_,i) => h('div', { key:i, style:{ aspectRatio:'1', background:cellColor(i, 1, 0), opacity:.85 } })))),
+          h('div', { style:{ alignSelf:'center', color: ph===1?C.amber:C.faint, fontSize:18 } }, '→'),
+          box('梦境 · 未来 H 帧 + 动作，一起去噪', C.amber, ph===1, h('div', null,
+            h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(9,1fr)', gap:2, borderRadius:8, overflow:'hidden', filter:`blur(${(1-dt)*2.5}px)` } },
+              Array.from({length:54},(_,i) => h('div', { key:i, style:{ aspectRatio:'1', background:cellColor(i, dt, seed), transition: rm?'none':'background .18s linear' } }))),
+            h('svg', { viewBox:'0 0 300 60', style:{ width:'100%', marginTop:8, display:'block' } },
+              h('polyline', { points:actPts(dt, 7, 300, 60), fill:'none', stroke:C.amber, strokeWidth:2.5, strokeLinecap:'round', opacity:.45+dt*.55 })),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, display:'flex', justifyContent:'space-between' } },
+              h('span',null,'↑ 想象的画面'), h('span',null,`去噪 ${Math.round(dt*100)}%`), h('span',null,'↑ 动作曲线')))),
+          h('div', { style:{ alignSelf:'center', color: ph>=2?C.amber:C.faint, fontSize:18 } }, '→'),
+          box('机器人 · 48 步 @30Hz', C.g, ph===2, h('div', null,
+            h('div', { style:{ display:'flex', gap:3, alignItems:'flex-end', height:52 } },
+              Array.from({length:16},(_,i) => h('div', { key:i, style:{ flex:1, borderRadius:2, background: ph>=2 ? C.g : 'rgba(122,223,168,.25)', height:`${20+70*Math.abs(Math.sin(i*0.8+2))}%`, opacity: ph===2 ? (i/16 <= 1 ? 1 : .3) : .3, transition:'opacity .3s' } }))),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:8 } }, '执行 1.6 秒 · 同时 GPU 已在算下一块'))),
+          h('div', { style:{ alignSelf:'center', color: ph===3?C.k:C.faint, fontSize:18 } }, '⟲'),
+          box('KV CACHE 校准', C.k, ph===3, h('div', null,
+            h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.8 } }, '真实新画面', h('strong',{style:{color:C.txt}},'替换'), '掉 cache 里想象的帧'),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color: ph===3?C.k:C.faint, marginTop:8, transition:'color .3s' } }, '梦境每块被现实纠偏 → 误差不积累')), '1 1 190px')),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:16 } }, rm ? '（动效已关）' : '与 VLA 的本质区别：动作不是直接从观察映射出来的，而是对齐着「想象出的未来」生成的。'));
+    };
+
+    // ---------- W1 paradigm compare ----------
+    W.Paradigm = () => {
+      const [m, setM] = useState(1);
+      const P = [
+        { name:'VLA · 视觉-语言-动作', base:'VLM（图文问答模型）', pre:'网页图文对：照片 + 描述', inherit:'语义：这是什么、在哪里、和文字怎么对应', good:'「把可乐罐移到 Taylor Swift 旁」——认得出名人照片，套用学过的移动技能', bad:'「解开鞋带」——语义都懂，但这个运动没学过，VLM 先验帮不了手指', color:C.q,
+          reps:['π0.5','GR00T','OpenVLA','RT-2'] },
+        { name:'WAM · 世界动作模型', base:'视频扩散模型（会「续播」视频）', pre:'互联网规模的视频：物体被推、倒、折、开', inherit:'动力学：世界在动作之下如何演化', good:'没见过的运动也能做——先想象出「鞋带被解开的画面」，再反推动作（逆动力学）', bad:'代价：模型大（14B）、推理慢（要去噪），实时化是硬仗 → 第 3 章', color:C.amber,
+          reps:['DreamZero','UWM','Cosmos Policy','GR00T-Dreams'] },
+      ];
+      const p = P[m];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, marginBottom:18, flexWrap:'wrap' } },
+          P.map((x,i) => h('button', { key:i, onClick:()=>setM(i), style:{ ...btnSty(m===i), borderColor: m===i?x.color:'rgba(148,166,210,.25)', color: m===i?x.color:C.sub, background: m===i?`${x.color}14`:'#0B1322' } }, x.name))),
+        h('div', { style:{ display:'flex', gap:14, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 240px', padding:'16px 18px', borderRadius:12, background:'#0B1322', border:`1px solid ${p.color}44` } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:p.color, marginBottom:8 } }, '底座 & 预训练食粮'),
+            h('div', { style:{ fontSize:14.5, color:C.txt, lineHeight:1.85, marginBottom:6 } }, p.base),
+            h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.8 } }, p.pre)),
+          h('div', { style:{ flex:'1 1 240px', padding:'16px 18px', borderRadius:12, background:'#0B1322', border:`1px solid ${p.color}44` } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:p.color, marginBottom:8 } }, '免费继承什么'),
+            h('div', { style:{ fontSize:14.5, color:C.txt, lineHeight:1.85 } }, p.inherit)),
+          h('div', { style:{ flex:'1 1 300px', display:'flex', flexDirection:'column', gap:10 } },
+            h('div', { style:{ padding:'12px 16px', borderRadius:11, background:'rgba(122,223,168,.05)', border:'1px solid rgba(122,223,168,.3)', fontSize:13.5, color:C.sub, lineHeight:1.8 } }, h('span',{style:{color:C.g,fontFamily:mono,fontSize:11}},'✓ 擅长　'), p.good),
+            h('div', { style:{ padding:'12px 16px', borderRadius:11, background:'rgba(240,110,180,.05)', border:'1px solid rgba(240,110,180,.3)', fontSize:13.5, color:C.sub, lineHeight:1.8 } }, h('span',{style:{color:C.k,fontFamily:mono,fontSize:11}},'✗ 短板　'), p.bad))),
+        h('div', { style:{ display:'flex', gap:8, marginTop:14, flexWrap:'wrap', alignItems:'center' } },
+          h('span', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, '代表:'),
+          p.reps.map((r,i) => h('span', { key:m+'-'+i, style:{ padding:'4px 10px', borderRadius:7, fontFamily:mono, fontSize:11.5, background:'#0B1322', border:`1px solid ${p.color}44`, color:p.color } }, r))));
+    };
+
+    // ===WIDGETS_B===
+    // ---------- W2 joint denoising playground ----------
+    W.Denoise = ({ rm }) => {
+      const [t, setT] = useState(0.15);
+      const [auto, setAuto] = useState(false);
+      useEffect(() => {
+        if (!auto || rm) return;
+        const iv = setInterval(() => setT(x => x >= 1 ? 0 : Math.min(1, x + 0.02)), 60);
+        return () => clearInterval(iv);
+      }, [auto, rm]);
+      const steps = Math.round(t*16);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 共享时间步的联合去噪'),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 't ='),
+            h(Slider, { v:t, set:v=>{setAuto(false);setT(v);}, min:0, max:1, step:0.01 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:36 } }, t.toFixed(2)),
+            h('button', { onClick:()=>setAuto(a=>!a), style:btnSty(auto) }, auto?'⏸':'▶ 自动'))),
+        h('div', { style:{ display:'flex', gap:22, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.q, marginBottom:8 } }, `视频模态 · 未来帧（t=${t.toFixed(2)}）`),
+            h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(9,1fr)', gap:2.5, borderRadius:10, overflow:'hidden', filter:`blur(${(1-t)*3}px)` } },
+              Array.from({length:54},(_,i) => h('div', { key:i, style:{ aspectRatio:'1', background:cellColor(i, t, 42) } }))),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:8, lineHeight:1.7 } }, 'z_t = t·画面 + (1−t)·噪声 —— 「桌上的橙色杯子」从雪花里浮现')),
+          h('div', { style:{ flex:'1 1 300px', minWidth:280 } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.amber, marginBottom:8 } }, `动作模态 · 未来 H 步关节轨迹（同一个 t）`),
+            h('svg', { viewBox:'0 0 300 120', style:{ width:'100%', background:'#0B1322', borderRadius:10, border:`1px solid ${C.line}`, display:'block' } },
+              h('polyline', { points:actPts(t, 7, 300, 120), fill:'none', stroke:C.amber, strokeWidth:2.5, strokeLinecap:'round' }),
+              h('polyline', { points:actPts(t, 21, 300, 120), fill:'none', stroke:'rgba(86,200,245,.7)', strokeWidth:2, strokeLinecap:'round' })),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:8, lineHeight:1.7 } }, '两条关节曲线同步从抖动变平滑 —— 与画面严格同拍'),
+            h('div', { style:{ marginTop:10, padding:'10px 13px', borderRadius:9, background:'#0B1322', border:`1px solid ${C.line}`, fontFamily:mono, fontSize:11.5, color: t>0.9 ? C.g : C.sub } }, t>0.9 ? `✓ ${steps}/16 步完成：画面清晰、动作干净，可以执行` : `去噪步 ${steps}/16 · 画面与动作共用一张去噪时间表`))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14, lineHeight:1.8 } }, '训练（teacher forcing）：给定干净的历史块，同时给未来块的画面和动作加同等噪声，学习联合速度场。对齐是「共同出生」带来的，不是事后拼接。'));
+    };
+
+    // ---------- W3 async execution ----------
+    W.Async = () => {
+      const [lat, setLat] = useState(0.15); // seconds
+      const CHUNK = 1.6;
+      const ok = lat <= CHUNK;
+      const total = 8; // seconds timeline
+      const px = s => `${s/total*100}%`;
+      const chunks = [];
+      let tExec = 0, i = 0;
+      while (tExec < total && i < 12) {
+        const start = i === 0 ? 0 : Math.max(chunks[i-1].end, chunks[i-1].infDone);
+        const end = start + CHUNK;
+        chunks.push({ start, end, infStart: start, infDone: start + lat });
+        tExec = end; i++;
+      }
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 异步闭环：约束 = 推理必须快过动作块耗尽'),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12 } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '推理延迟'),
+            h(Slider, { v:lat, set:setLat, min:0.15, max:5.7, step:0.05 }),
+            h('span', { style:{ fontFamily:mono, fontSize:13, color: ok ? C.g : C.k, width:52 } }, `${lat.toFixed(2)}s`))),
+        h('div', { style:{ position:'relative', marginBottom:6 } },
+          h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginBottom:4 } }, '机械臂（执行动作块 1.6s/块）'),
+          h('div', { style:{ position:'relative', height:26, background:'#0B1322', borderRadius:7, overflow:'hidden', border:`1px solid ${C.line}` } },
+            chunks.map((c,j) => h(React.Fragment, { key:j },
+              j>0 && c.start > chunks[j-1].end + 0.01 ? h('div', { style:{ position:'absolute', left:px(chunks[j-1].end), width:px(c.start-chunks[j-1].end), top:0, bottom:0, background:'repeating-linear-gradient(45deg, rgba(240,110,180,.25) 0 6px, transparent 6px 12px)' } }) : null,
+              h('div', { style:{ position:'absolute', left:px(c.start), width:px(Math.min(CHUNK, total-c.start)), top:2, bottom:2, background:`rgba(122,223,168,${j%2?0.5:0.72})`, borderRadius:5 } }))))),
+        h('div', { style:{ position:'relative' } },
+          h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, margin:'8px 0 4px' } }, 'GPU（为下一块做推理）'),
+          h('div', { style:{ position:'relative', height:26, background:'#0B1322', borderRadius:7, overflow:'hidden', border:`1px solid ${C.line}` } },
+            chunks.map((c,j) => h('div', { key:j, style:{ position:'absolute', left:px(c.infStart), width:px(Math.min(lat, total-c.infStart)), top:2, bottom:2, background:`rgba(86,200,245,${j%2?0.45:0.65})`, borderRadius:5 } })))),
+        h('div', { style:{ display:'flex', justifyContent:'space-between', fontFamily:mono, fontSize:10, color:C.faint, marginTop:6 } }, h('span',null,'0s'), h('span',null,'4s'), h('span',null,'8s')),
+        h('div', { style:{ marginTop:12, padding:'12px 16px', borderRadius:10, background: ok ? 'rgba(122,223,168,.05)' : 'rgba(240,110,180,.05)', border:`1px solid ${ok?'rgba(122,223,168,.35)':'rgba(240,110,180,.35)'}`, fontFamily:mono, fontSize:12, color: ok ? C.g : C.k, lineHeight:1.8 } },
+          ok ? `✓ ${lat.toFixed(2)}s < 1.6s：下一块总在当前块耗尽前就绪，机器人连续运动（论文目标 <0.2s，留足余量）`
+             : `✗ ${lat.toFixed(2)}s > 1.6s：动作块用完了，下一块还没算完——机器人僵在原地干等（粉色斜纹）。朴素实现 5.7s 就是这个下场`));
+    };
+
+    // ---------- W3 speedup stack ----------
+    W.Speedup = () => {
+      const rows = [
+        { name:'朴素实现', x:1, note:'16 步去噪 × 14B DiT，5.7 秒/块', cat:'基线', color:'#8FA0C0' },
+        { name:'+ CFG 并行', x:1.8, note:'classifier-free guidance 的条件/无条件两次前向，拆到两张 GPU 同时算——单步延迟降 47%', cat:'系统级', color:C.q },
+        { name:'+ DiT 缓存', x:5.4, note:'流匹配的速度方向前后步高度一致：余弦相似度够高就复用上一步结果，等效 16 步 → 4 步', cat:'系统级', color:C.q },
+        { name:'+ 编译 & CUDA Graphs', x:10.9, note:'torch.compile 融合算子、消除 CPU 开销；静态形状只在首条轨迹时重编译', cat:'实现级', color:C.g },
+        { name:'+ 内核 & 调度器', x:14.8, note:'cuDNN attention 后端；调度器搬上 GPU，消灭 CPU-GPU 同步停顿', cat:'实现级', color:C.g },
+        { name:'+ NVFP4 量化', x:16.6, note:'Blackwell 上权重/激活压到 4 位浮点，敏感算子（QKV、Softmax）保 FP8', cat:'实现级', color:C.g },
+        { name:'+ DreamZero-Flash', x:38, note:'解耦噪声表，去噪 4 步 → 1 步（下一章详解）——最终 150ms，7Hz 闭环', cat:'模型级', color:C.amber },
+      ];
+      const [sel, setSel] = useState(6);
+      const r = rows[sel];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:14 } }, '38× 加速栈（GB200 · 论文表 1 累计值，点击每层）'),
+        rows.map((x,i) => h('div', { key:i, onClick:()=>setSel(i), style:{ display:'flex', alignItems:'center', gap:12, margin:'7px 0', cursor:'pointer' } },
+          h('span', { style:{ width:170, textAlign:'right', fontSize:13, color: sel===i ? C.txt : C.sub, fontWeight: sel===i?700:400 } }, x.name),
+          h('div', { style:{ flex:1, height:19, background:'#0B1322', borderRadius:6, overflow:'hidden', border:`1px solid ${sel===i ? x.color : 'transparent'}` } },
+            h('div', { style:{ height:'100%', width:`${Math.max(2.6, x.x/38*100)}%`, background:x.color, opacity: sel===i?1:.55, borderRadius:6, transition:'all .3s' } })),
+          h('span', { style:{ fontFamily:mono, fontSize:12, color: sel===i ? x.color : C.faint, width:52 } }, x.x+'×'))),
+        h('div', { style:{ marginTop:14, padding:'13px 16px', borderRadius:11, background:'#0B1322', border:`1px solid ${r.color}55` } },
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:r.color, marginBottom:5 } }, r.cat),
+          h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.85 } }, r.note)),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12 } }, '5.7s ÷ 38 ≈ 150ms。除缓存与量化外，其余优化数学上与基线完全等价——白捡的速度。'));
+    };
+
+    // ---------- W4 Flash decoupled schedules ----------
+    W.Flash = () => {
+      const [mode, setMode] = useState(1); // 0 coupled, 1 flash
+      const [steps, setSteps] = useState(1);
+      const stepOpts = [16, 4, 1];
+      const lat = { 16:'~1.4s', 4:'~350ms', 1:'~150ms' }[steps];
+      const quality = mode===1 ? (steps===1?'✓ 几乎无损':'✓ 无损') : (steps===16?'✓ 无损':(steps===4?'△ 可用':'✗ 动作被视觉噪声污染'));
+      const qcolor = quality.startsWith('✓') ? C.g : quality.startsWith('△') ? C.amber : C.k;
+      // beta(7,1) density for eta -> t_video = 1-eta concentrated near 0 (noisy)
+      const betaPdf = x => 7 * Math.pow(x, 6); // Beta(7,1)
+      const bars = n => Array.from({length:n},(_,i) => (i+0.5)/n);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 训练时的噪声时间表'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setMode(0), style:btnSty(mode===0) }, '标准 · 同步噪声'),
+            h('button', { onClick:()=>setMode(1), style:btnSty(mode===1) }, 'Flash · 解耦噪声 ✓'))),
+        h('div', { style:{ display:'flex', gap:22, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 280px', minWidth:260 } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.q, marginBottom:8 } }, '视频时间步 t 的采样分布'),
+            h('div', { style:{ display:'flex', alignItems:'flex-end', gap:2, height:90, background:'#0B1322', borderRadius:10, padding:'8px 10px', border:`1px solid ${C.line}` } },
+              bars(24).map((x,i) => {
+                const d = mode===0 ? 1 : betaPdf(1-x); // coupled: uniform; flash: t_video=1-eta, eta~Beta(7,1)
+                return h('div', { key:mode+'-'+i, style:{ flex:1, height:`${Math.min(100, d/7*100)}%`, minHeight:2, background: x<0.35 ? 'rgba(240,110,180,.65)' : 'rgba(86,200,245,.6)', borderRadius:2, transition:'height .4s' } });
+              })),
+            h('div', { style:{ display:'flex', justifyContent:'space-between', fontFamily:mono, fontSize:10, color:C.faint, marginTop:4 } }, h('span',null,'t=0 纯噪声'), h('span',null,'t=1 干净')),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.sub, marginTop:8, lineHeight:1.7 } }, mode===0 ? '均匀采样——视频和动作永远一样干净/一样脏' : 't_video = 1−η, η∼Beta(7,1) → E[t]≈0.125：视频几乎总是很噪')),
+          h('div', { style:{ flex:'1 1 280px', minWidth:260 } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.amber, marginBottom:8 } }, '动作时间步 t 的采样分布'),
+            h('div', { style:{ display:'flex', alignItems:'flex-end', gap:2, height:90, background:'#0B1322', borderRadius:10, padding:'8px 10px', border:`1px solid ${C.line}` } },
+              bars(24).map((x,i) => h('div', { key:i, style:{ flex:1, height:'14%', background:'rgba(255,180,84,.55)', borderRadius:2 } }))),
+            h('div', { style:{ display:'flex', justifyContent:'space-between', fontFamily:mono, fontSize:10, color:C.faint, marginTop:4 } }, h('span',null,'t=0'), h('span',null,'t=1')),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.sub, marginTop:8, lineHeight:1.7 } }, '两种模式下动作都均匀采样——它必须学会在任何噪声水平下走向干净'))),
+        h('div', { style:{ display:'flex', gap:14, alignItems:'center', marginTop:18, flexWrap:'wrap' } },
+          h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '推理去噪步数:'),
+          stepOpts.map(s => h('button', { key:s, onClick:()=>setSteps(s), style:btnSty(steps===s) }, s + ' 步')),
+          h('span', { style:{ fontFamily:mono, fontSize:12.5, color:C.sub } }, `延迟 ${lat} ·`),
+          h('span', { style:{ fontFamily:mono, fontSize:12.5, color:qcolor, fontWeight:600 } }, quality)),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12, lineHeight:1.8 } },
+          mode===0 ? '标准训练从没见过「动作要干净、视频还很糊」的组合——少步推理正是这个组合，训练/推理错配，动作质量崩。'
+                   : 'Flash 训练天天面对「从糊视频里出干净动作」——1 步推理就是它的日常。这正是能砍到 150ms 的原因。'));
+    };
+
+    // ---------- W5 data philosophy ----------
+    W.DataMix = () => {
+      const [m, setM] = useState(1);
+      const D = [
+        { name:'排练式 · 重复演示', bars:[['见过的任务',72,C.g],['没见过的任务',18,C.k]], note:'同任务反复录几十遍。见过的题拿高分，没见过的题当场露馅——模型背的是答案，不是物理。' },
+        { name:'干活式 · 多样非重复', bars:[['见过的任务',75,C.g],['没见过的任务',55,C.amber]], note:'同样 500 小时，几乎不重复。世界建模从每对相邻帧提取监督——泛化大幅领先（数值为定性示意，结论出自论文消融）。' },
+      ];
+      const d = D[m];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, marginBottom:16, flexWrap:'wrap' } },
+          D.map((x,i) => h('button', { key:i, onClick:()=>setM(i), style:btnSty(m===i) }, x.name))),
+        d.bars.map(([label,v,color],i) => h('div', { key:m+'-'+i, style:{ display:'flex', alignItems:'center', gap:12, margin:'10px 0' } },
+          h('span', { style:{ width:130, textAlign:'right', fontSize:13.5, color:C.sub } }, label),
+          h('div', { style:{ flex:1, height:20, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
+            h('div', { style:{ height:'100%', width:`${v}%`, background:color, borderRadius:6, transition:'width .6s cubic-bezier(.2,.8,.2,1)' } })),
+          h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:40 } }, v+'%'))),
+        h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.85, marginTop:12, maxWidth:760 } }, d.note),
+        h('div', { style:{ display:'flex', gap:10, marginTop:16, flexWrap:'wrap' } },
+          [['22','个真实场所'],['4.4 分钟','平均单条轨迹'],['~42','子任务/条'],['7.2K','条 · 500 小时']].map(([a,b],i) =>
+            h('div', { key:i, style:{ flex:'1 1 130px', padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid ${C.line}`, textAlign:'center' } },
+              h('div', { style:{ fontFamily:mono, fontSize:18, color:C.amber, fontWeight:600 } }, a),
+              h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:3 } }, b)))));
+    };
+
+    // ---------- W6 results ----------
+    W.Results = () => {
+      const [tab, setTab] = useState(0);
+      const Bar = ({label, v, color, note, hl}) => h('div', { style:{ display:'flex', alignItems:'center', gap:12, margin:'9px 0' } },
+        h('span', { style:{ width:190, textAlign:'right', fontSize:13.5, color: hl?C.txt:C.sub, fontWeight:hl?700:400 } }, label),
+        h('div', { style:{ flex:1, height:20, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
+          h('div', { style:{ height:'100%', width:`${v}%`, background:color, borderRadius:6, transition:'width .6s cubic-bezier(.2,.8,.2,1)' } })),
+        h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:150 } }, note||''));
+      const tabs = ['① 零样本 vs VLA', '② 后训练之后', '③ 看视频学新活', '④ 30 分钟换身体', '⑤ 架构消融'];
+      const bodies = [
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, 'AgiBot G1，陌生环境+陌生物体，预训练后直接考（不做任务微调）。没见过的任务（新动作/新技能）：'),
+          h(Bar, { label:'DreamZero', v:62, color:C.amber, hl:true, note:'>2× 于最强 VLA' }),
+          h(Bar, { label:'π0.5（同数据）', v:28, color:'#8FA0C0' }),
+          h(Bar, { label:'GR00T N1.6（同数据）', v:25, color:'#8FA0C0' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '见过的任务上大家都不差；差距在「没见过的运动」上被拉开——语义先验救不了新动作，动力学先验可以。生成的视频与执行的动作高度一致：模型真的在「按想象行事」。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '针对具体任务做后训练之后，环境泛化能力保得住吗？'),
+          h(Bar, { label:'DreamZero 后训练', v:72, color:C.amber, hl:true, note:'平均任务进度 +10%' }),
+          h(Bar, { label:'SOTA VLA 后训练', v:62, color:'#8FA0C0' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '专精一件事后，别的本事没丢——世界模型先验在微调后依然在撑泛化。另附：只训过 500h 真实数据的模型，在 100 任务的 Genie Sim 3.0 模拟基准上也有非平凡表现（没吃过一小时模拟数据）。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '跨本体绝活 1：别的机器人（YAM）或人类的演示视频——没有动作标签，纯视频——混进训练：'),
+          h(Bar, { label:'加 20 分钟 YAM 视频', v:64, color:C.amber, hl:true, note:'相对提升 >42%' }),
+          h(Bar, { label:'加 12 分钟人类视频', v:61, color:C.amber, note:'相对提升 >42%' }),
+          h(Bar, { label:'不加（基线）', v:44, color:'#8FA0C0' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '为什么可行？视频本来就是世界建模目标的一等公民——不需要动作标签就能贡献监督。回想 Ego-Pi 得靠手套和逐关节标定才能用上人类数据；WAM 直接看视频就行。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '跨本体绝活 2：在 AgiBot G1 上预训练的模型，搬到一台全新机器人（YAM）：'),
+          h(Bar, { label:'30 分钟玩耍数据适配', v:58, color:C.amber, hl:true, note:'保住零样本泛化' }),
+          h(Bar, { label:'从零训练同量数据', v:12, color:'#8FA0C0', note:'远远不够' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '30 分钟随便玩玩的数据（无脚本 play data），新身体就能用——还保留对新物体的泛化（南瓜、玩偶、泡面……训练里都没有）。论文称此为数据效率新基准。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '拆掉每个设计选择重训，看哪些是真支柱：'),
+          h(Bar, { label:'14B 底座', v:62, color:C.amber, hl:true, note:'梦越清楚手越稳' }),
+          h(Bar, { label:'5B 底座', v:40, color:'#8FA0C0', note:'视频质量↓ 动作跟着↓' }),
+          h('div', { style:{ height:1, background:C.line, margin:'14px 0' } }),
+          h(Bar, { label:'自回归生成', v:62, color:C.amber, hl:true, note:'动作平滑 · 对齐好' }),
+          h(Bar, { label:'双向生成', v:46, color:'#8FA0C0', note:'定长+抽帧毁帧率对齐' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '两条消融指向同一个结论：策略性能与视频生成质量深度绑定——「提升机器人 = 提升视频生成」。这也是全文最重要的一句预言：视频模型的进步会自动变成机器人的进步。')),
+      ];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:18 } },
+          tabs.map((t,i) => h('button', { key:i, onClick:()=>setTab(i), style:btnSty(tab===i) }, t))),
+        bodies[tab]);
+    };
+  }
+
+  renderVals() {
+    this.ensure();
+    const h = React.createElement;
+    const rm = this.props.reduceMotion ?? false;
+    const W = this.W;
+    return {
+      showMath: this.props.showMath ?? true,
+      showPseudocode: this.props.showPseudocode ?? true,
+      rail: h(W.Rail, {}),
+      hero: h(W.Hero, { rm }),
+      paradigm: h(W.Paradigm, {}),
+      denoise: h(W.Denoise, { rm }),
+      async: h(W.Async, { rm }),
+      speedup: h(W.Speedup, { rm }),
+      flash: h(W.Flash, { rm }),
+      datamix: h(W.DataMix, { rm }),
+      results: h(W.Results, { rm }),
+    };
+  }
+}
+</script>
+<script type="text/plain" data-disabled-print-export="true">
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "WAM DreamZero 论文交互教学";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
