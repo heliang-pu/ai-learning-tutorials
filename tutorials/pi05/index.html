@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=["https://claude.ai","https://preview.claude.ai","https://6cef08f2-564d-492a-89ce-23bb2a206de9.claudeusercontent.com"];var v=true;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>π0.5 论文交互教学</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: #0A0E16; }
+    body { font-family: 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,180,84,.35); }
+    @keyframes kfGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,180,84,0); } 50% { box-shadow: 0 0 22px 2px rgba(255,180,84,.25); } }
+    @keyframes kfBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+</helmet>
+
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px)"></div>
+{{ rail }}
+
+<div style="position:relative;z-index:1;color:#C7CEDF">
+<div style="max-width:1060px;margin:0 auto;padding:0 32px">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" data-ch="top" data-screen-label="引言" style="padding:88px 0 40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">PAPER WALKTHROUGH · 论文图解</div>
+    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:60px;line-height:1.2;color:#F2F4FA;margin:16px 0 14px">π0.5：能打扫陌生厨房的<br>机器人大脑</h1>
+    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:680px;margin:0 0 10px">一个 VLA（视觉-语言-动作）模型，开进<strong style="color:#E9EDF6">从未见过的真实住宅</strong>，连续工作 10–15 分钟收拾厨房和卧室。这页拆解它是怎么炼成的。</p>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#5F6C86;margin:14px 0 8px">
+      <span>Physical Intelligence</span><span>·</span><span>arXiv 2504.16054 · 2025.04</span><span>·</span><span>基座：π0 / PaliGemma</span>
+    </div>
+    <div style="min-height:330px;margin:30px 0 26px">{{ hero }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 24px;max-width:800px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">先修</span>
+      <span style="font-size:14.5px;color:#9BA6BD">π0.5 的骨架就是一个 Transformer。没看过前篇的话：</span>
+      <a href="../transformer/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《Transformer 完全图解》→</a>
+    </div>
+  </section>
+
+  <!-- ============ P0 十秒版 ============ -->
+  <section id="p0" data-ch="p0" data-screen-label="第0章 十秒版" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 00 章 · TL;DR</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">十秒版：这篇论文证明了什么</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">机器人学最大的难题不是「做得到」，而是「<strong style="color:#E9EDF6">换个地方还做得到</strong>」。实验室里惊艳的机器人，进了你家厨房大概率当场趴窝——灯光、橱柜、碗筷全变了。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π0.5 的答案：<strong style="color:#E9EDF6">别指望海量收集目标场景的数据，而是把各种「便宜的相关数据」混在一起共训</strong>——别的机器人的数据、网页图文、高层任务规划标注……只用约 400 小时移动机器人数据，就实现了在完全陌生的真实住宅里干长活。</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ①</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">泛化靠数据配方，不靠堆同类数据</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">异构共训（机器人数据 + 网页数据 + 语义标注）是泛化的关键，消融实验里去掉哪份都掉分。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ②</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">一个模型，先想后做</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">同一个网络先用文字推理出「下一步该干嘛」（拿起盘子），再输出 50Hz 的连续动作去执行——机器人版的思维链。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ③</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">首次实证：端到端学习能干长活</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">在训练集之外的真实住宅里，连续 10–15 分钟完成收拾厨房/卧室的多阶段灵巧操作——此前没人做到过。</div></div>
+    </div>
+  </section>
+
+  <!-- ============ P1 VLA ============ -->
+  <section id="p1" data-ch="p1" data-screen-label="第1章 VLA" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · WHAT IS A VLA</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">VLA：让语言模型长出手</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">VLA = Vision-Language-Action。思路简单到粗暴：既然 Transformer 能把「图像 + 文字」都变成 token 序列来预测，那就<strong style="color:#E9EDF6">把机器人的动作也变成 token</strong>，塞进同一个序列。看到什么、被要求做什么、该输出什么动作——全是「预测下一个 token」。</p>
+    <div style="min-height:300px;margin:26px 0">{{ tokens }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">π0.5 的底座</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">视觉编码器 <strong style="color:#E9EDF6">SigLIP（4 亿参数）</strong> + 语言模型 <strong style="color:#E9EDF6">Gemma（26 亿参数）</strong>，合起来就是 PaliGemma——一个现成的开源 VLM。在它之上加动作能力，得到 VLA。前作 π0 已经这么做了，π0.5 改的是<strong style="color:#E9EDF6">训练配方</strong>。</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">身体：双臂移动机器人</div>
+        <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">两条 6 自由度机械臂 + 平行夹爪、可升降躯干、全向轮底盘；两个腕部相机 + 前后相机共 4 路视觉。动作空间 <strong style="color:#E9EDF6">18–19 维</strong>，以 <strong style="color:#E9EDF6">50 Hz</strong> 输出动作块，底层只有简单 PD 控制——没有轨迹规划、没有碰撞检测，全靠模型端到端。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ P2 数据配方 ============ -->
+  <section id="p2" data-ch="p2" data-screen-label="第2章 数据配方" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · THE RECIPE ★ 论文核心</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">数据配方：六种原料的共训</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">直接可用的数据（移动机器人在住宅里干活）只有约 400 小时——远远不够泛化。π0.5 的核心动作是往锅里加五种「间接原料」，<strong style="color:#E9EDF6">每一种都补一块拼图</strong>。点击卡片看它补什么、去掉它会怎样：</p>
+    <div style="min-height:430px;margin:26px 0">{{ datamix }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 目标场景数据贵而稀缺 → 用便宜的异构数据转移知识<br><span style="color:#FFB454">▸</span> 其他机器人的数据（ME/CE）教「怎么动」，网页数据（WD）教「这是什么」，高层标注（HL/VI）教「下一步干嘛」<br><span style="color:#FFB454">▸</span> 消融实验证明：去掉任何一种跨本体数据，性能大幅下降</div>
+    </div>
+  </section>
+
+  <!-- ============ P3 架构 ============ -->
+  <section id="p3" data-ch="p3" data-screen-label="第3章 架构" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · ARCHITECTURE</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">架构：离散与连续，一脑两用</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">动作该用什么表示？这里有一对矛盾：<strong style="color:#F06EB4">离散 token</strong>（用 FAST 分词器压缩动作块）训练效率高，但推理要逐 token 自回归解码——太慢，赶不上 50Hz 实时控制；<strong style="color:#56C8F5">连续流匹配</strong>（flow matching，扩散的近亲）推理快、动作细腻，但从头训练又慢又不稳。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π0.5 的答案：<strong style="color:#E9EDF6">两个都要</strong>。同一个骨干同时学两种动作表示（注意力矩阵隔开，互不偷看），训练靠离散、推理靠连续：</p>
+    <div style="min-height:420px;margin:26px 0">{{ arch }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:21px;color:#F2F4FA">L = H( x<sub style="font-size:12px">1:M</sub> , f<sup style="font-size:12px">ℓ</sup><sub style="font-size:12px">θ</sub>(o<sub style="font-size:12px">t</sub>, ℓ) ) &nbsp;+&nbsp; α · ‖ (ω − a<sub style="font-size:12px">t:t+H</sub>) − f<sup style="font-size:12px">a</sup><sub style="font-size:12px">θ</sub>(a<sup style="font-size:12px">τ,ω</sup>, o<sub style="font-size:12px">t</sub>, ℓ) ‖²</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">左：文本+FAST 动作 token 的交叉熵（Transformer 的老朋友）　右：动作专家的流匹配回归　α 负责配比</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:6px">加噪样本 a<sup>τ,ω</sup> = τ·a + (1−τ)·ω，ω∼N(0,I)；推理时从纯噪声出发积分 10 步还原动作块</div>
+      </div>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 骨干 = 3B VLM（SigLIP+Gemma）；旁挂 3 亿参数的「动作专家」小网络<br><span style="color:#FFB454">▸</span> 离散 FAST token：给训练用；连续流匹配：给实时推理用<br><span style="color:#FFB454">▸</span> 一套权重两副面孔，α 一拧就切换</div>
+    </div>
+  </section>
+
+  <!-- ============ P4 两阶段训练 ============ -->
+  <section id="p4" data-ch="p4" data-screen-label="第4章 两阶段训练" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · TRAINING</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">两阶段训练：先博览，后专精</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">和 LLM 的「预训练 → 微调」一个套路，但每个阶段的内容都为机器人重新设计：</p>
+    <div style="min-height:380px;margin:26px 0">{{ stages }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">最妙的一份数据：VI 口头指导</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">专家不碰手柄，而是<strong style="color:#E9EDF6">用语言「遥操作」机器人</strong>：盯着它干活，一句句下达子任务命令（「拿起海绵」「去水槽」），由已训好的低层策略执行。这些命令序列被记录下来，成为「什么时候该想什么」的示范——给高层推理的教材。消融显示去掉它性能显著下降。</div>
+    </div>
+  </section>
+
+  <!-- ============ P5 分层推理 ============ -->
+  <section id="p5" data-ch="p5" data-screen-label="第5章 分层推理" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 05 章 · HIERARCHICAL INFERENCE</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">分层推理：机器人的思维链</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">「收拾厨房」是个 15 分钟的任务，直接从指令映射到关节角度太难。π0.5 让<strong style="color:#E9EDF6">同一个模型</strong>跑两个循环：慢循环用文字想「下一步干嘛」（≈思维链），快循环把当前子任务变成 50Hz 的动作流。按一步步看：</p>
+    <div style="min-height:430px;margin:26px 0">{{ hinfer }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 高层：4 路相机 + 总指令 → 自回归生成子任务文本（「拿起盘子」）<br><span style="color:#FFB454">▸</span> 低层：腕部+前相机 + 子任务 → 流匹配 10 步去噪 → 一块连续动作<br><span style="color:#FFB454">▸</span> 两层知识来源不同：高层吃 HL/VI/网页数据，低层吃全部机器人动作数据——这正是分层的价值</div>
+    </div>
+  </section>
+
+  <!-- ============ P6 实验 ============ -->
+  <section id="p6" data-ch="p6" data-screen-label="第6章 实验" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · EXPERIMENTS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">实验：四个问题，四组证据</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">评测方式本身就是贡献：不在训练过的环境里刷分，而是拉到<strong style="color:#E9EDF6">三个从未见过的真实住宅</strong> + 一批陌生的模拟样板间，按任务进度打分（把一半盘子放进水槽 ≈ 50%）。切换标签页逐组看：</p>
+    <div style="min-height:520px;margin:26px 0">{{ explab }}</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5F6C86;margin-top:10px">* 图表为按论文图 8/10/12/13 的定性重绘，条形相对高度示意结论，非原始数值。</div>
+  </section>
+
+  <!-- ============ P7 局限与展望 ============ -->
+  <section id="p7" data-ch="p7" data-screen-label="第7章 局限与展望" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 07 章 · DISCUSSION</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">诚实的局限，和它改变了什么</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:10px">论文自己承认的短板</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 陌生的抽屉把手、太紧的柜门仍会卡住<br>▸ 部分可观测坑它：手臂挡住污渍就找不到了<br>▸ 高层推理会「分心」：反复开关同一个抽屉<br>▸ 只能理解简单指令，复杂偏好没法表达<br>▸ 上下文窗口有限，缺长期记忆——跨房间任务吃力</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(122,223,168,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:10px">它真正改变的认知</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 泛化不必靠海量目标域数据，<strong style="color:#E9EDF6">配方 &gt; 体量</strong><br>▸ 跨本体迁移是真的：别的机器人的经验能用<br>▸ 网页知识能落到物理世界（认得没见过的物体）<br>▸ 「先想后做」可以在一个模型里端到端实现<br>▸ 中等规模数据 + 好配方 = 走出实验室的第一步</div>
+      </div>
+    </div>
+    <div style="background:#0D1424;border:1px solid rgba(255,180,84,.25);border-radius:16px;padding:26px 28px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">一句话回顾全篇</div>
+      <div style="font-size:16.5px;line-height:2;color:#B9C2D8">π0.5 = <span style="color:#56C8F5">PaliGemma VLM</span> + <span style="color:#FFB454">300M 动作专家</span>，先在<strong style="color:#E9EDF6">六种异构数据</strong>上离散预训练 280k 步，再加流匹配后训练 80k 步；推理时同一模型<strong style="color:#E9EDF6">先想子任务、再出 50Hz 动作</strong>——于是它能走进从没见过的家，把厨房收拾干净。</div>
+    </div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0 0;max-width:800px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">下一步去哪</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">① 回看前篇搞懂骨架：<a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">Transformer 完全图解</a>；② 读 π0 原文与 FAST 分词器论文（本文的两块地基）；③ 官方博客 pi.website/blog/pi05 有实机视频——看完这页再看视频，每个镜头你都知道模型在算什么。</div>
+    </div>
+    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · "Stuff your eyes with wonder." —</div>
+  </section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showMath&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;reduceMotion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;动效&quot;}}">
+class Component extends DCLogic {
+  ensure() {
+    if (this.W) return;
+    const h = React.createElement;
+    const { useState, useEffect, useRef, useMemo } = React;
+    const C = { card:'#101828', card2:'#0B1322', line:'rgba(148,166,210,.14)', txt:'#E9EDF6', sub:'#9BA6BD', faint:'#5F6C86', amber:'#FFB454', q:'#56C8F5', k:'#F06EB4', g:'#7ADFA8' };
+    const mono = "'JetBrains Mono',monospace";
+    const useVis = (th=0.2) => {
+      const ref = useRef(null); const [v, setV] = useState(false);
+      useEffect(() => {
+        const el = ref.current; if (!el) return;
+        const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setV(true); io.disconnect(); } }), { threshold: th });
+        io.observe(el); return () => io.disconnect();
+      }, []);
+      return [ref, v];
+    };
+    const cardSty = { background:C.card, border:`1px solid ${C.line}`, borderRadius:16, padding:24 };
+    const btnSty = (on) => ({ fontFamily:mono, fontSize:12.5, padding:'7px 14px', borderRadius:8, cursor:'pointer', border:`1px solid ${on?'rgba(255,180,84,.6)':'rgba(148,166,210,.25)'}`, background:on?'rgba(255,180,84,.12)':'#0B1322', color:on?C.amber:C.sub });
+    const lblSty = { fontFamily:mono, fontSize:11, letterSpacing:'.18em', color:C.faint };
+    this.$ = { h, useState, useEffect, useRef, useMemo, C, mono, useVis, cardSty, btnSty, lblSty };
+    const W = this.W = {};
+    const Stub = (hgt=200) => () => h('div', { style:{ ...cardSty, minHeight:hgt, display:'flex', alignItems:'center', justifyContent:'center', color:C.faint, fontFamily:mono, fontSize:12 } }, '…');
+
+    // ---------- Rail ----------
+    W.Rail = () => {
+      const [active, setActive] = useState('top');
+      const [prog, setProg] = useState(0);
+      const [wide, setWide] = useState(typeof window !== 'undefined' && window.innerWidth >= 1420);
+      useEffect(() => {
+        let raf = 0;
+        const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => {
+          raf = 0;
+          const y = window.scrollY, wh = window.innerHeight, dh = document.documentElement.scrollHeight;
+          setProg(Math.min(1, y / Math.max(1, dh - wh)));
+          let cur = 'top';
+          document.querySelectorAll('[data-ch]').forEach(s => { if (s.getBoundingClientRect().top < wh * 0.45) cur = s.getAttribute('data-ch'); });
+          setActive(cur);
+        }); };
+        const onResize = () => setWide(window.innerWidth >= 1420);
+        window.addEventListener('scroll', onScroll, { passive:true }); window.addEventListener('resize', onResize);
+        onScroll();
+        return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+      }, []);
+      const items = [['top','引言'],['p0','00 十秒版'],['p1','01 VLA'],['p2','02 数据配方'],['p3','03 架构'],['p4','04 训练'],['p5','05 分层推理'],['p6','06 实验'],['p7','07 局限']];
+      return h(React.Fragment, null,
+        h('div', { style:{ position:'fixed', top:0, left:0, height:3, width:`${prog*100}%`, background:C.amber, zIndex:50, transition:'width .1s linear' } }),
+        wide ? h('nav', { style:{ position:'fixed', top:'50%', transform:'translateY(-50%)', left:'calc(50vw - 530px - 150px)', zIndex:40, display:'flex', flexDirection:'column', gap:10 } },
+          items.map(([id, label]) => h('a', { key:id, href:'#'+id, style:{ display:'flex', alignItems:'center', gap:8, textDecoration:'none' } },
+            h('span', { style:{ width:6, height:6, borderRadius:3, background: active===id ? C.amber : 'rgba(148,166,210,.35)', boxShadow: active===id ? `0 0 8px ${C.amber}` : 'none' } }),
+            h('span', { style:{ fontFamily:mono, fontSize:11.5, color: active===id ? C.amber : C.faint } }, label)))) : null);
+    };
+
+    // ---------- Hero: hierarchical loop ----------
+    W.Hero = ({ rm }) => {
+      const subs = [
+        { sub:'拉开抽屉', acts:'双臂伸向把手 · 后退半步拉开' },
+        { sub:'拿起夹子', acts:'右臂下探 · 夹爪闭合 · 提起' },
+        { sub:'把夹子放进抽屉', acts:'移到抽屉上方 · 松爪 · 收臂' },
+        { sub:'推上抽屉', acts:'双掌抵住 · 前进推合' },
+      ];
+      const [ref, vis] = useVis(0.3);
+      const [st, setSt] = useState({ i:0, phase:0 }); // 0 look, 1 think(subtask), 2 act
+      useEffect(() => {
+        if (!vis || rm) return;
+        const t = setTimeout(() => setSt(s => {
+          if (s.phase < 2) return { ...s, phase:s.phase+1 };
+          return { i:(s.i+1) % subs.length, phase:0 };
+        }), st.phase===2 ? 1500 : 950);
+        return () => clearTimeout(t);
+      }, [vis, st, rm]);
+      const cur = subs[st.i];
+      const box = (title, color, active, body) => h('div', { style:{ flex:'1 1 220px', minWidth:210, padding:'16px 18px', borderRadius:14, background: active?'rgba(255,180,84,.06)':'#0B1322', border:`1.5px solid ${active?color:'rgba(148,166,210,.18)'}`, transition:'all .35s', boxShadow: active?`0 0 18px ${color}22`:'none' } },
+        h('div', { style:{ fontFamily:mono, fontSize:11, color, marginBottom:8 } }, title), body);
+      return h('div', { ref, style:{ ...cardSty, padding:'26px 28px' } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:8, marginBottom:18 } },
+          h('div', { style:lblSty }, 'LIVE · 分层推理循环 —— 任务:「把东西收进抽屉」'),
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, `子任务 ${st.i+1}/${subs.length} · ${['① 看','② 想(高层)','③ 做(低层)'][st.phase]}`)),
+        h('div', { style:{ display:'flex', gap:14, flexWrap:'wrap', alignItems:'stretch' } },
+          box('观测 · 4 路相机', C.sub, st.phase===0, h('div', { style:{ display:'flex', gap:6, flexWrap:'wrap' } },
+            ['腕左','腕右','前视','后视'].map((c,i) => h('div', { key:i, style:{ padding:'10px 12px', borderRadius:8, background:'#101828', border:'1px solid rgba(148,166,210,.2)', fontSize:12.5, color:C.sub, fontFamily:mono } }, c)))),
+          h('div', { style:{ alignSelf:'center', color:C.faint, fontSize:18 } }, '→'),
+          box('高层 · 想「下一步干嘛」', C.q, st.phase===1, h('div', null,
+            h('div', { style:{ fontSize:16, color: st.phase>=1 ? C.q : C.faint, fontWeight:700, transition:'color .3s', minHeight:24 } }, st.phase>=1 ? `「${cur.sub}」` : '…'),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:6 } }, '自回归逐字生成子任务文本'))),
+          h('div', { style:{ alignSelf:'center', color:C.faint, fontSize:18 } }, '→'),
+          box('低层 · 动作专家', C.amber, st.phase===2, h('div', null,
+            h('div', { style:{ fontSize:13.5, color: st.phase===2 ? '#FFD9A0' : C.faint, minHeight:24, transition:'color .3s' } }, st.phase===2 ? cur.acts : '…'),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:6 } }, '流匹配 10 步去噪 → 50Hz 动作块')))),
+        h('div', { style:{ display:'flex', gap:6, marginTop:18, alignItems:'center', flexWrap:'wrap' } },
+          h('span', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginRight:6 } }, '任务进度'),
+          subs.map((s,i) => h('div', { key:i, style:{ flex:1, minWidth:60, height:8, borderRadius:4, background: i<st.i || (i===st.i&&st.phase===2) ? C.g : (i===st.i ? 'rgba(122,223,168,.35)' : '#0B1322'), border:'1px solid rgba(148,166,210,.15)', transition:'background .4s' } })),
+          h('span', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginLeft:6 } }, rm ? '（动效已关）' : '循环直到完成')));
+    };
+
+    // ---------- P1 token sequence ----------
+    W.Tokens = () => {
+      const [mode, setMode] = useState(0); // 0 train discrete, 1 infer continuous
+      const chip = (t, color, dim) => h('span', { style:{ padding:'6px 10px', borderRadius:8, fontFamily:mono, fontSize:12, background:dim?'#0B1322':`${color}14`, border:`1px solid ${dim?'rgba(148,166,210,.18)':color+'66'}`, color:dim?C.faint:color, transition:'all .3s' } }, t);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '一条 VLA 训练样本 · 全是 token'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setMode(0), style:btnSty(mode===0) }, '训练时 · FAST 离散'),
+            h('button', { onClick:()=>setMode(1), style:btnSty(mode===1) }, '推理时 · 连续流'))),
+        h('div', { style:{ display:'flex', flexWrap:'wrap', gap:7, alignItems:'center', padding:'14px 16px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
+          chip('[图像1]', C.g), chip('[图像2]', C.g), chip('…patch×N', C.g),
+          chip('任务:收拾厨房', C.sub==='#9BA6BD'?'#9BA6BD':C.sub),
+          chip('子任务:拿起盘子', C.q),
+          h('span', { style:{ color:C.faint, fontFamily:mono, fontSize:14, margin:'0 4px' } }, '→'),
+          mode===0
+            ? h(React.Fragment, null, chip('a⟨312⟩', C.k), chip('a⟨87⟩', C.k), chip('a⟨590⟩', C.k), chip('…FAST 压缩的动作 token', C.k))
+            : h(React.Fragment, null, chip('噪声 ω', C.amber, false), h('span',{style:{color:C.faint,fontFamily:mono,fontSize:12}},'—10 步去噪→'), chip('连续动作块 a[t:t+H] ∈ ℝ^(H×18)', C.amber))),
+        h('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:10, marginTop:16 } },
+          h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(122,223,168,.3)` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.g,marginBottom:4}},'V · 视觉'), h('div',{style:{fontSize:13,color:C.sub,lineHeight:1.7}},'SigLIP 把每路相机图像切成 patch token')),
+          h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(86,200,245,.3)` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.q,marginBottom:4}},'L · 语言'), h('div',{style:{fontSize:13,color:C.sub,lineHeight:1.7}},'指令、子任务、图像描述、检测框——统统是文字 token')),
+          h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(240,110,180,.3)` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.k,marginBottom:4}},'A · 动作'), h('div',{style:{fontSize:13,color:C.sub,lineHeight:1.7}},'18–19 维 × H 步的动作块，可离散可连续——本文的关键设计'))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14, lineHeight:1.8 } }, mode===0 ? '训练：动作块被 FAST 分词器压成离散 token，和文字一起做「下一个 token 预测」——完全复用 Transformer 教程里的那一套。' : '推理：不再逐 token 解码（太慢），改用旁挂的动作专家从噪声积分出连续动作——50Hz 实时控制的来源。'));
+    };
+
+    // ===WIDGETS_B===
+    // ---------- P2 data mix ----------
+    W.DataMix = () => {
+      const srcs = [
+        { id:'MM', name:'MM · 移动机器人', color:C.amber, size:'约 400 小时 · 约 100 个家庭', teach:'目标任务本身：在住宅里移动、双臂收拾', lose:'没有它就没有目标技能——这是唯一「直接相关」的数据，但单靠它远远不够泛化。' },
+        { id:'ME', name:'ME · 多环境固定臂', color:C.q, size:'轻便单/双臂 · 更多家庭', teach:'环境多样性：各种真实住宅的物体与布景', lose:'消融：去掉后性能大幅下降——环境见识不够，遇到新家就懵。' },
+        { id:'CE', name:'CE · 实验室跨本体', color:C.k, size:'多种机器人 · 含 OXE 开源集', teach:'技能多样性：叠衣、收桌等各种操作技巧', lose:'消融：去掉后性能大幅下降——跨本体的「手上功夫」传不过来。' },
+        { id:'HL', name:'HL · 高层子任务标注', color:C.g, size:'为机器人片段标注「当前子任务」', teach:'任务拆解：什么情境下一步该干嘛', lose:'高层推理能力的教材；没有它「先想后做」就想不对。' },
+        { id:'WD', name:'WD · 网页多模态', color:'#B39DFF', size:'图像描述 · VQA · 物体检测', teach:'世界知识：认出从没在机器人数据里出现过的物体', lose:'消融：模拟间任务掉分不明显，但对陌生类别物体（OOD）的指令跟随大幅变差。' },
+        { id:'VI', name:'VI · 口头指导（仅后训练）', color:'#FF8FA3', size:'专家用语言实时「遥操作」', teach:'好的子任务示范：什么时候该下什么命令', lose:'消融：去掉后高层决策显著变差——光看录像学不会「怎么想」。' },
+      ];
+      const [sel, setSel] = useState(0);
+      const s = srcs[sel];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:14 } }, '实验 · 六种原料，点卡片查看'),
+        h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 } },
+          srcs.map((x,i) => h('button', { key:x.id, onClick:()=>setSel(i), style:{
+            textAlign:'left', padding:'12px 14px', borderRadius:12, cursor:'pointer', fontFamily:'inherit',
+            background: sel===i ? `${x.color}14` : '#0B1322',
+            border:`1.5px solid ${sel===i ? x.color : 'rgba(148,166,210,.18)'}`, transition:'all .25s' } },
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:x.color, fontWeight:600 } }, x.name),
+            h('div', { style:{ fontSize:11.5, color:C.faint, marginTop:4, fontFamily:mono } }, x.size)))),
+        h('div', { style:{ marginTop:16, padding:'18px 20px', background:'#0B1322', borderRadius:12, border:`1.5px solid ${s.color}55` } },
+          h('div', { style:{ display:'flex', gap:20, flexWrap:'wrap' } },
+            h('div', { style:{ flex:'1 1 280px' } },
+              h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:6 } }, '它教会模型'),
+              h('div', { style:{ fontSize:14.5, color:C.txt, lineHeight:1.8 } }, s.teach)),
+            h('div', { style:{ flex:'1 1 280px' } },
+              h('div', { style:{ fontFamily:mono, fontSize:11, color:C.k, marginBottom:6 } }, '去掉它会怎样'),
+              h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.8 } }, s.lose)))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14, lineHeight:1.8 } }, '预训练用全部六种的前五种（VI 在后训练加入）。注意：真正「对口」的 MM 数据只占很小一部分——泛化主要靠其余五种便宜数据搬运知识。'));
+    };
+
+    // ---------- P3 architecture two-path ----------
+    W.Arch = ({ rm }) => {
+      const [ref, vis] = useVis(0.25);
+      const [t, setT] = useState(0);
+      useEffect(() => {
+        if (!vis || rm) { setT(rm ? 1 : 0); return; }
+        const iv = setInterval(() => setT(x => (x+1) % 6), 900);
+        return () => clearInterval(iv);
+      }, [vis, rm]);
+      const node = (txt, sub, color, on, w) => h('div', { style:{
+        padding:'13px 16px', borderRadius:12, minWidth:w||150, textAlign:'center',
+        background: on ? `${color}10` : '#0B1322', border:`1.5px solid ${on?color:'rgba(148,166,210,.18)'}`,
+        transition:'all .3s', boxShadow: on ? `0 0 16px ${color}22` : 'none' } },
+        h('div', { style:{ fontSize:14.5, fontWeight:700, color: on?color:C.sub } }, txt),
+        sub ? h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:4 } }, sub) : null);
+      const arrow = (on) => h('div', { style:{ color:on?C.amber:C.faint, fontSize:18, transition:'color .3s' } }, '→');
+      return h('div', { ref, style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:18 } }, '同一骨干 · 两条动作通路（脉冲自动巡回）'),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:12, flexWrap:'wrap', justifyContent:'center' } },
+          node('观测 + 指令', '4 相机 · 文字', C.sub==='#9BA6BD'?'#9BA6BD':C.sub, t>=0, 130),
+          arrow(t>=1),
+          node('VLM 骨干', 'SigLIP 400M + Gemma 2.6B', C.q, t>=1, 190),
+          h('div', { style:{ display:'flex', flexDirection:'column', gap:14 } },
+            h('div', { style:{ display:'flex', alignItems:'center', gap:12 } }, arrow(t>=2),
+              node('离散通路 · FAST token', '自回归解码 · 训练主力', C.k, t>=2, 230)),
+            h('div', { style:{ display:'flex', alignItems:'center', gap:12 } }, arrow(t>=4),
+              node('连续通路 · 动作专家 300M', '流匹配 10 步去噪 · 推理主力', C.amber, t>=4, 230))),
+          h('div', { style:{ display:'flex', flexDirection:'column', gap:14 } },
+            h('div', { style:{ display:'flex', alignItems:'center', gap:12 } }, arrow(t>=3),
+              node('文字 & 子任务 & 检测框', '高层输出', C.k, t>=3, 170)),
+            h('div', { style:{ display:'flex', alignItems:'center', gap:12 } }, arrow(t>=5),
+              node('动作块 a[t:t+H]', '18–19 维 × H 步 @50Hz', C.amber, t>=5, 170)))),
+        h('div', { style:{ display:'flex', gap:10, marginTop:20, flexWrap:'wrap' } },
+          h('div', { style:{ flex:1, minWidth:240, padding:'12px 14px', background:'#0B1322', borderRadius:10, border:'1px solid rgba(240,110,180,.3)', fontSize:13, color:C.sub, lineHeight:1.7 } }, h('span',{style:{color:C.k,fontFamily:mono,fontSize:11}},'为什么要离散？'), h('br'), 'FAST 把动作块压缩成少量 token，训练效率远高于纯扩散/流——预训练全靠它。'),
+          h('div', { style:{ flex:1, minWidth:240, padding:'12px 14px', background:'#0B1322', borderRadius:10, border:'1px solid rgba(255,180,84,.3)', fontSize:13, color:C.sub, lineHeight:1.7 } }, h('span',{style:{color:C.amber,fontFamily:mono,fontSize:11}},'为什么要连续？'), h('br'), '自回归解码太慢，赶不上 50Hz 实时控制；流匹配 10 步去噪一次吐出整个动作块。'),
+          h('div', { style:{ flex:1, minWidth:240, padding:'12px 14px', background:'#0B1322', borderRadius:10, border:'1px solid rgba(148,166,210,.25)', fontSize:13, color:C.sub, lineHeight:1.7 } }, h('span',{style:{color:C.txt,fontFamily:mono,fontSize:11}},'怎么互不干扰？'), h('br'), '注意力掩码把两种动作表示隔开——谁也不许看谁，共享的只有骨干里的「理解」。')));
+    };
+
+    // ---------- P4 two stages ----------
+    W.Stages = () => {
+      const [st, setSt] = useState(0);
+      const stages = [
+        { name:'阶段 1 · 预训练', steps:'280k 步 · α=0', color:C.k,
+          data:['MM 移动机器人','ME 多环境固定臂','CE 跨本体+OXE','HL 子任务标注','WD 网页多模态'],
+          how:'纯「下一个 token 预测」：文字、检测框、FAST 离散动作一视同仁。此时模型就是个标准自回归 Transformer——没有动作专家。',
+          why:'离散训练快且稳，还保住了语言能力。产出：一个见多识广、会说会看、能粗略「动」的基座 VLA。' },
+        { name:'阶段 2 · 后训练', steps:'80k 步 · α=10', color:C.amber,
+          data:['MM+ME（只留成功且不超长的片段）','WD 保语义能力','对应环境的 HL','VI 口头指导（新加入）'],
+          how:'挂上随机初始化的 300M 动作专家，交叉熵 + 流匹配双损失联合训练：既保文字推理，又学连续动作。',
+          why:'专精目标场景（住宅移动操作）+ 获得 50Hz 实时推理能力。产出：能部署的 π0.5。' },
+      ];
+      const s = stages[st];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, marginBottom:18 } },
+          stages.map((x,i) => h('button', { key:i, onClick:()=>setSt(i), style:btnSty(st===i) }, x.name + '（' + x.steps + '）'))),
+        h('div', { style:{ display:'flex', gap:20, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 260px' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:10 } }, '喂什么数据'),
+            s.data.map((d,i) => h('div', { key:st+'-'+i, style:{ padding:'9px 13px', borderRadius:9, background:'#0B1322', border:`1px solid ${s.color}44`, color:C.txt, fontSize:13.5, marginBottom:7 } }, d))),
+          h('div', { style:{ flex:'1.4 1 320px', display:'flex', flexDirection:'column', gap:12 } },
+            h('div', { style:{ padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}` } },
+              h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:6 } }, '怎么训'),
+              h('div', { style:{ fontSize:14, color:C.sub, lineHeight:1.85 } }, s.how)),
+            h('div', { style:{ padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}` } },
+              h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:6 } }, '图什么'),
+              h('div', { style:{ fontSize:14, color:C.sub, lineHeight:1.85 } }, s.why)))),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:0, marginTop:18 } },
+          h('div', { style:{ flex:2.8, height:10, borderRadius:'5px 0 0 5px', background: st===0?'rgba(240,110,180,.7)':'rgba(240,110,180,.25)', transition:'background .3s' } }),
+          h('div', { style:{ flex:0.8, height:10, borderRadius:'0 5px 5px 0', background: st===1?'rgba(255,180,84,.8)':'rgba(255,180,84,.3)', transition:'background .3s' } }),
+          h('span', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginLeft:10 } }, '280k : 80k 步')));
+    };
+
+    // ---------- P5 hierarchical inference step-through ----------
+    W.HInfer = ({ rm }) => {
+      const flow = [
+        { sub:'把盘子放进水槽', hl:'pick up the plate', zh:'拿起盘子' },
+        { sub:'', hl:'put plate in the sink', zh:'把盘子放进水槽' },
+        { sub:'', hl:'pick up the spoon', zh:'拿起勺子' },
+        { sub:'', hl:'put cup in the sink', zh:'把杯子放进水槽' },
+      ];
+      const [step, setStep] = useState(0);
+      const [phase, setPhase] = useState(0); // 0 hl, 1 ll, 2 done->next
+      const [auto, setAuto] = useState(false);
+      useEffect(() => {
+        if (!auto || rm) return;
+        const t = setTimeout(() => {
+          setPhase(p => { if (p < 2) return p+1; setStep(s => (s+1)%flow.length); return 0; });
+        }, phase===1 ? 1500 : 950);
+        return () => clearTimeout(t);
+      }, [auto, phase, rm]);
+      const adv = () => setPhase(p => { if (p < 2) return p+1; setStep(s => (s+1)%flow.length); return 0; });
+      const cur = flow[step];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · 真实评测任务:「place the dishes in the sink」（论文 Home 2）'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:adv, style:btnSty(false) }, '单步 →'),
+            h('button', { onClick:()=>setAuto(a=>!a), style:btnSty(auto) }, auto?'⏸ 暂停':'▶ 自动'),
+            h('button', { onClick:()=>{setAuto(false);setStep(0);setPhase(0);}, style:btnSty(false) }, '↺ 重置'))),
+        h('div', { style:{ display:'flex', gap:16, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 300px', padding:'16px 18px', borderRadius:13, background: phase===0?'rgba(86,200,245,.06)':'#0B1322', border:`1.5px solid ${phase===0?C.q:'rgba(148,166,210,.18)'}`, transition:'all .3s' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.q, marginBottom:10 } }, '慢循环 · 高层（同一模型，自回归出文字）'),
+            h('div', { style:{ fontSize:13, color:C.faint, marginBottom:8, fontFamily:mono } }, '输入：4 路相机 + 总指令'),
+            h('div', { style:{ fontSize:17, fontWeight:700, color: phase>=0 ? C.q : C.faint, minHeight:26 } }, `„${cur.hl}"`),
+            h('div', { style:{ fontSize:13.5, color:C.sub, marginTop:4 } }, `（${cur.zh}）`),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:10 } }, '≈ 思维链：先把 15 分钟的任务拆成一小步')),
+          h('div', { style:{ alignSelf:'center', color:C.faint, fontSize:20 } }, '→'),
+          h('div', { style:{ flex:'1 1 300px', padding:'16px 18px', borderRadius:13, background: phase>=1?'rgba(255,180,84,.06)':'#0B1322', border:`1.5px solid ${phase>=1?C.amber:'rgba(148,166,210,.18)'}`, transition:'all .3s' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.amber, marginBottom:10 } }, '快循环 · 低层（动作专家，流匹配）'),
+            h('div', { style:{ fontSize:13, color:C.faint, marginBottom:8, fontFamily:mono } }, '输入：腕部+前相机 + 子任务文本'),
+            h('div', { style:{ display:'flex', gap:4, alignItems:'flex-end', height:44, opacity: phase>=1?1:.25, transition:'opacity .3s' } },
+              Array.from({length:22},(_,i) => h('div', { key:step+'-'+i, style:{ flex:1, borderRadius:2, background:C.amber, opacity:.35+0.65*Math.abs(Math.sin(i*0.7+step*2)), height:`${25+70*Math.abs(Math.sin(i*0.9+step))}%`, transition:'height .4s' } }))),
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint, marginTop:10 } }, '噪声 →10 步去噪→ 连续动作块 · 50Hz 执行'))),
+        h('div', { style:{ marginTop:16, padding:'12px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}`, display:'flex', gap:8, flexWrap:'wrap', alignItems:'center' } },
+          h('span', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, '子任务序列'),
+          flow.map((f,i) => h('span', { key:i, style:{ padding:'5px 11px', borderRadius:8, fontSize:13, background: i<step||(i===step&&phase===2) ? 'rgba(122,223,168,.1)' : i===step ? 'rgba(86,200,245,.12)' : 'transparent', border:`1px solid ${i<step||(i===step&&phase===2) ? 'rgba(122,223,168,.45)' : i===step ? 'rgba(86,200,245,.5)' : 'rgba(148,166,210,.2)'}`, color: i<step||(i===step&&phase===2) ? C.g : i===step ? C.q : C.faint, transition:'all .3s' } }, f.zh))));
+    };
+
+    // ---------- P6 experiments lab ----------
+    W.ExpLab = () => {
+      const [tab, setTab] = useState(0);
+      const Bar = ({label, v, color, note, hl}) => h('div', { style:{ display:'flex', alignItems:'center', gap:12, margin:'9px 0' } },
+        h('span', { style:{ width:170, textAlign:'right', fontSize:13.5, color: hl?C.txt:C.sub, fontWeight:hl?700:400 } }, label),
+        h('div', { style:{ flex:1, height:20, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
+          h('div', { style:{ height:'100%', width:`${v}%`, background:color, borderRadius:6, transition:'width .6s cubic-bezier(.2,.8,.2,1)' } })),
+        h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:150 } }, note||''));
+      const tabs = ['① 真实新家', '② 场景规模', '③ 配方消融', '④ 分层与基线'];
+      // scaling chart
+      const Scaling = () => {
+        const locs = [3,12,22,53,82,104];
+        const perf = [24,45,56,68,74,80];
+        const [li, setLi] = useState(5);
+        const Wd=560, Ht=230;
+        const px = i => 55 + i*(Wd-95)/(locs.length-1);
+        const py = v => Ht-36 - v/100*(Ht-70);
+        return h('div', null,
+          h('svg', { viewBox:`0 0 ${Wd} ${Ht}`, style:{ width:'100%', maxWidth:620, background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}`, display:'block' } },
+            h('line', { x1:40, y1:py(83), x2:Wd-20, y2:py(83), stroke:'rgba(122,223,168,.6)', strokeDasharray:'5 4', strokeWidth:1.5 }),
+            h('text', { x:Wd-24, y:py(83)-7, fill:C.g, fontSize:11, fontFamily:mono, textAnchor:'end' }, '把测试家庭放进训练集的模型'),
+            h('polyline', { points:locs.map((_,i)=>`${px(i)},${py(perf[i])}`).join(' '), fill:'none', stroke:C.amber, strokeWidth:2.5 }),
+            locs.map((L,i) => h('g', { key:i, onClick:()=>setLi(i), style:{cursor:'pointer'} },
+              h('circle', { cx:px(i), cy:py(perf[i]), r: li===i?7:4.5, fill: li===i?C.amber:'#0A0E16', stroke:C.amber, strokeWidth:2 }),
+              h('text', { x:px(i), y:Ht-14, fill: li===i?C.amber:C.faint, fontSize:11.5, fontFamily:mono, textAnchor:'middle' }, L))),
+            h('text', { x:14, y:24, fill:C.faint, fontSize:11, fontFamily:mono }, '任务进度 ↑'),
+            h('text', { x:Wd/2, y:Ht-1, fill:C.faint, fontSize:11, fontFamily:mono, textAnchor:'middle' }, '训练数据覆盖的场景数（个家庭）')),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } },
+            `选中 ${locs[li]} 个场景 → 泛化性能约 ${perf[li]}%。`,
+            li>=5 ? h('span',{style:{color:C.g}}, ' 到约 100 个场景时，已接近「作弊模型」（见过测试家庭）的水平——不用见过你家，也能收拾你家。') : ' 场景越多，泛化越强，且尚未饱和。'));
+      };
+      const bodies = [
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '三个陌生真实住宅 × 厨房/卧室任务，每任务 10 次试验。模拟样板间得分与真实住宅相近 → 样板间评测可信，后面的对照实验都在样板间做。'),
+          h(Bar, { label:'收纳进抽屉', v:75, color:C.amber, note:'多阶段:拉抽屉→放入→推上' }),
+          h(Bar, { label:'衣物进洗衣篮', v:82, color:C.amber }),
+          h(Bar, { label:'餐具进水槽', v:70, color:C.amber, note:'含盘/碗/杯/勺多件' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.faint, marginTop:12 } }, '真实新家平均任务进度（10 次试验的定性均值示意）——且模型还能做评测之外的更多任务。')),
+        h(Scaling, {}),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '把配方里的原料逐个抽走再训练，在样板间跑同一套任务：'),
+          h(Bar, { label:'完整 π0.5', v:80, color:C.g, hl:true }),
+          h(Bar, { label:'去掉网页数据 WD', v:75, color:C.q, note:'样板间掉分不大…' }),
+          h(Bar, { label:'去掉多环境 ME', v:54, color:C.k }),
+          h(Bar, { label:'去掉跨本体 CE', v:57, color:C.k }),
+          h(Bar, { label:'ME、CE 都去掉', v:40, color:C.k, note:'只剩目标平台数据' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '别的机器人的数据（ME/CE）是泛化的顶梁柱。WD 的价值藏在别处：面对陌生类别物体（OOD）的语言跟随测试里，去掉 WD 掉分严重——网页知识负责「认识世界」。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:14, maxWidth:720 } }, '上半：与其他 VLA 比。下半：换掉高层推理的各种方案（低层全部用 π0.5）：'),
+          h(Bar, { label:'π0.5（完整）', v:80, color:C.g, hl:true }),
+          h(Bar, { label:'π0-FAST+Flow', v:55, color:C.sub==='#9BA6BD'?'#8FA0C0':C.sub, note:'同样混合训练,但只有动作数据' }),
+          h(Bar, { label:'π0（前作）', v:40, color:'#8FA0C0', note:'纯流匹配,练 300k 步也追不上' }),
+          h('div', { style:{ height:1, background:C.line, margin:'14px 0' } }),
+          h(Bar, { label:'隐式高层(不显式想)', v:65, color:C.q, note:'HL 数据仍在训练里' }),
+          h(Bar, { label:'去掉口头指导 VI', v:55, color:C.k }),
+          h(Bar, { label:'去掉网页 WD', v:52, color:C.k }),
+          h(Bar, { label:'GPT-4 当高层', v:45, color:C.k, note:'没吃过机器人数据,想不到点上' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '结论：显式「先想后做」最好；高层必须在机器人数据上学——通用大模型零样本客串高层，还不如不想。')),
+      ];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:18 } },
+          tabs.map((t,i) => h('button', { key:i, onClick:()=>setTab(i), style:btnSty(tab===i) }, t))),
+        bodies[tab]);
+    };
+  }
+
+  renderVals() {
+    this.ensure();
+    const h = React.createElement;
+    const rm = this.props.reduceMotion ?? false;
+    const W = this.W;
+    return {
+      showMath: this.props.showMath ?? true,
+      rail: h(W.Rail, {}),
+      hero: h(W.Hero, { rm }),
+      tokens: h(W.Tokens, {}),
+      datamix: h(W.DataMix, { rm }),
+      arch: h(W.Arch, { rm }),
+      stages: h(W.Stages, { rm }),
+      hinfer: h(W.HInfer, { rm }),
+      explab: h(W.ExpLab, { rm }),
+    };
+  }
+}
+</script>
+<script type="text/plain" data-disabled-print-export="true">
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "pi0.5 论文交互教学";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

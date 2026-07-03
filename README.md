@@ -11,6 +11,7 @@ https://heliang-pu.github.io/ai-interactive-tutorials/
 当前已发布：
 
 - [Transformer 完全图解](https://heliang-pu.github.io/ai-interactive-tutorials/tutorials/transformer/)
+- [π0.5 论文交互教学](https://heliang-pu.github.io/ai-interactive-tutorials/tutorials/pi05/)
 
 ## 目录结构
 
@@ -18,7 +19,10 @@ https://heliang-pu.github.io/ai-interactive-tutorials/
 .
 ├── index.html
 ├── tutorials/
-│   └── transformer/
+│   ├── transformer/
+│   │   ├── index.html
+│   │   └── support.js
+│   └── pi05/
 │       ├── index.html
 │       └── support.js
 └── docs/
