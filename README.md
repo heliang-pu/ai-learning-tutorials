@@ -11,6 +11,7 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 当前已发布：
 
 - [Transformer 完全图解](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/transformer/)
+- [π0 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/pi0/)
 - [π0.5 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/pi05/)
 - [Ego-Pi 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/ego-pi/)
 - [WAM DreamZero 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/wam-dreamzero/)
@@ -25,6 +26,12 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 │   ├── transformer/
 │   │   ├── index.html
 │   │   └── support.js
+│   ├── pi0/
+│   │   ├── index.html
+│   │   ├── support.js
+│   │   └── figures/
+│   │       ├── pi0-fig5-robots.jpg
+│   │       └── pi0-fig6-tasks.jpg
 │   ├── pi05/
 │   │   ├── index.html
 │   │   └── support.js
