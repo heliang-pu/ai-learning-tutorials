@@ -1,6 +1,6 @@
-# AI Interactive Tutorials
+# AI Learning Tutorials
 
-中文 AI 交互式教学页面集合，用来托管 Transformer、VLA、WAM 等主题的可视化教程。
+中文 AI 交互式教学页面集合，用来托管 Transformer、VLA、WAM、机器人论文等主题的可视化教程。
 
 ## 在线学习
 
@@ -36,7 +36,10 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 │   │   └── support.js
 │   └── pi06/
 │       ├── index.html
-│       └── support.js
+│       ├── support.js
+│       └── figures/
+│           ├── fig1-recap-overview.jpg
+│           └── ...
 └── docs/
     └── adding-tutorials.md
 ```
@@ -44,7 +47,7 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 约定：
 
 - 顶层 `index.html` 是教程集合首页。
-- 每个主题一个目录，例如 `tutorials/transformer/`、`tutorials/vla/`、`tutorials/wam/`。
+- 每个主题一个目录，例如 `tutorials/transformer/`、`tutorials/pi06/`、`tutorials/wam-dreamzero/`。
 - 每个主题目录内放自己的 `index.html` 和导出依赖文件，便于直接从 Claude/其他工具导出的 HTML 迁移过来。
 
 ## 本地预览
