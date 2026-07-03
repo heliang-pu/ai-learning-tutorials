@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=["https://claude.ai","https://preview.claude.ai","https://6cef08f2-564d-492a-89ce-23bb2a206de9.claudeusercontent.com"];var v=true;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>π0.6 论文交互教学</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;family=Noto+Serif+SC:wght@600;900&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { margin: 0; padding: 0; background: #0A0E16; }
+    body { font-family: 'Noto Sans SC', sans-serif; -webkit-font-smoothing: antialiased; }
+    ::selection { background: rgba(255,180,84,.35); }
+    @keyframes kfGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(255,180,84,0); } 50% { box-shadow: 0 0 22px 2px rgba(255,180,84,.25); } }
+    @keyframes kfBlink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+  </style>
+</helmet>
+
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;background-image:repeating-linear-gradient(0deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px),repeating-linear-gradient(90deg,rgba(148,166,210,.045) 0 1px,transparent 1px 44px)"></div>
+{{ rail }}
+
+<div style="position:relative;z-index:1;color:#C7CEDF">
+<div style="max-width:1060px;margin:0 auto;padding:0 32px">
+
+  <!-- ============ HERO ============ -->
+  <section id="top" data-ch="top" data-screen-label="引言" style="padding:88px 0 40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">PAPER WALKTHROUGH · 论文图解 · 系列第 5 篇</div>
+    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:60px;line-height:1.2;color:#F2F4FA;margin:16px 0 14px">π*0.6：熟能生巧<br>——从经验中学习的 VLA</h1>
+    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:700px;margin:0 0 10px">模仿学得会，练习才学精。<strong style="color:#E9EDF6">RECAP</strong> 让 VLA 用强化学习消化自己的实战经验：自主执行 + 结果打分 + 人类纠正。练成的 π*0.6 连续 <strong style="color:#E9EDF6">13 小时</strong>做浓缩咖啡、在陌生住宅叠衣 2 小时不间断、在真实工厂装箱——最难任务吞吐量翻倍，失败率减半。</p>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#5F6C86;margin:14px 0 8px">
+      <span>Physical Intelligence</span><span>·</span><span>arXiv 2511.14759 · 2025.11</span><span>·</span><span>π0.5 的直系后代</span>
+    </div>
+    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:28px 0 10px">
+      <img src="figures/fig2-tasks.jpg" alt="RECAP 学会的任务：做浓缩咖啡、组装纸箱、折叠多样衣物" style="width:100%;display:block;border-radius:10px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 2 —— RECAP 练成的任务：做浓缩咖啡饮品、组装纸箱、折叠各式衣物。每项都有真实世界的「不讲理」：纸箱粘连弯折、咖啡要倒液体、衣物件件不同。</div>
+    </div>
+    <div style="min-height:340px;margin:20px 0 26px">{{ hero }}</div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 24px;max-width:840px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">先修</span>
+      <span style="font-size:14.5px;color:#9BA6BD">本篇大量引用前作概念（流匹配、子任务推理、FAST）：</span>
+      <a href="../transformer/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《Transformer》</a>
+      <a href="../pi05/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《π0.5》</a>
+      <a href="../ego-pi/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《Ego-Pi》</a>
+      <a href="../wam-dreamzero/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">《WAM》</a>
+    </div>
+  </section>
+
+  <!-- ============ R0 十秒版 ============ -->
+  <section id="r0" data-ch="r0" data-screen-label="第0章 十秒版" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 00 章 · TL;DR</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">十秒版：这篇论文证明了什么</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">前四篇的模型全靠<strong style="color:#E9EDF6">模仿</strong>：人怎么演示，模型怎么学。但模仿有个先天上限——老师的水平、演示的覆盖面，以及「自己犯的错没人教怎么救」。人类的精熟来自练习，机器人也应如此。</p>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π*0.6 = π0.6 模型 + <strong style="color:#E9EDF6">RECAP</strong> 训练法（RL with Experience and Corrections via Advantage-conditioned Policies）：让机器人上岗实干，每回合只需一个「成功/失败」标签 + 偶尔的人类接管纠正，就能把这些乱糟糟的经验变成训练信号。</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ①</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">RL 能规模化到 VLA</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">不用策略梯度（流匹配算不了似然），改用「优势条件化」：把好/坏写成一个文本 token 喂给模型——监督学习的基建，RL 的效果。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ②</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">经验显著超越模仿上限</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">最难任务吞吐量 2 倍+、失败率减半；速度可以超过遥操作演示者——学生第一次跑赢了老师。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ③</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">到达「能用」的门槛</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">13 小时连续做咖啡、陌生住宅 2 小时叠衣、工厂真实包装线装箱，多数任务成功率 90%+——不是 demo，是排班。</div></div>
+    </div>
+  </section>
+
+  <!-- ============ R1 天花板与RL速成 ============ -->
+  <section id="r1" data-ch="r1" data-screen-label="第1章 模仿的天花板" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · WHY RL</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">模仿的天花板，和 RL 速成班</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0">
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:18px"><div style="color:#F06EB4;font-weight:700;font-size:14.5px;margin-bottom:6px">复合误差</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">模仿只见过老师的完美轨迹。自己一走偏，进入没见过的状态，越错越远——没人演示过「怎么从错误里爬回来」。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:18px"><div style="color:#F06EB4;font-weight:700;font-size:14.5px;margin-bottom:6px">老师的上限</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">遥操作有延迟、有笨拙，演示者的速度与流畅度就是模仿的天花板——学生永远追不上不存在的示范。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:18px"><div style="color:#F06EB4;font-weight:700;font-size:14.5px;margin-bottom:6px">部署环境漂移</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">真实部署的光照、物料、磨损与采集时不同。模仿数据是死的，环境是活的——需要在岗持续适应。</div></div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">解药是强化学习。读懂本篇只需三个概念，速成如下：<strong style="color:#E9EDF6">回报 R</strong>（这一局最终拿了多少分）、<strong style="color:#E9EDF6">价值 V(o)</strong>（从当前局面出发，平均还能拿多少分）、<strong style="color:#E9EDF6">优势 A(o,a)</strong>（这一步动作比平均水平好多少）。优势为正 = 这步棋下得好：</p>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:20px;color:#F2F4FA;line-height:2">V<sup style="font-size:12px">π</sup>(o<sub style="font-size:12px">t</sub>) = E[ Σ r<sub style="font-size:12px">t'</sub> ]　　A<sup style="font-size:12px">π</sup>(o<sub style="font-size:12px">t</sub>, a<sub style="font-size:12px">t</sub>) = E[ r<sub style="font-size:12px">t:t+N</sub> + V(o<sub style="font-size:12px">t+N</sub>) ] − V(o<sub style="font-size:12px">t</sub>)</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:10px">优势 = 「走了这 N 步之后的局面 + 途中得分」对比「原地的期望」—— 正 = 加分行为，负 = 减分行为</div>
+      </div>
+    </sc-if>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">还有一个务实约束：新策略不能离收集数据的旧策略太远（<strong style="color:#E9EDF6">正则化 RL</strong>），否则在同一批数据上训多了就会脱轨。论文用的解法基于一个冷门但优雅的定理——只要让策略额外以「这步是否高于平均」为条件，采样时固定说「是」，就<strong style="color:#E9EDF6">保证不差于原策略</strong>。这是第 4 章的主角。</p>
+  </section>
+
+  <!-- ============ R2 RECAP总览 ============ -->
+  <section id="r2" data-ch="r2" data-screen-label="第2章 RECAP总览" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · RECAP ★ 论文核心</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">RECAP：三个子程序的循环</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">整个方法只有三个可复用的子程序，反复循环：<strong style="color:#56C8F5">① 采集</strong>——放机器人上岗跑任务，每回合标注成功/失败（决定奖励），必要时专家接管纠错；<strong style="color:#FFB454">② 练裁判</strong>——用迄今全部数据训练多任务价值函数；<strong style="color:#7ADFA8">③ 练选手</strong>——把价值函数算出的优势变成 0/1 指示牌，条件化训练 VLA。</p>
+    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:26px 0">
+      <img src="figures/fig1-recap-overview.jpg" alt="RECAP 系统总览" style="width:100%;display:block;border-radius:10px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 1 —— 左：三类训练数据（多机器人数据、子任务命令、网页多模态）；中：π*0.6 策略与价值函数两个模型；右：部署产生 rollouts，人类提供干预与标注，回流训练。</div>
+    </div>
+    <div style="min-height:360px;margin:26px 0">{{ recap }}</div>
+    <sc-if value="{{ showPseudocode }}" hint-placeholder-val="{{ true }}">
+      <pre style="background:#0B111F;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:22px 26px;margin:24px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85;color:#C7CEDF;overflow-x:auto"><span style="color:#5E6B85"># Algorithm 1 · RECAP（论文原文直译）</span>
+输入: 多任务演示数据集 D_demo
+1  用 D_demo 训练价值函数 V_pre            <span style="color:#5E6B85"># 式(1) 蒙特卡洛回归</span>
+2  用 D_demo + V_pre 训练策略 π_pre        <span style="color:#5E6B85"># 式(3) 优势条件化 —— 预训练也是 RL！</span>
+3  目标任务 ℓ: D_ℓ ← 该任务的演示
+4  V⁰ ← 从 V_pre 微调; π⁰ ← 从 π_pre 微调  <span style="color:#5E6B85"># 此阶段 I 恒为 True ≈ SFT</span>
+5  for k = 1..K:                           <span style="color:#5E6B85"># 论文中 K=2 已见显著提升</span>
+6      用 π^(k-1) 上岗采集 → 加入 D_ℓ      <span style="color:#5E6B85"># 自主 rollouts + 可选专家纠正</span>
+7      V^k ← 从 V_pre 在 D_ℓ 上微调        <span style="color:#5E6B85"># 裁判先更新</span>
+8      π^k ← 从 π_pre 在 D_ℓ 上微调        <span style="color:#5E6B85"># 选手再更新（用新裁判的优势）</span></pre>
+    </sc-if>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 一套配方吃三种数据：演示、自主经验、专家纠正——全进同一个数据池<br><span style="color:#FFB454">▸</span> 连预训练都是离线 RL（几万小时演示上练出 V_pre 和 π_pre）<br><span style="color:#FFB454">▸</span> 每轮迭代 = 重训裁判 → 重训选手，「离线批次式」而非实时在线 RL</div>
+    </div>
+  </section>
+
+  <!-- ============ R3 价值函数 ============ -->
+  <section id="r3" data-ch="r3" data-screen-label="第3章 价值函数" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · VALUE FUNCTION</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">裁判：一个会看进度的价值函数</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">奖励的设计朴素到通用于任何任务：<strong style="color:#E9EDF6">每一步 −1 分，成功结束 0 分，失败结束 −C 大罚分</strong>。于是价值函数的含义自动变成「<strong style="color:#E9EDF6">离成功还差多少步</strong>」（按任务最大时长归一化到 −1~0）。它不是标量回归，而是把回报离散成 <strong style="color:#E9EDF6">201 个桶</strong>的分布预测（分类比回归稳得多）。拖动下面的时间轴，看裁判怎么给一集打分：</p>
+    <div style="min-height:430px;margin:26px 0">{{ value }}</div>
+    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:26px 0">
+      <img src="figures/fig4-value-success.jpg" alt="成功回合的价值曲线" style="width:100%;display:block;border-radius:10px">
+      <img src="figures/fig4-value-failure.jpg" alt="失败回合的价值曲线" style="width:100%;display:block;border-radius:10px;margin-top:12px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 4 —— 真实价值函数输出。上：叠衣成功集，价值稳步爬向 0；左臂失误弄皱衬衫处价值骤降（红），恢复后回升（绿）。下：开冰箱失败集，碰倒滤水壶后价值一路崩塌。裁判确实「看得懂」进度与失误。</div>
+    </div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:20px;color:#F2F4FA;line-height:2">r<sub style="font-size:12px">t</sub> = { 0 成功收尾 · −C<sub style="font-size:12px">fail</sub> 失败收尾 · −1 其余每步 }　　min<sub style="font-size:12px">φ</sub> E<sub style="font-size:12px">τ</sub> Σ H( R<sup style="font-size:12px">B</sup><sub style="font-size:12px">t</sub>(τ), p<sub style="font-size:12px">φ</sub>(V | o<sub style="font-size:12px">t</sub>, ℓ) )</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:10px">把每步的实际剩余回报 R_t 离散进 B=201 个桶，交叉熵训练（蒙特卡洛 · on-policy）；连续值 = Σ p(桶)·桶值</div>
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">裁判长什么样</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">和策略同构的 VLM（SigLIP 400M + Gemma 270M ≈ 670M 参数）+ 价值头，<strong style="color:#E9EDF6">比策略小一个量级</strong>——训练时可以在线跑它给每条样本现算优势，几乎不增加成本。防过拟合：掺一点网页多模态数据共训。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">为什么用「蒙特卡洛」不用 Q-learning</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">直接回归「实际剩余步数」是有偏但极其稳定的估计。作者坦承 off-policy 的 Q 函数理论上更优，但简单可靠优先——留给未来工作。</div></div>
+    </div>
+  </section>
+
+  <!-- ============ R4 优势条件化 ============ -->
+  <section id="r4" data-ch="r4" data-screen-label="第4章 优势条件化" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · ADVANTAGE CONDITIONING ★ 最巧一步</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">优势条件化：把 RL 变成一个词</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">有了裁判，怎么让选手变强？经典做法都水土不服：<strong style="color:#F06EB4">策略梯度/PPO</strong> 需要动作的对数似然——流匹配给不出；<strong style="color:#F06EB4">AWR 加权回归</strong>会把大量「坏数据」降权扔掉——太浪费。RECAP 的做法：<strong style="color:#E9EDF6">全部数据照单全收，只是在输入里多写一个词</strong>——这步的优势超过阈值就写 "Advantage: positive"，否则 "negative"。推理时永远说 positive，模型就只输出「好行为」。</p>
+    <div style="min-height:460px;margin:26px 0">{{ advantage }}</div>
+    <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
+        <div style="font-family:'Noto Serif SC',serif;font-size:20px;color:#F2F4FA;line-height:2">π̂(a|o,ℓ) ∝ π<sub style="font-size:12px">ref</sub>(a|o,ℓ) · [ π<sub style="font-size:12px">ref</sub>(a|<span style="color:#7ADFA8">I</span>,o,ℓ) / π<sub style="font-size:12px">ref</sub>(a|o,ℓ) ]<sup style="font-size:13px">β</sup>　；　β=1 时 π̂ = π<sub style="font-size:12px">ref</sub>(a|<span style="color:#7ADFA8">I</span>,o,ℓ)</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">min<sub>θ</sub> E[ −log π<sub>θ</sub>(a|o,ℓ) − α·log π<sub>θ</sub>(a|I,o,ℓ) ]，I = 𝟙[A(o,a,ℓ) &gt; ε<sub>ℓ</sub>] —— 贝叶斯改写后，「改进的策略」恰好就是「条件在 I=True 上的策略」</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:6px">与图像生成的 classifier-free guidance 同源（CFGRL）：训练时随机省略 I，推理还可用 β&gt;1 加压——但 β 太大动作会冲向分布边缘（过猛），论文主用阈值 ε<sub>ℓ</sub> 调"火候"</div>
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">阈值怎么定</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">ε<sub>ℓ</sub> = 该任务价值分布的 <strong style="color:#E9EDF6">30 分位</strong>：任务内约七成动作标 positive——宽严适中，正则与优化两头兼顾。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(122,223,168,.3);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:8px">人类纠正的特权</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">专家接管的片段<strong style="color:#E9EDF6">强制标 positive</strong>——假设专家的纠正总是好的。这样 DAgger 式的干预数据无缝并入同一目标。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">为什么它能规模化</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">训练目标始终是监督学习（下一 token + 流匹配）——不碰似然、不搭 critic 梯度链，VLA 多大都照训不误。</div></div>
+    </div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 好坏不用挑数据，写进输入让模型自己分家——坏数据也教会它「什么是坏」<br><span style="color:#FFB454">▸</span> 理论保底：条件在 I=True 上的策略 ≥ 行为策略（改进定理）<br><span style="color:#FFB454">▸</span> 呼应 Transformer 篇：RL 信号最终也不过是序列里多出的一个 token</div>
+    </div>
+  </section>
+
+  <!-- ============ R5 π0.6模型 ============ -->
+  <section id="r5" data-ch="r5" data-screen-label="第5章 π0.6模型" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 05 章 · THE MODEL</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">π0.6 → π*0.6：老骨架，新器官</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π0.6 是 π0.5 的直系升级：底座换成 <strong style="color:#E9EDF6">Gemma 3 4B</strong>，动作专家扩到 <strong style="color:#E9EDF6">860M</strong>，预训练数据加入更多机器人平台。老本领全保留：先自回归想子任务 ˆℓ（「拿起咖啡杯」），再由流匹配动作专家出 50Hz 动作块。训练用 <strong style="color:#E9EDF6">KI（知识绝缘）</strong>配方：FAST 离散 token 和连续流匹配同练，但动作专家的梯度被<strong style="color:#E9EDF6">截断</strong>，不许它污染骨干的语言智能。</p>
+    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:26px 0">
+      <img src="figures/fig3-architecture.jpg" alt="π*0.6 与价值函数架构" style="width:82%;max-width:760px;display:block;border-radius:10px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 3 —— 上：π*0.6 VLA（SigLIP 400M + Gemma 4B + 动作专家 860M），同时输出离散动作 token 与连续动作。下：价值函数（Gemma 270M + 价值头）算优势 → 二值化 → 作为文本条件喂给上面的策略。</div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π*0.6 的全部改动 = 在序列里给优势指示牌留个座位。看这条训练序列（点击切换 positive / negative / 省略）：</p>
+    <div style="min-height:330px;margin:26px 0">{{ sequence }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 因子分解：先 ˆℓ（想）→ 优势牌（好/坏）→ 离散+连续动作（做），指示牌只影响动作段<br><span style="color:#FFB454">▸</span> 训练时随机省略指示牌 → 同一模型身兼条件/无条件两个分布，CFG 随取随用<br><span style="color:#FFB454">▸</span> KI 停梯度：RL 信号进动作，不动骨干的世界知识</div>
+    </div>
+  </section>
+
+  <!-- ============ R6 训练流程 ============ -->
+  <section id="r6" data-ch="r6" data-screen-label="第6章 训练流程" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · THE PIPELINE</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">流程：从几万小时演示到在岗实习</h2>
+    <div style="min-height:360px;margin:26px 0">{{ pipeline }}</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin:24px 0">
+      <div style="flex:1.2;min-width:300px;background:#EEF1F8;border-radius:16px;padding:16px">
+        <img src="figures/fig5-robot.jpg" alt="实验机器人平台" style="width:100%;display:block;border-radius:10px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 5 —— 迭代实验用的静态双臂平台：两条 6 自由度机械臂 + 平行夹爪，50Hz 关节位置控制，三路相机（中央底座 + 双腕）。可灵活装在桌面上。</div>
+      </div>
+      <div style="flex:1;min-width:280px;display:flex;flex-direction:column;gap:12px">
+        <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:6px">人类在循环里干三件事</div><div style="font-size:14px;line-height:1.9;color:#9BA6BD">① 给每回合打成功/失败标签（定奖励）；② 盯着自主执行，看要出大事时<strong style="color:#E9EDF6">接管纠正</strong>（修大错、破探索僵局）；③ 摆场子复位。纠正修的是「大错」，速度与细腻度的打磨靠自主数据——两者互补。</div></div>
+        <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:6px">迭代的数据账</div><div style="font-size:14px;line-height:1.9;color:#9BA6BD">叠衣任务：每轮 <strong style="color:#E9EDF6">300 条</strong>轨迹 × 4 台机器人，纯自主（不要纠正，检验纯 RL）；装箱：每轮 <strong style="color:#E9EDF6">600 条自主 + 360 条带干预</strong>。两轮迭代即见效。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ R7 任务 ============ -->
+  <section id="r7" data-ch="r7" data-screen-label="第7章 五道考题" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 07 章 · THE TASKS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">五道考题：都是「上班级」难度</h2>
+    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:26px 0">
+      <img src="figures/fig6-task-illustrations.jpg" alt="评测任务图示" style="width:100%;display:block;border-radius:10px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 6 —— 三大类五个变体：三种叠衣、装箱、用商用咖啡机做咖啡。每个任务 5–15 分钟、多阶段、需要灵巧操作。</div>
+    </div>
+    <div style="min-height:380px;margin:26px 0">{{ tasks }}</div>
+  </section>
+
+  <!-- ============ R8 实验 ============ -->
+  <section id="r8" data-ch="r8" data-screen-label="第8章 实验" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 08 章 · RESULTS</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">实验：四个问题，全用原图 + 原数</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">两个指标：<strong style="color:#E9EDF6">吞吐量</strong>（每小时成功次数——同时惩罚慢和失败，最贴近实用价值）与<strong style="color:#E9EDF6">成功率</strong>（人工按多项质量标准评出）。五连梯队对比：π0.5 → π0.6（纯监督）→ π*0.6 RL 预训练 → +SFT → +RECAP 在岗迭代（Ours）。切换标签页，交互条形图数字取自论文图表：</p>
+    <div style="min-height:560px;margin:26px 0">{{ results }}</div>
+  </section>
+
+  <!-- ============ R9 结语 ============ -->
+  <section id="r9" data-ch="r9" data-screen-label="第9章 局限与展望" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 09 章 · DISCUSSION</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">诚实的边界，和它宣告的方向</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:10px">论文自己承认的短板</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 不是全自主：奖励标注、干预、摆场子都靠人<br>▸ 探索很「贪心」：靠策略自身的随机性 + 人类干预，没有主动探索<br>▸ 批次式离线迭代，不是边采边训的实时在线 RL<br>▸ 蒙特卡洛价值估计偏保守，off-policy 估计留待未来</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(122,223,168,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:10px">它真正改变的认知</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ RL 上大模型不必碰似然：优势写成 token，监督基建全复用<br>▸ 学生能超过老师：吞吐量超过遥操作演示的水平<br>▸ 「成功/失败」一个标签就够——奖励工程近乎零<br>▸ VLA 的下一战场从「会不会」转向「熟不熟」</div>
+      </div>
+    </div>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:24px 26px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">π 家族谱系</div>
+      <div style="display:flex;gap:0;overflow-x:auto;font-size:13px;line-height:1.7">
+        <div style="flex:1;min-width:140px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2024</div><div style="color:#E9EDF6;font-weight:700">π0</div><div style="color:#8FA0C0">流匹配 VLA 开山：叠衣、收桌</div></div>
+        <div style="flex:1;min-width:140px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025.04</div><div style="color:#E9EDF6;font-weight:700">π0.5</div><div style="color:#8FA0C0">异构共训 + 分层推理 → 陌生住宅泛化（系列第 2 篇）</div></div>
+        <div style="flex:1;min-width:140px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025</div><div style="color:#E9EDF6;font-weight:700">KI + FAST</div><div style="color:#8FA0C0">知识绝缘训练配方；动作分词器——本篇的两块地基</div></div>
+        <div style="flex:1;min-width:140px;border-left:2px solid rgba(255,180,84,.5);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025.11</div><div style="color:#E9EDF6;font-weight:700">π0.6 / π*0.6 ★</div><div style="color:#8FA0C0">Gemma3 4B + RECAP：从经验中学习（本篇）</div></div>
+        <div style="flex:1;min-width:140px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">未来</div><div style="color:#E9EDF6;font-weight:700">全自主在线 RL</div><div style="color:#8FA0C0">自动奖励、自动复位、实时更新——论文点名的三个方向</div></div>
+      </div>
+    </div>
+    <div style="background:#0D1424;border:1px solid rgba(255,180,84,.25);border-radius:16px;padding:26px 28px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">一句话回顾全篇</div>
+      <div style="font-size:16.5px;line-height:2;color:#B9C2D8">π*0.6 = <span style="color:#56C8F5">π0.6 VLA</span>（Gemma3 4B + 860M 动作专家 + KI 配方）+ <span style="color:#FFB454">RECAP</span>（价值函数当裁判 → 优势二值化成一个文本 token → 全数据监督训练，循环迭代）——于是机器人从自己的成败里学习：咖啡连做 13 小时，最难任务吞吐翻倍、失败减半。<strong style="color:#E9EDF6">模仿给了它能力，经验给了它职业水准。</strong></div>
+    </div>
+    <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0 0;max-width:840px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">系列阅读</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">骨架 → 泛化 → 人类数据 → 世界模型 → 经验学习：<a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">① Transformer</a>　<a href="../pi05/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">② π0.5</a>　<a href="../ego-pi/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">③ Ego-Pi</a>　<a href="../wam-dreamzero/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">④ WAM/DreamZero</a>　⑤ π*0.6（本篇）。官方博客 pi.website/blog/pistar06 有 13 小时咖啡马拉松等实机视频。</div>
+    </div>
+    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · "It's amazing what you can learn if you're not afraid to try." —</div>
+  </section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showMath&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;showPseudocode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;内容&quot;}, &quot;reduceMotion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;动效&quot;}}">
+class Component extends DCLogic {
+  ensure() {
+    if (this.W) return;
+    const h = React.createElement;
+    const { useState, useEffect, useRef, useMemo } = React;
+    const C = { card:'#101828', card2:'#0B1322', line:'rgba(148,166,210,.14)', txt:'#E9EDF6', sub:'#9BA6BD', faint:'#5F6C86', amber:'#FFB454', q:'#56C8F5', k:'#F06EB4', g:'#7ADFA8' };
+    const mono = "'JetBrains Mono',monospace";
+    const useVis = (th=0.2) => {
+      const ref = useRef(null); const [v, setV] = useState(false);
+      useEffect(() => {
+        const el = ref.current; if (!el) return;
+        const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setV(true); io.disconnect(); } }), { threshold: th });
+        io.observe(el); return () => io.disconnect();
+      }, []);
+      return [ref, v];
+    };
+    const cardSty = { background:C.card, border:`1px solid ${C.line}`, borderRadius:16, padding:24 };
+    const btnSty = (on) => ({ fontFamily:mono, fontSize:12.5, padding:'7px 14px', borderRadius:8, cursor:'pointer', border:`1px solid ${on?'rgba(255,180,84,.6)':'rgba(148,166,210,.25)'}`, background:on?'rgba(255,180,84,.12)':'#0B1322', color:on?C.amber:C.sub });
+    const lblSty = { fontFamily:mono, fontSize:11, letterSpacing:'.18em', color:C.faint };
+    const Slider = ({v, set, min, max, step, w=220}) => h('input', { type:'range', min, max, step, value:v, onChange:e=>set(parseFloat(e.target.value)), style:{ width:w, accentColor:C.amber, cursor:'pointer' } });
+    this.$ = { h, useState, useEffect, useRef, useMemo, C, mono, useVis, cardSty, btnSty, lblSty, Slider };
+    const W = this.W = {};
+    const Stub = (hgt=200) => () => h('div', { style:{ ...cardSty, minHeight:hgt, display:'flex', alignItems:'center', justifyContent:'center', color:C.faint, fontFamily:mono, fontSize:12 } }, '…');
+
+    // ---------- Rail ----------
+    W.Rail = () => {
+      const [active, setActive] = useState('top');
+      const [prog, setProg] = useState(0);
+      const [wide, setWide] = useState(typeof window !== 'undefined' && window.innerWidth >= 1420);
+      useEffect(() => {
+        let raf = 0;
+        const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => {
+          raf = 0;
+          const y = window.scrollY, wh = window.innerHeight, dh = document.documentElement.scrollHeight;
+          setProg(Math.min(1, y / Math.max(1, dh - wh)));
+          let cur = 'top';
+          document.querySelectorAll('[data-ch]').forEach(s => { if (s.getBoundingClientRect().top < wh * 0.45) cur = s.getAttribute('data-ch'); });
+          setActive(cur);
+        }); };
+        const onResize = () => setWide(window.innerWidth >= 1420);
+        window.addEventListener('scroll', onScroll, { passive:true }); window.addEventListener('resize', onResize);
+        onScroll();
+        return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+      }, []);
+      const items = [['top','引言'],['r0','00 十秒版'],['r1','01 为何 RL'],['r2','02 RECAP'],['r3','03 价值函数'],['r4','04 优势条件化'],['r5','05 模型'],['r6','06 流程'],['r7','07 考题'],['r8','08 实验'],['r9','09 边界']];
+      return h(React.Fragment, null,
+        h('div', { style:{ position:'fixed', top:0, left:0, height:3, width:`${prog*100}%`, background:C.amber, zIndex:50, transition:'width .1s linear' } }),
+        wide ? h('nav', { style:{ position:'fixed', top:'50%', transform:'translateY(-50%)', left:'calc(50vw - 530px - 150px)', zIndex:40, display:'flex', flexDirection:'column', gap:9 } },
+          items.map(([id, label]) => h('a', { key:id, href:'#'+id, style:{ display:'flex', alignItems:'center', gap:8, textDecoration:'none' } },
+            h('span', { style:{ width:6, height:6, borderRadius:3, background: active===id ? C.amber : 'rgba(148,166,210,.35)', boxShadow: active===id ? `0 0 8px ${C.amber}` : 'none' } }),
+            h('span', { style:{ fontFamily:mono, fontSize:11.5, color: active===id ? C.amber : C.faint } }, label)))) : null);
+    };
+
+    // ---------- Hero: RECAP live loop ----------
+    W.Hero = ({ rm }) => {
+      const [ref, vis] = useVis(0.25);
+      const [clk, setClk] = useState(0); // 100ms ticks, loop 68
+      useEffect(() => {
+        if (!vis || rm) return;
+        const iv = setInterval(() => setClk(c => (c + 1) % 68), 100);
+        return () => clearInterval(iv);
+      }, [vis, rm]);
+      // phases: deploy 0-19, label 20-33, value 34-47, train 48-67
+      const ph = rm ? 3 : (clk < 20 ? 0 : clk < 34 ? 1 : clk < 48 ? 2 : 3);
+      const rollProg = ph === 0 ? clk/19 : 1;
+      const eps = [ {ok:true},{ok:true},{ok:false},{ok:true},{ok:false,fix:true},{ok:true} ];
+      const box = (title, color, active, body, fb='1 1 220px') => h('div', { style:{ flex:fb, minWidth:210, padding:'15px 17px', borderRadius:14, background: active?`${color}0d`:'#0B1322', border:`1.5px solid ${active?color:'rgba(148,166,210,.18)'}`, transition:'all .35s', boxShadow: active?`0 0 18px ${color}22`:'none' } },
+        h('div', { style:{ fontFamily:mono, fontSize:11, color, marginBottom:9 } }, title), body);
+      return h('div', { ref, style:{ ...cardSty, padding:'26px 28px' } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:8, marginBottom:16 } },
+          h('div', { style:lblSty }, 'LIVE · RECAP 自我改进循环'),
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, ['① 上岗：自主执行','② 打分 + 专家纠正','③ 重训裁判（价值函数）','④ 优势条件化重训选手'][ph])),
+        h('div', { style:{ display:'flex', gap:12, flexWrap:'wrap', alignItems:'stretch' } },
+          box('部署 · 跑任务', C.q, ph===0, h('div', null,
+            h('div', { style:{ display:'flex', gap:5, flexWrap:'wrap' } },
+              eps.map((e,i) => h('div', { key:i, style:{ width:34, height:26, borderRadius:6, border:'1px solid rgba(148,166,210,.3)', background: (i/eps.length) <= rollProg ? 'rgba(86,200,245,.15)' : '#101828', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:mono, fontSize:10, color: (i/eps.length) <= rollProg ? C.q : C.faint, transition:'all .3s' } }, 'ep'+(i+1)))),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:8 } }, '咖啡 / 叠衣 / 装箱 · 多机并行采集')),
+          ),
+          h('div', { style:{ alignSelf:'center', color: ph>=1?C.amber:C.faint, fontSize:17 } }, '→'),
+          box('标注 · 人在环上', C.k, ph===1, h('div', null,
+            h('div', { style:{ display:'flex', gap:5, flexWrap:'wrap' } },
+              eps.map((e,i) => h('div', { key:i, style:{ width:34, height:26, borderRadius:6, display:'flex', alignItems:'center', justifyContent:'center', fontFamily:mono, fontSize:11, transition:'all .3s',
+                border:`1px solid ${ph>=1 ? (e.ok?'rgba(122,223,168,.5)':'rgba(240,110,180,.5)') : 'rgba(148,166,210,.3)'}`,
+                background: ph>=1 ? (e.ok?'rgba(122,223,168,.1)':'rgba(240,110,180,.1)') : '#101828',
+                color: ph>=1 ? (e.ok?C.g:C.k) : C.faint } }, ph>=1 ? (e.ok?'✓':'✗') : '·'))),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color: ph===1?C.k:C.faint, marginTop:8, transition:'color .3s' } }, 'ep5 被专家接管纠正 → 强制标 positive'))),
+          h('div', { style:{ alignSelf:'center', color: ph>=2?C.amber:C.faint, fontSize:17 } }, '→'),
+          box('价值函数 · 裁判', C.amber, ph===2, h('div', null,
+            h('svg', { viewBox:'0 0 190 54', style:{ width:'100%', display:'block' } },
+              h('polyline', { points:'4,46 40,38 76,30 112,26 148,16 186,6', fill:'none', stroke: ph>=2 ? C.amber : 'rgba(148,166,210,.3)', strokeWidth:2.5, strokeLinecap:'round', style:{ transition:'stroke .3s' } }),
+              h('line', { x1:4, y1:50, x2:186, y2:50, stroke:'rgba(148,166,210,.2)' })),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:6 } }, '重新学「离成功还差几步」'))),
+          h('div', { style:{ alignSelf:'center', color: ph>=3?C.amber:C.faint, fontSize:17 } }, '→'),
+          box('策略 · 选手', C.g, ph===3, h('div', null,
+            h('div', { style:{ display:'flex', gap:6, alignItems:'center', flexWrap:'wrap' } },
+              h('span', { style:{ padding:'5px 10px', borderRadius:7, fontFamily:mono, fontSize:11, background:'rgba(122,223,168,.1)', border:'1px solid rgba(122,223,168,.5)', color:C.g, opacity: ph===3?1:.4, transition:'opacity .3s' } }, 'Advantage: positive'),
+              h('span', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, '→ 只学好的部分')),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color: ph===3 ? C.g : C.faint, marginTop:8, transition:'color .3s' } }, ph===3 ? '更快 · 更稳 → 回到 ① 再上岗' : '等待新裁判…')))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14 } }, rm ? '（动效已关）' : '循环 1-2 轮：吞吐量翻倍、失败率减半。每一轮只需「成功/失败」标签 + 少量接管。'));
+    };
+
+    // ===WIDGETS_B===
+    // ---------- R2 RECAP three subroutines ----------
+    W.Recap = () => {
+      const [sel, setSel] = useState(2);
+      const S = [
+        { n:'① 采集', color:C.q, what:'当前策略上岗跑任务。每回合结束由人打一个「成功/失败」标签（这就是全部的奖励工程）；早期迭代里，专家盯场，看要闯祸就接管遥操作纠正几秒再放手。', why:'自主数据教「细节打磨」（速度、流畅），纠正数据教「大错怎么救」——互补，缺一不可。全部回合（含失败的）都进数据池。' },
+        { n:'② 练裁判', color:C.amber, what:'用迄今为止的全部数据（演示 + 各代策略的自主数据 + 纠正）重训多任务价值函数：输入观测和任务指令，输出「离成功还差几步」的分布。', why:'数据池混着好几代策略的行为，裁判评的是这锅「混合行为策略」的期望——正好是优势条件化需要的参照系。' },
+        { n:'③ 练选手', color:C.g, what:'训练时对每条样本现算优势 A = 短期回报 + 未来价值 − 当前价值，超过任务阈值 ε 就在输入里写 "Advantage: positive"，否则 "negative"。目标仍是普通的监督学习。', why:'不筛数据、不加权重、不算策略梯度——坏数据也在教模型「坏长什么样」。推理时固定说 positive，理论保证不差于数据里的行为。' },
+      ];
+      const s = S[sel];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:14 } }, '三个子程序 · 点击展开（循环 = ①→②→③→①…）'),
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:16 } },
+          S.map((x,i) => h('button', { key:i, onClick:()=>setSel(i), style:{ ...btnSty(sel===i), borderColor: sel===i?x.color:'rgba(148,166,210,.25)', color: sel===i?x.color:C.sub, background: sel===i?`${x.color}14`:'#0B1322', fontSize:13.5, padding:'9px 18px' } }, x.n))),
+        h('div', { style:{ display:'flex', gap:14, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 300px', padding:'16px 18px', borderRadius:12, background:'#0B1322', border:`1px solid ${s.color}44` } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:8 } }, '做什么'),
+            h('div', { style:{ fontSize:14.5, color:C.txt, lineHeight:1.9 } }, s.what)),
+          h('div', { style:{ flex:'1 1 300px', padding:'16px 18px', borderRadius:12, background:'#0B1322', border:`1px solid ${s.color}44` } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:s.color, marginBottom:8 } }, '为什么这么设计'),
+            h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.9 } }, s.why))));
+    };
+
+    // ---------- R3 value function scrubber ----------
+    W.Value = () => {
+      const [fail, setFail] = useState(false);
+      const [t, setT] = useState(0.55);
+      const T = 100;
+      const valAt = (x) => { // x in 0..1
+        if (!fail) {
+          let v = -1 + x; // linear toward 0
+          if (x > 0.42 && x < 0.58) v -= 0.18 * Math.sin((x-0.42)/0.16*Math.PI); // mistake dip
+          return Math.min(0, v);
+        }
+        if (x < 0.45) return -1 + x*0.7;
+        return -0.7 - (x-0.45)*0.55 - (x>0.6? 0.1:0); // crash
+      };
+      const v = valAt(t);
+      const Wd = 640, Ht = 190;
+      const px = x => 46 + x*(Wd-70);
+      const py = val => 20 + (-val)*(Ht-50);
+      const pts = Array.from({length:101},(_,i)=>`${px(i/100)},${py(valAt(i/100))}`).join(' ');
+      // distribution: gaussian bins around v
+      const bins = Array.from({length:41},(_,i) => { const bv = -1 + i/40; const d = Math.exp(-((bv-v)**2)/(2*0.006)); return d; });
+      const bmax = Math.max(...bins);
+      const stage = !fail
+        ? (t<0.2?'从篮子取出衣物':t<0.42?'铺平':t<0.58?'⚠ 左臂失误弄皱衣角（价值下探）':t<0.8?'恢复并对折':'叠好码放 → 价值≈0')
+        : (t<0.3?'接近冰箱':t<0.45?'伸手开门':t<0.6?'⚠ 碰倒滤水壶':'✗ 无法恢复，价值崩塌');
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
+          h('div', { style:lblSty }, '实验 · 当一回裁判：拖动时间轴（复刻 Fig 4 的机制）'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setFail(false), style:btnSty(!fail) }, '成功集 · 叠衣'),
+            h('button', { onClick:()=>setFail(true), style:btnSty(fail) }, '失败集 · 开冰箱'))),
+        h('svg', { viewBox:`0 0 ${Wd} ${Ht}`, style:{ width:'100%', display:'block', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
+          h('line', { x1:46, y1:py(0), x2:Wd-24, y2:py(0), stroke:'rgba(122,223,168,.35)', strokeDasharray:'4 4' }),
+          h('text', { x:Wd-26, y:py(0)-6, fill:C.g, fontSize:10, fontFamily:mono, textAnchor:'end' }, 'V=0 成功'),
+          h('line', { x1:46, y1:py(-1), x2:Wd-24, y2:py(-1), stroke:'rgba(148,166,210,.2)' }),
+          h('text', { x:Wd-26, y:py(-1)-6, fill:C.faint, fontSize:10, fontFamily:mono, textAnchor:'end' }, 'V=−1'),
+          h('polyline', { points:pts, fill:'none', stroke: fail ? C.k : C.q, strokeWidth:2.5, strokeLinecap:'round' }),
+          h('line', { x1:px(t), y1:14, x2:px(t), y2:Ht-14, stroke:'rgba(255,180,84,.5)', strokeDasharray:'3 3' }),
+          h('circle', { cx:px(t), cy:py(v), r:7, fill:C.amber }),
+          h('text', { x:px(t)+(t>0.75?-10:10), y:py(v)-12, fill:C.amber, fontSize:13, fontFamily:mono, textAnchor: t>0.75?'end':'start' }, `V=${v.toFixed(2)}`)),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:14, margin:'14px 0 4px', flexWrap:'wrap' } },
+          h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, '时间'),
+          h(Slider, { v:t, set:setT, min:0, max:1, step:0.005, w:300 }),
+          h('span', { style:{ fontFamily:mono, fontSize:12.5, color: stage.startsWith('⚠') ? C.amber : stage.startsWith('✗') ? C.k : C.sub } }, stage)),
+        h('div', { style:{ display:'flex', gap:20, flexWrap:'wrap', marginTop:14, alignItems:'flex-end' } },
+          h('div', { style:{ flex:'1 1 300px' } },
+            h('div', { style:{ ...lblSty, marginBottom:8 } }, '此刻的分布式预测 · 201 桶（示意 41 桶）'),
+            h('div', { style:{ display:'flex', alignItems:'flex-end', gap:1.5, height:56, background:'#0B1322', borderRadius:9, padding:'6px 8px', border:`1px solid ${C.line}` } },
+              bins.map((b,i) => h('div', { key:i, style:{ flex:1, height:`${b/bmax*100}%`, minHeight:1, background:`rgba(255,180,84,${0.25+b/bmax*0.7})`, borderRadius:1 } }))),
+            h('div', { style:{ display:'flex', justifyContent:'space-between', fontFamily:mono, fontSize:9.5, color:C.faint, marginTop:3 } }, h('span',null,'−1'), h('span',null,'0'))),
+          h('div', { style:{ flex:'1 1 280px', fontFamily:mono, fontSize:11.5, color:C.sub, lineHeight:1.85 } },
+            '不回归一个数，而是预测落在 201 个桶上的', h('strong',{style:{color:C.txt}},'分布'), '，期望值才是 V。分类式训练远比回归稳定——同一招在 DreamerV3、决策 Transformer 里也验证过。')));
+    };
+
+    // ---------- R4 advantage lab ----------
+    W.Advantage = () => {
+      const pts = useMemo(() => Array.from({length:46},(_,i) => {
+        const r = (s)=>{ const x=Math.sin(i*91.7+s*37.3)*43758.55; return x-Math.floor(x); };
+        return { adv: (r(1)*2-1) * 0.5 + (r(2)>0.7 ? 0.25 : 0), fix: r(3) > 0.87 };
+      }), []);
+      const [pct, setPct] = useState(30);
+      const [forceFix, setForceFix] = useState(true);
+      const sorted = [...pts.map(p=>p.adv)].sort((a,b)=>a-b);
+      const eps = sorted[Math.floor(pct/100 * (sorted.length-1))];
+      const isPos = p => (forceFix && p.fix) || p.adv > eps;
+      const nPos = pts.filter(isPos).length;
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
+          h('div', { style:lblSty }, '实验 · 优势贴牌机：一批动作，谁是 positive？'),
+          h('div', { style:{ display:'flex', alignItems:'center', gap:12, flexWrap:'wrap' } },
+            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, `阈值 ε = ${pct} 分位`),
+            h(Slider, { v:pct, set:v=>setPct(Math.round(v)), min:0, max:90, step:1, w:170 }),
+            h('button', { onClick:()=>setForceFix(f=>!f), style:btnSty(forceFix) }, forceFix ? '✓ 纠正强制 positive' : '纠正不特殊'))),
+        h('div', { style:{ position:'relative', height:170, background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}`, overflow:'hidden' } },
+          h('div', { style:{ position:'absolute', left:0, right:0, top:'50%', height:1, background:'rgba(148,166,210,.2)' } }),
+          h('div', { style:{ position:'absolute', left:0, right:0, top:`${50 - eps*80}%`, height:1.5, background:'rgba(255,180,84,.6)', transition:'top .15s' } }),
+          h('div', { style:{ position:'absolute', right:8, top:`${50 - eps*80 - 18}%`, fontFamily:mono, fontSize:10.5, color:C.amber } }, `ε=${eps.toFixed(2)}`),
+          pts.map((p,i) => h('div', { key:i, title:`A=${p.adv.toFixed(2)}${p.fix?' · 人类纠正':''}`, style:{
+            position:'absolute', left:`${3 + i*2.08}%`, top:`${50 - p.adv*80}%`, width: p.fix ? 13 : 9, height: p.fix ? 13 : 9, borderRadius:'50%',
+            transform:'translate(-50%,-50%)', cursor:'default',
+            background: isPos(p) ? (p.fix ? C.g : 'rgba(122,223,168,.75)') : 'rgba(240,110,180,.65)',
+            border: p.fix ? `2px solid ${C.txt}` : 'none', transition:'background .2s' } }))),
+        h('div', { style:{ display:'flex', gap:16, flexWrap:'wrap', marginTop:12, fontFamily:mono, fontSize:11.5, color:C.sub, alignItems:'center' } },
+          h('span', null, h('span',{style:{color:C.g}},'●'), ` positive ${nPos}`),
+          h('span', null, h('span',{style:{color:C.k}},'●'), ` negative ${pts.length-nPos}`),
+          h('span', null, h('span',{style:{color:C.txt}},'◉'), ' 白边 = 人类纠正片段'),
+          h('span', { style:{ color:C.faint } }, '悬停看数值')),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:10, lineHeight:1.85 } },
+          pct < 10 ? 'ε 太低：几乎全标 positive → 和纯模仿没区别，学不到「什么是坏」。' :
+          pct > 70 ? 'ε 太高：只留极少数「神来之笔」→ 数据饥饿，且推理分布偏离训练分布太远，动作可能过猛。' :
+          '论文取 30 分位：约七成 positive。负样本依然全程参与训练——它们在教模型辨别，而不是被扔掉。'));
+    };
+
+    // ---------- R5 token sequence ----------
+    W.Sequence = () => {
+      const [mode, setMode] = useState(0); // 0 pos, 1 neg, 2 omit
+      const chip = (txt, color, dim, bold) => h('span', { style:{ padding:'7px 11px', borderRadius:9, fontFamily:mono, fontSize:12, fontWeight: bold?600:400,
+        background: dim ? '#0B1322' : `${color}12`, border:`1.5px solid ${dim ? 'rgba(148,166,210,.2)' : color+'88'}`, color: dim ? C.faint : color, transition:'all .25s' } }, txt);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:16 } },
+          h('div', { style:lblSty }, '实验 · π*0.6 的一条训练序列'),
+          h('div', { style:{ display:'flex', gap:8 } },
+            h('button', { onClick:()=>setMode(0), style:btnSty(mode===0) }, '好动作'),
+            h('button', { onClick:()=>setMode(1), style:btnSty(mode===1) }, '坏动作'),
+            h('button', { onClick:()=>setMode(2), style:btnSty(mode===2) }, '随机省略（CFG 用）'))),
+        h('div', { style:{ display:'flex', flexWrap:'wrap', gap:7, alignItems:'center', padding:'16px 18px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
+          chip('[三路相机 patch]', C.g),
+          chip('[本体状态 q]', C.g),
+          chip('任务: make a doppio', '#B39DFF'),
+          h('span', { style:{ color:C.faint } }, '→'),
+          chip('ˆℓ: "tamp the coffee"', C.q, false, true),
+          h('span', { style:{ color:C.faint } }, '→'),
+          mode===2 ? chip('（本条省略指示牌）', '#8FA0C0', true) : chip(mode===0 ? 'Advantage: positive' : 'Advantage: negative', mode===0 ? C.g : C.k, false, true),
+          h('span', { style:{ color:C.faint } }, '→'),
+          chip('FAST: a⟨87⟩ a⟨312⟩ …', C.amber),
+          chip('流匹配: a[t:t+H] @50Hz', C.amber)),
+        h('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, marginTop:14 } },
+          h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid ${C.line}`, fontSize:13, color:C.sub, lineHeight:1.75 } },
+            h('span', { style:{ fontFamily:mono, fontSize:11, color:C.q } }, '顺序有讲究'), h('br'),
+            '指示牌排在子任务 ˆℓ 之后、动作之前 → 只影响动作段的似然，高层「想什么」不被好坏标签干扰。'),
+          h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid ${C.line}`, fontSize:13, color:C.sub, lineHeight:1.75 } },
+            h('span', { style:{ fontFamily:mono, fontSize:11, color:C.amber } }, '推理时'), h('br'),
+            mode===2 ? '训练时随机丢牌，让模型同时会「带条件」和「无条件」两种分布——推理可用 CFG 把两者相减再放大（β>1），进一步加压。'
+                     : '永远输入 "Advantage: positive"——模型按「好动作」的分布出手。')));
+    };
+
+    // ---------- R6 pipeline ----------
+    W.Pipeline = () => {
+      const [st, setSt] = useState(0);
+      const S = [
+        { n:'阶段 A · RL 预训练', tag:'离线 RL', color:C.q, d:'几万小时、多机器人、多任务演示。先训 V_pre（预测归一化剩余步数），再按 30 分位阈值给每条样本现场贴优势牌，训练 π*0.6 基座。产出：见多识广、已懂"好坏"概念的通用模型。' },
+        { n:'阶段 B · 任务 SFT', tag:'I 恒为 True', color:'#B39DFF', d:'用目标任务的演示微调（价值函数与策略都从预训练版微调）。此时全部数据标 positive——等价于普通 SFT，但站在 RL 预训练的起点上。实验证明这比纯监督预训练+SFT 更强。产出：π⁰，够格上岗的实习生。' },
+        { n:'阶段 C · 在岗迭代 ×K', tag:'RECAP 循环', color:C.amber, d:'π⁰ 上岗采集（自主 + 可选接管纠正）→ 重训裁判 → 重训选手 → π¹ → 再上岗 → π²……每一轮都在自己的实战错误上进步。论文 K=2 已让吞吐翻倍。产出：π*0.6 最终版，职业选手。' },
+      ];
+      const s = S[st];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:0, marginBottom:18, alignItems:'stretch', flexWrap:'wrap' } },
+          S.map((x,i) => h(React.Fragment, { key:i },
+            h('button', { onClick:()=>setSt(i), style:{ flex:'1 1 160px', padding:'12px 10px', cursor:'pointer', fontFamily:'inherit', textAlign:'center',
+              background: st===i ? `${x.color}12` : '#0B1322', border:`1.5px solid ${st===i ? x.color : 'rgba(148,166,210,.2)'}`,
+              borderRadius: i===0 ? '12px 0 0 12px' : i===S.length-1 ? '0 12px 12px 0' : 0 } },
+              h('div', { style:{ fontSize:14, fontWeight:700, color: st===i ? x.color : C.sub } }, x.n),
+              h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:3 } }, x.tag))))),
+        h('div', { style:{ padding:'16px 18px', background:'#0B1322', borderRadius:12, border:`1px solid ${s.color}44`, fontSize:14.5, color:C.sub, lineHeight:1.95 } }, s.d),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12, lineHeight:1.8 } }, '与 LLM 对照：A ≈ 预训练，B ≈ SFT，C ≈ RLHF/在线 RL——大模型的三段式配方在机器人上重演，只是「人类偏好」换成了「物理世界的成败」。'));
+    };
+
+    // ---------- R7 tasks ----------
+    W.Tasks = () => {
+      const tasks = [
+        { n:'叠衣 · T恤短裤', lim:'200 秒', crit:'从篮子取出→铺平→叠好→码到桌角', hard:'初始状态随机（团成什么样的都有）', note:'π0 论文的经典任务——用来和历史成绩对表' },
+        { n:'叠衣 · 多样衣物', lim:'500 秒', crit:'11 类衣物；评测用最难的系扣衬衫', hard:'泛化：毛衣/牛仔裤/袜子/裙子件件不同', note:'本篇最难任务，成功率提升最大（45%→74%）' },
+        { n:'叠衣 · 严格判定', lim:'200 秒', crit:'单件橙色T恤，衣领必须朝上居中', hard:'初始摆位专门对着旧策略的弱点设计', note:'消融专用：验证 RL 能否定点清除坏毛病' },
+        { n:'咖啡 · 双份浓缩', lim:'200 秒', crit:'取粉碗→磨豆→压粉→上机→接满→端出', hard:'倒液体、掉粉碗/洒咖啡都算重大失误', note:'商用咖啡机 · 连续运行 13 小时的就是它' },
+        { n:'装箱 · 工厂包装', lim:'600 秒', crit:'平板纸箱折成型→贴标签→码进货箱', hard:'纸板粘连、弯折——材料本身不配合', note:'真实工厂部署场景；按四个子阶段分别计分' },
+      ];
+      const [sel, setSel] = useState(1);
+      const t = tasks[sel];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:16 } },
+          tasks.map((x,i) => h('button', { key:i, onClick:()=>setSel(i), style:btnSty(sel===i) }, x.n))),
+        h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:10 } },
+          h('div', { style:{ padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.g,marginBottom:5}},'成功判定 · 限时 ' + t.lim), h('div',{style:{fontSize:14,color:C.txt,lineHeight:1.85}}, t.crit)),
+          h('div', { style:{ padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.k,marginBottom:5}},'难在哪'), h('div',{style:{fontSize:14,color:C.sub,lineHeight:1.85}}, t.hard))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.amber, marginTop:12, lineHeight:1.8 } }, '▸ ' + t.note));
+    };
+
+    // ---------- R8 results ----------
+    W.Results = () => {
+      const [tab, setTab] = useState(0);
+      const [img, setImg] = useState(true);
+      const [sub0, setTab0] = useState(0);
+      const Bar = ({label, v, max, color, note, hl}) => h('div', { style:{ display:'flex', alignItems:'center', gap:12, margin:'8px 0' } },
+        h('span', { style:{ width:200, textAlign:'right', fontSize:13, color: hl?C.txt:C.sub, fontWeight:hl?700:400 } }, label),
+        h('div', { style:{ flex:1, height:19, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
+          h('div', { style:{ height:'100%', width:`${v/max*100}%`, background:color, borderRadius:6, transition:'width .6s cubic-bezier(.2,.8,.2,1)' } })),
+        h('span', { style:{ fontFamily:mono, fontSize:11.5, color: hl?C.amber:C.faint, width:120 } }, note||''));
+      const IMG = (src, cap) => img ? h('div', { style:{ background:'#EEF1F8', borderRadius:14, padding:12, margin:'16px 0 4px' } },
+        h('img', { src, style:{ width:'100%', display:'block', borderRadius:8 } }),
+        h('div', { style:{ fontFamily:mono, fontSize:11, color:'#46536E', marginTop:8 } }, cap)) : null;
+      const ladder = (vals, max, unit) => { // [π0.5, π0.6, RLpre, SFT, Ours]
+        const names = ['π0.5 预训练','π0.6 预训练','π*0.6 RL 预训练','π*0.6 +SFT','π*0.6 RECAP (Ours)'];
+        const colors = ['#E8A1A1','#9BC98F','#5FA86F','#EDD9A8', C.amber];
+        return vals.map((v,i) => v==null ? null : h(Bar, { key:i, label:names[i], v, max, color:colors[i], note:`${v}${unit}`, hl:i===4 }));
+      };
+      const tabs = ['① 主结果 · 五连梯队','② 迭代出真知','③ 对比 AWR / PPO','④ 定点除错'];
+      const bodies = [
+        h('div', null,
+          h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:12 } },
+            ['吞吐量','成功率'].map((n,i)=>h('button',{key:i,onClick:()=>setTab0(i),style:btnSty(sub0===i)},n))),
+          sub0===0 ? h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'10px 0 4px' } }, '叠衣 T恤短裤（次/小时）'), ladder([2,17,17,33,60], 65, ''),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '叠衣 多样衣物 · 最难件'), ladder([0,3.9,4.9,3.9,8.3], 9, ''),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '双份浓缩咖啡'), ladder([null,4,9.5,14.5,29], 32, ''),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '工厂装箱'), ladder([null,2.5,1.5,10,13.3], 15, ''),
+            IMG('figures/fig7-throughput.jpg', '论文原图 · Fig 7 —— 每小时成功次数（含标准误）。RECAP 在多样叠衣与咖啡上吞吐翻倍以上。'))
+          : h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'10px 0 4px' } }, '叠衣 T恤短裤（%）'), ladder([17,63,76,91,96], 100, '%'),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '叠衣 多样衣物 · 最难件'), ladder([0,37,48,45,74], 100, '%'),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '双份浓缩咖啡'), ladder([null,10,27,39,92], 100, '%'),
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, margin:'14px 0 4px' } }, '装箱按取板/折箱/贴标/码放四阶段计分，最终版各阶段均 ≈90%+，失败多因超时'),
+            IMG('figures/fig8-success.jpg', '论文原图 · Fig 8 —— 成功率（含标准误）。咖啡任务 39%→92%：失败率砍半以上。')),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '梯队每一级都在涨：RL 预训练 > 纯监督预训练；RL 预训练+SFT > 普通 SFT；在岗迭代再上一整个台阶。')),
+        h('div', null,
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'6px 0 4px' } }, '叠衣吞吐（纯自主数据，无纠正 · 次/小时）'),
+          [['起点 RL预训练+SFT',33],['迭代 1（+300条×4机）',42],['迭代 2（Ours）',60]].map(([n,v],i) => h(Bar, { key:i, label:n, v, max:65, color: i===2?C.amber:'#EDD9A8', note:v+'', hl:i===2 })),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '装箱吞吐（600自主+360干预/轮）'),
+          [['起点',10],['迭代 1',8.4],['迭代 2（Ours）',13.3]].map(([n,v],i) => h(Bar, { key:i, label:n, v, max:15, color: i===2?C.amber:'#EDD9A8', note:v+'', hl:i===2 })),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.85 } }, '叠衣成功率一轮就到 90%+，之后涨的是速度；装箱先降后升——长任务需要更多数据才能兑现，第二轮吞吐翻倍。纯 RL（零纠正）也能稳步爬坡：+50% 吞吐。'),
+          IMG('figures/fig9-iterations-throughput.jpg', '论文原图 · Fig 9 —— 吞吐量随迭代提升'),
+          IMG('figures/fig10-iterations-success.jpg', '论文原图 · Fig 10 —— 成功率随迭代提升')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:10, maxWidth:720 } }, '同一批数据（甚至对基线更有利——那是 RECAP 采来的好数据），只换策略提取方法，叠衣任务：'),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'10px 0 4px' } }, '吞吐量（次/小时）'),
+          [['优势条件化 (RECAP)',60,C.amber,true],['AWR 加权回归',30.5,'#8FA0C0'],['PPO (DPPO/FPO 变体)',22,'#8FA0C0']].map(([n,v,c,hl],i) => h(Bar, { key:i, label:n, v, max:65, color:c, note:v+'', hl })),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.q, margin:'14px 0 4px' } }, '成功率（%）'),
+          [['优势条件化 (RECAP)',96,C.amber,true],['AWR',90,'#8FA0C0'],['PPO',75,'#8FA0C0']].map(([n,v,c,hl],i) => h(Bar, { key:i, label:n, v, max:100, color:c, note:v+'%', hl })),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.85 } }, 'AWR 成功率尚可但动作慢（加权丢弃了太多数据的信息）；PPO 要靠很小的信任域（η=0.01）才稳得住，性能上不去。都追不上「把好坏写进输入」这一招。'),
+          IMG('figures/fig11-extraction.jpg', '论文原图 · Fig 11 —— 三种策略提取方法对比')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:10, maxWidth:720 } }, '严格版叠衣（衣领必须朝上），初始摆位专门刁难旧策略。纯 RL、零人类纠正、零新演示，两轮各 600 条自主轨迹：'),
+          [['起点 offline RL + SFT',31],['迭代 0（刚上岗）',23],['迭代 1',76],['迭代 2',97]].map(([n,v],i) => h(Bar, { key:i, label:n, v, max:100, color: i===3?C.amber:'#EDD9A8', note:v+'%', hl:i===3 })),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.85 } }, '31% → 97%：一个具体的坏毛病（衣领朝下）被 RL 定点清除，吞吐同步 8→54 次/小时。RECAP 不只能「变强」，还能「改行为」——用很少的数据。'),
+          IMG('figures/fig12-failure-removal.jpg', '论文原图 · Fig 12 —— 失败模式移除实验')),
+      ];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ display:'flex', justifyContent:'space-between', gap:8, flexWrap:'wrap', marginBottom:16 } },
+          h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap' } },
+            tabs.map((t,i) => h('button', { key:i, onClick:()=>setTab(i), style:btnSty(tab===i) }, t))),
+          h('button', { onClick:()=>setImg(v=>!v), style:btnSty(img) }, img ? '✓ 显示论文原图' : '原图已隐藏')),
+        bodies[tab]);
+    };
+  }
+
+  renderVals() {
+    this.ensure();
+    const h = React.createElement;
+    const rm = this.props.reduceMotion ?? false;
+    const W = this.W;
+    return {
+      showMath: this.props.showMath ?? true,
+      showPseudocode: this.props.showPseudocode ?? true,
+      rail: h(W.Rail, {}),
+      hero: h(W.Hero, { rm }),
+      recap: h(W.Recap, { rm }),
+      value: h(W.Value, { rm }),
+      advantage: h(W.Advantage, { rm }),
+      sequence: h(W.Sequence, { rm }),
+      pipeline: h(W.Pipeline, { rm }),
+      tasks: h(W.Tasks, { rm }),
+      results: h(W.Results, { rm }),
+    };
+  }
+}
+</script>
+<script type="text/plain" data-disabled-print-export="true">
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "π0.6 论文交互教学";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
