@@ -15,7 +15,7 @@
 </style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>π0 论文交互教学</title>
+<title>π0.7 论文交互教学</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -40,17 +40,17 @@
 <div style="max-width:1060px;margin:0 auto;padding:0 32px">
 
   <section id="top" data-ch="top" data-screen-label="引言" style="padding:88px 0 40px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">PAPER WALKTHROUGH · 论文图解 · 系列第 6 篇 · 前传</div>
-    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:60px;line-height:1.2;color:#F2F4FA;margin:16px 0 14px">π0：一切开始的地方</h1>
-    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:700px;margin:0 0 10px">2024 年 10 月，Physical Intelligence 发布 π0——第一个把「<strong style="color:#E9EDF6">VLM 骨干 + 流匹配动作专家</strong>」定型的通用机器人策略。本系列 π0.5 / π*0.6 / π0.7 的一切，都从这套骨架长出来。</p>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">PAPER WALKTHROUGH · 论文图解 · 系列第 7 篇 · 最新</div>
+    <h1 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:58px;line-height:1.22;color:#F2F4FA;margin:16px 0 14px">π0.7：会听指挥的通才，<br>和它的涌现能力</h1>
+    <p style="font-size:18px;line-height:1.9;color:#9BA6BD;max-width:720px;margin:0 0 10px">一个模型、零微调：做浓缩咖啡追平 RL 特训的 π*0.6，在没见过的厨房听懂连环指令，把技能零样本搬到没练过的机器人身上，还能被人「口头调教」学会新活。秘诀只有一个：<strong style="color:#E9EDF6">把提示词做厚</strong>——不只说做什么，还说怎么做。</p>
     <div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#5F6C86;margin:14px 0 8px">
-      <span>Physical Intelligence</span><span>·</span><span>arXiv 2410.24164 · 2024.10</span><span>·</span><span>10,000 小时 · 7 平台 · 68 任务</span>
+      <span>Physical Intelligence</span><span>·</span><span>pi.website/pi07 · 2025-26</span><span>·</span><span>5B = 4B VLM + MEM 视频编码 + 860M 动作专家</span>
     </div>
     <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:28px 0 10px">
-      <img src="figures/pi0-fig6-tasks.jpg" alt="π0 开箱评测任务" style="width:100%;display:block;border-radius:10px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 6（照片组）—— 开箱评测五连：叠 T 恤、收桌（易/难）、装杂货袋、从烤面包机取吐司。预训练后直接用语言指挥，不做任何任务微调。</div>
+      <img src="figures/pi07-fig-tasks.jpg" alt="π0.7 评测任务照片" style="width:88%;max-width:820px;display:block;border-radius:10px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 5（照片组）—— 两个代表性评测：厨房长程任务「把微波炉里的食物端上桌」（上）与跨本体双臂叠衣（下，该机器人从没采过叠衣数据）。</div>
     </div>
-    <div style="min-height:320px;margin:20px 0 26px">{{ hero }}</div>
+    <div style="min-height:340px;margin:20px 0 26px">{{ hero }}</div>
     <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px 24px;max-width:840px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
       <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454">系列</span>
       <a href="../transformer/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">① Transformer</a>
@@ -58,104 +58,106 @@
       <a href="../ego-pi/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">③ Ego-Pi</a>
       <a href="../wam-dreamzero/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">④ WAM</a>
       <a href="../pi06/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑤ π*0.6</a>
-      <a href="../pi07/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑦ π0.7</a>
+      <a href="../pi0/" style="font-size:14.5px;color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑥ π0</a>
     </div>
   </section>
 
-  <section id="q0" data-ch="q0" data-screen-label="第0章 十秒版" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+  <section id="s0" data-ch="s0" data-screen-label="第0章 十秒版" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 00 章 · TL;DR</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">十秒版：π0 立下的三块基石</h2>
-    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">2024 年的难题：VLA 用离散 token 出动作（RT-2 / OpenVLA 一系），慢且粗糙，够不着<strong style="color:#E9EDF6">50Hz 的灵巧操作</strong>（叠衣服这种活，夹爪每秒要做几十次微调）。π0 的答案成了此后所有 π 系模型的地基：</p>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">十秒版：从「说做什么」到「说怎么做」</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π*0.6 证明了 RL 能练出专家，但一次只练一个任务。π0.7 问：能不能<strong style="color:#E9EDF6">一个通才模型直接达到专家水平</strong>？答案藏在提示词里——训练时给每条数据贴上「这是谁做的、做得多快、质量几分、有没有失误」，模型就学会了按这些条件切换水平。推理时点「质量 5 分、无失误」，专家就出场了。</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
-      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">基石 ① 架构</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">VLM + 流匹配动作专家</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">PaliGemma 3B 管「看和想」，旁挂 300M 专属权重管「手」，用流匹配吐出 50 步连续动作块——精度和多峰分布全都要。</div></div>
-      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">基石 ② 配方</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">预训练 / 后训练分工</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">照抄 LLM 的成功学：先在杂而广的数据上学「什么都会一点 + 会从错误恢复」，再用少量高质量数据练「流畅精熟」。</div></div>
-      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">基石 ③ 规模</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">当时最大的操作数据集</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">10,000 小时 · 7 种机器人 · 68 个「宽任务」+ OXE 开源数据。证明了机器人也有「大力出奇迹」的路线。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ①</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">可操控 = 白吃杂数据</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">带元数据标签后，失败演示、旧模型的评测数据（含 π*0.6 的 RL 数据）统统能进训练集——数据越杂越涨，去掉标签则越杂越跌。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ②</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">世界模型进了提示词</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">一个 14B 图像编辑模型（BAGEL）实时生成「接下来该长什么样」的子目标图——语言说不清的细节，一张图讲明白。动作预测降维成逆动力学。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">主张 ③</div><div style="color:#E9EDF6;font-weight:700;margin-bottom:6px">能力开始「涌现」</div><div style="font-size:14px;line-height:1.8;color:#9BA6BD">零样本跨本体迁移、组合出没练过的新任务、被口头调教学新活——都不是设计目标，是规模 + 多样性 + 厚提示词的副产品。</div></div>
     </div>
   </section>
 
-  <section id="q1" data-ch="q1" data-screen-label="第1章 流匹配" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · FLOW MATCHING ★ 核心机制</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">流匹配：动作从噪声里长出来</h2>
-    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">为什么不用离散 token 出动作？叠衣服需要<strong style="color:#E9EDF6">高频、连续、多峰</strong>的动作分布——「从左边抓」和「从右边抓」都对，但平均一下就是灾难。流匹配（扩散的直系亲属，见 <a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">Transformer 篇</a>采样章与 <a href="../wam-dreamzero/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">WAM 篇</a>）天生擅长这个：</p>
-    <div style="min-height:400px;margin:26px 0">{{ flow }}</div>
+  <section id="s1" data-ch="s1" data-screen-label="第1章 提示词四配料" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 01 章 · THE PROMPT ★ 论文核心</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">提示词的四种配料</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π0.5 的提示词只有任务 + 子任务两层文字。π0.7 把上下文 C<sub>t</sub> 扩成四种模态，训练时<strong style="color:#E9EDF6">每种随机丢弃</strong>——所以推理时任意子集都能用。亲手配一条提示词：</p>
+    <div style="min-height:460px;margin:26px 0">{{ prompt }}</div>
+    <div style="margin:26px 0 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
+      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 子任务文字（继承 π0.5）说「意图」；子目标图说「样子」；元数据说「水准」；控制模式说「用哪套关节语言」<br><span style="color:#FFB454">▸</span> 元数据 = 速度（500 步一档）+ 质量（1–5 分）+ 失误（真/假），人工粗标<br><span style="color:#FFB454">▸</span> 随机丢弃 → 同一模型身兼「带条件/无条件」，CFG 可对元数据加压（同 π*0.6 的招）</div>
+    </div>
+  </section>
+
+  <section id="s2" data-ch="s2" data-screen-label="第2章 世界模型" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · WORLD MODEL</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">子目标图：语言说不清的，画给它看</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">「打开冰箱门」没说明白手该抓哪、门该开多大。π0.7 配了一个<strong style="color:#E9EDF6">轻量世界模型</strong> g<sub>ψ</sub>：输入当前观测 + 子任务 + 元数据，用流匹配生成<strong style="color:#E9EDF6">多视角的近未来图像</strong>（基座视角管场景，腕视角管手势）。它从 BAGEL（14B 图像理解/编辑模型）初始化——网页级视觉先验免费入账，真值就是数据段的末帧。</p>
+    <div style="min-height:380px;margin:26px 0">{{ subgoal }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">为什么训练更快了</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">给了「未来的样子」，动作预测就退化成<strong style="color:#E9EDF6">逆动力学</strong>——从两帧之间反推动作。和 WAM 篇（第 ④ 篇）的洞察殊途同归：预测未来是动作学习最好的脚手架。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">运行时怎么刷新</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">子任务一换就重新生成，否则每 4 秒刷新一次；生成在<strong style="color:#E9EDF6">独立线程异步</strong>跑，VLA 永远用最新可用的那张——不阻塞 50Hz 控制。</div></div>
+    </div>
+  </section>
+
+  <section id="s3" data-ch="s3" data-screen-label="第3章 架构与数据" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · MODEL &amp; DATA</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">模型与数据：5B 通才怎么炼</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0">
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">带记忆的眼睛</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">MEM 式历史视觉编码器：4 路相机 × 6 帧历史（隔 1 秒取一帧），压缩到单帧的 token 量。终于能做「需要记忆」的任务。历史与后视相机各按 30% 概率丢弃训练。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">注意力与状态</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">块因果掩码：观测/子目标图内部双向，文字因果；本体状态不再当文字 token（π0.6 的做法），改线性投影进骨干。动作专家 860M，50 步块，自适应 RMSNorm 注入流匹配时间。</div></div>
+      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:18px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">实时动作块 RTC</div><div style="font-size:13.5px;line-height:1.8;color:#9BA6BD">训练时就模拟「推理延迟下的块衔接」（RTC），5 步去噪出 50 步块、执行 15–25 步就换新块——动作过渡如丝般顺滑。</div></div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:24px 0 14px">数据上与经典 VLA 管线<strong style="color:#E9EDF6">决裂</strong>：大量使用次优数据——低质量演示、失败集、历届模型的自主评测数据（π*0.6 的 RL 数据也在内，相当于把专家<strong style="color:#E9EDF6">蒸馏</strong>回通才）+ 开源数据 + 第一视角人类视频 + 网页多模态 + 视频描述。元数据标签是消化这锅杂烩的胃。</p>
+  </section>
+
+  <section id="s4" data-ch="s4" data-screen-label="第4章 运行时" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · RUNTIME</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">运行时：拧到「专家档」</h2>
+    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">部署时不微调，只拧提示词旋钮。试试下面的控制台——论文的默认配置就是「拉满」：</p>
+    <div style="min-height:420px;margin:26px 0">{{ runtime }}</div>
     <sc-if value="{{ showMath }}" hint-placeholder-val="{{ true }}">
       <div style="background:#0D1424;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:26px;margin:24px 0;text-align:center">
-        <div style="font-family:'Noto Serif SC',serif;font-size:20px;color:#F2F4FA;line-height:2">L(θ) = E‖ v<sub style="font-size:12px">θ</sub>(A<sup style="font-size:12px">τ</sup><sub style="font-size:12px">t</sub>, o<sub style="font-size:12px">t</sub>) − (A<sub style="font-size:12px">t</sub> − ε) ‖²　，　A<sup style="font-size:12px">τ</sup><sub style="font-size:12px">t</sub> = τ·A<sub style="font-size:12px">t</sub> + (1−τ)·ε</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">A<sub>t</sub> = 未来 H=50 步的动作块 · 给它按比例 τ 掺噪声，训练网络预测「去噪方向」A−ε</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:6px">τ 不均匀采样，故意偏向高噪声区（Beta 分布）——低噪声时预测太容易，把训练算力花在难处</div>
+        <div style="font-family:'Noto Serif SC',serif;font-size:19px;color:#F2F4FA;line-height:2">∇<sub style="font-size:11px">a</sub> log π(a|o,C) + β·[ ∇<sub style="font-size:11px">a</sub> log π(a|o,C) − ∇<sub style="font-size:11px">a</sub> log π(a|o,C<sub style="font-size:11px">uncond</sub>) ]</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#8FA0C0;margin-top:12px">CFG 加压：对元数据条件与无条件的去噪方向做外推（β&gt;1）——「更像高质量数据」的方向被放大。训练时的随机丢弃使 C<sub>uncond</sub> 免费可得</div>
       </div>
     </sc-if>
-    <div style="margin:26px 0 0">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
-      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 一次生成 50 步动作块，开环执行——不做时序集成（试过，更差）<br><span style="color:#FFB454">▸</span> 推理 10 步积分，观测前缀走 KV cache，消费级 GPU 几十毫秒出一块<br><span style="color:#FFB454">▸</span> 这套「流匹配出动作」被 π0.5/0.6/0.7、WAM 全线继承</div>
-    </div>
   </section>
 
-  <section id="q2" data-ch="q2" data-screen-label="第2章 架构" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 02 章 · ARCHITECTURE</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">架构：一个大脑，两套权重</h2>
-    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">灵感来自 Transfusion（一个 Transformer 同时用交叉熵和扩散两种损失）。π0 更进一步：给机器人专属的 token（状态 + 动作）配一套<strong style="color:#E9EDF6">独立的小权重</strong>——像两个专家的 MoE：图文走 3B 的 VLM 权重，动作走 300M 的「动作专家」，注意力互通但参数分家。实测比共用权重更强：</p>
-    <div style="min-height:330px;margin:26px 0">{{ arch }}</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
-      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">跨本体的补齐术</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">7 种机器人维度不一（7 维单臂到 18 维移动双臂）：一律<strong style="color:#E9EDF6">零填充到 18 维</strong>；相机不足 3 路的把空位遮掉。粗暴但有效——后来 Ego-Pi 为塞 58 维灵巧手另想了交错术（见第 ③ 篇）。</div></div>
-      <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">注意力布局</div><div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">观测（图像+文字+状态）是前缀；50 个动作 token 之间<strong style="color:#E9EDF6">双向注意力</strong>（整块一起去噪，不分先后），并能看到全部前缀。前缀的 KV 在 10 步积分间复用——省 10 倍前缀计算。</div></div>
-    </div>
-  </section>
-
-  <section id="q3" data-ch="q3" data-screen-label="第3章 数据与配方" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 03 章 · DATA &amp; RECIPE</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">数据与配方：杂粮打底，细粮收尾</h2>
-    <div style="min-height:380px;margin:26px 0">{{ data }}</div>
-    <div style="background:#EEF1F8;border-radius:16px;padding:16px;margin:26px 0">
-      <img src="figures/pi0-fig5-robots.jpg" alt="π0 的 7 种机器人平台" style="width:100%;display:block;border-radius:10px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#46536E;margin-top:10px">论文原图 · Fig 5（照片组）—— 7 种平台同锅共训：UR5e、双臂 UR5e、Franka、双臂 Trossen（ALOHA 式）、双臂 ARX/AgileX、移动 Trossen/ARX、移动 Fibocom。</div>
-    </div>
-    <div style="margin:26px 0 0">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
-      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> 预训练数据要「广」（教会恢复与应变），后训练数据要「纯」（教会流畅精熟）<br><span style="color:#FFB454">▸</span> 任务定义是「宽任务」：一个 bussing 覆盖无数物体组合——68 个任务 ≠ 68 个动作<br><span style="color:#FFB454">▸</span> 配比按 n<sup>0.43</sup> 降权大数据集，防止叠衣数据一家独大</div>
-    </div>
-  </section>
-
-  <section id="q4" data-ch="q4" data-screen-label="第4章 语言与分层" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 04 章 · LANGUAGE</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">语言：VLM 底座到底买来了什么</h2>
-    <p style="font-size:16.5px;line-height:1.95;max-width:800px;margin:0 0 14px">π0 训练了一个不用 VLM 初始化的小兄弟 <strong style="color:#E9EDF6">π0-small</strong> 当对照。语言评测里给三种指挥方式：只给总任务（flat）、人类逐步下指令（human）、高层 VLM 自动下指令（HL，SayCan 式——π0.5 分层推理的前身）：</p>
-    <div style="min-height:360px;margin:26px 0">{{ lang }}</div>
-    <div style="margin:26px 0 0">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:10px">小结</div>
-      <div style="font-size:15px;line-height:2.1;color:#B9C2D8;max-width:800px"><span style="color:#FFB454">▸</span> π0 听得懂细指令 → 人类/高层指挥都能显著加分<br><span style="color:#FFB454">▸</span> π0-small 听不太懂 → 给它配指挥也白搭：语言能力是 VLM 预训练买来的<br><span style="color:#FFB454">▸</span> 「高层想、低层做」在这里初见雏形，π0.5 把它写进同一个模型</div>
-    </div>
-  </section>
-
-  <section id="q5" data-ch="q5" data-screen-label="第5章 实验" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+  <section id="s5" data-ch="s5" data-screen-label="第5章 实验" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 05 章 · RESULTS</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">实验：三组证据</h2>
-    <div style="min-height:520px;margin:26px 0">{{ results }}</div>
-    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5F6C86;margin-top:10px">* 条形为按论文图 7/11/13 结论的定性重绘（相对高度示意），非原始数值。</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">实验：五个问题</h2>
+    <div style="min-height:540px;margin:26px 0">{{ results }}</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:#5F6C86;margin-top:10px">* 条形为按论文图 6/9/10/18 结论的定性重绘；「追平/超越 RL 专家」「显著超越 π0.5/π0.6」为论文原文结论。</div>
   </section>
 
-  <section id="q6" data-ch="q6" data-screen-label="第6章 遗产与边界" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · LEGACY</div>
-    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">遗产与边界</h2>
+  <section id="s6" data-ch="s6" data-screen-label="第6章 涌现与边界" style="padding:96px 0 30px;border-top:1px solid rgba(148,166,210,.1);margin-top:60px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.24em;color:#FFB454">第 06 章 · EMERGENCE</div>
+    <h2 style="font-family:'Noto Serif SC',serif;font-weight:900;font-size:40px;color:#F2F4FA;margin:10px 0 18px;line-height:1.25">涌现、边界，与整个系列的收束</h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0">
-      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:20px 24px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:10px">论文自己承认的未知</div>
-        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 每个任务要多少数据、什么组合最优——没有公式<br>▸ 哪些任务超出当前方法能力范围仍不清楚<br>▸ 可靠性距离实用还有差距（正是 π*0.6 两年后去解的题）<br>▸ 陌生环境泛化未系统评测（π0.5 接棒）</div>
-      </div>
       <div style="background:#0E1522;border:1px solid rgba(122,223,168,.25);border-radius:14px;padding:20px 24px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:10px">它定下的路线</div>
-        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ VLM 骨干 + 流匹配动作专家 = π 系不变骨架<br>▸ 预训练/后训练两段式 = 机器人版 LLM 配方<br>▸ 跨本体同锅共训可行 → π0.5 的异构配方、π0.7 的涌现迁移<br>▸ 语言接口 → 分层推理 → 提示词工程的演化起点</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#7ADFA8;margin-bottom:10px">三种涌现能力（都不是设计目标）</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ <strong style="color:#E9EDF6">跨本体零样本</strong>：没采过叠衣数据的机器人直接会叠衣，还长出适配自己身体的新策略<br>▸ <strong style="color:#E9EDF6">组合泛化</strong>：法压壶、盛米饭、擦耳机、转风扇——没人为这些采过数据<br>▸ <strong style="color:#E9EDF6">口头调教</strong>：人一步步说，它一步步做（气炸锅烤红薯）；调教记录再微调成高层策略 → 从此自主</div>
+      </div>
+      <div style="background:#0E1522;border:1px solid rgba(240,110,180,.25);border-radius:14px;padding:20px 24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F06EB4;margin-bottom:10px">论文自己承认的边界</div>
+        <div style="font-size:14.5px;line-height:2;color:#9BA6BD">▸ 零样本任务成功率 60–80%，仍低于见过任务的 90%+<br>▸ 数据太大太杂，「见过/没见过」都难界定——和 LLM 一样的泛化审计难题<br>▸ 下一步：用可操控性 + 口头调教 + 自主 RL 在测试任务上继续学（回到 π*0.6 的循环）</div>
       </div>
     </div>
     <div style="background:#0D1424;border:1px solid rgba(255,180,84,.25);border-radius:16px;padding:26px 28px;margin:28px 0">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">一句话回顾全篇</div>
-      <div style="font-size:16.5px;line-height:2;color:#B9C2D8">π0 = <span style="color:#56C8F5">PaliGemma 3B</span> + <span style="color:#FFB454">300M 流匹配动作专家</span>，在 10,000 小时、7 平台、68 宽任务 + OXE 上预训练，再按需后训练——第一次证明「互联网语义 + 高频连续控制」可以住进同一个模型，叠衣、收桌、装箱从此有了通用底座。<strong style="color:#E9EDF6">此后的每一篇，都是在回答它留下的问题。</strong></div>
+      <div style="font-size:16.5px;line-height:2;color:#B9C2D8">π0.7 = <span style="color:#56C8F5">5B VLA</span>（4B VLM + MEM 历史视觉 + 860M 动作专家）+ <span style="color:#FFB454">厚提示词</span>（子任务文字 + 世界模型子目标图 + 速度/质量/失误元数据 + 控制模式，训练时随机丢弃、推理时自由组合）——于是杂数据全能吃、专家水平随叫随到，跨本体迁移与组合泛化开始涌现。<strong style="color:#E9EDF6">π0 造了身体，π0.5 教了泛化，π*0.6 练了精熟，π0.7 学会了听懂「怎么做」。</strong></div>
+    </div>
+    <div style="background:#101828;border:1px solid rgba(148,166,210,.14);border-radius:16px;padding:24px 26px;margin:28px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:#FFB454;margin-bottom:14px">π 家族全谱系（系列完结）</div>
+      <div style="display:flex;gap:0;overflow-x:auto;font-size:13px;line-height:1.7">
+        <div style="flex:1;min-width:130px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2024.10</div><div style="color:#E9EDF6;font-weight:700">π0</div><div style="color:#8FA0C0">VLM+流匹配骨架 · 预/后训练配方</div></div>
+        <div style="flex:1;min-width:130px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025.04</div><div style="color:#E9EDF6;font-weight:700">π0.5</div><div style="color:#8FA0C0">异构共训 → 陌生住宅泛化</div></div>
+        <div style="flex:1;min-width:130px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025.11</div><div style="color:#E9EDF6;font-weight:700">π0.6 / π*0.6</div><div style="color:#8FA0C0">RECAP：从经验中学习</div></div>
+        <div style="flex:1;min-width:130px;border-left:2px solid rgba(255,180,84,.5);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">2025-26</div><div style="color:#E9EDF6;font-weight:700">π0.7 ★</div><div style="color:#8FA0C0">厚提示词 → 可操控 + 涌现</div></div>
+        <div style="flex:1;min-width:130px;border-left:2px solid rgba(148,166,210,.25);padding:0 14px"><div style="font-family:'JetBrains Mono',monospace;color:#FFB454">未来</div><div style="color:#E9EDF6;font-weight:700">调教 + 自主 RL</div><div style="color:#8FA0C0">在部署中持续自我改进</div></div>
+      </div>
     </div>
     <div style="background:#0E1522;border:1px solid rgba(148,166,210,.12);border-radius:14px;padding:20px 24px;margin:20px 0 0;max-width:840px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FFB454;margin-bottom:8px">系列阅读</div>
-      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD">⑥ π0（本篇 · 前传）→ 泛化：<a href="../pi05/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">② π0.5</a> → 人类数据：<a href="../ego-pi/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">③ Ego-Pi</a> → 世界模型：<a href="../wam-dreamzero/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">④ WAM</a> → 经验学习：<a href="../pi06/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑤ π*0.6</a> → 可操控与涌现：<a href="../pi07/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑦ π0.7</a>。骨架原理见 <a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">① Transformer 完全图解</a>。</div>
+      <div style="font-size:14.5px;line-height:1.9;color:#9BA6BD"><a href="../transformer/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">① Transformer</a>　<a href="../pi05/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">② π0.5</a>　<a href="../ego-pi/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">③ Ego-Pi</a>　<a href="../wam-dreamzero/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">④ WAM</a>　<a href="../pi06/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑤ π*0.6</a>　<a href="../pi0/" style="color:#56C8F5;text-decoration:none;border-bottom:1px solid rgba(86,200,245,.4)">⑥ π0（前传）</a>　⑦ π0.7（本篇）。官方页 pi.website/pi07 有实机视频。</div>
     </div>
-    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · 万丈高楼，平地起 —</div>
+    <div style="padding:70px 0 60px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#5F6C86">— 完 · 不只告诉它做什么，告诉它怎么做 —</div>
   </section>
 
 </div>
@@ -181,19 +183,8 @@ class Component extends DCLogic {
     const cardSty = { background:C.card, border:`1px solid ${C.line}`, borderRadius:16, padding:24 };
     const btnSty = (on) => ({ fontFamily:mono, fontSize:12.5, padding:'7px 14px', borderRadius:8, cursor:'pointer', border:`1px solid ${on?'rgba(255,180,84,.6)':'rgba(148,166,210,.25)'}`, background:on?'rgba(255,180,84,.12)':'#0B1322', color:on?C.amber:C.sub });
     const lblSty = { fontFamily:mono, fontSize:11, letterSpacing:'.18em', color:C.faint };
-    const Slider = ({v, set, min, max, step, w=220}) => h('input', { type:'range', min, max, step, value:v, onChange:e=>set(parseFloat(e.target.value)), style:{ width:w, accentColor:C.amber, cursor:'pointer' } });
-    const rnd = (s) => { const x = Math.sin(s*127.1+311.7)*43758.5453; return x - Math.floor(x); };
-    const actPts = (t, seed, W2=300, H2=100) => {
-      const pts = [];
-      for (let i=0;i<=30;i++) {
-        const x = i/30;
-        const clean = Math.sin(x*Math.PI*1.2 + seed)*0.6 + 0.3;
-        const y = clean*t + (rnd(i+seed*7)*1.7-0.85)*(1-t);
-        pts.push(`${6 + x*(W2-12)},${H2-10 - Math.max(-0.05,Math.min(1.05,y))*(H2-20)}`);
-      }
-      return pts.join(' ');
-    };
-    this.$ = { h, useState, useEffect, useRef, useMemo, C, mono, useVis, cardSty, btnSty, lblSty, Slider, rnd, actPts };
+    const Slider = ({v, set, min, max, step, w=200}) => h('input', { type:'range', min, max, step, value:v, onChange:e=>set(parseFloat(e.target.value)), style:{ width:w, accentColor:C.amber, cursor:'pointer' } });
+    this.$ = { h, useState, useEffect, useRef, useMemo, C, mono, useVis, cardSty, btnSty, lblSty, Slider };
     const W = this.W = {};
     const Stub = (hgt=200) => () => h('div', { style:{ ...cardSty, minHeight:hgt, display:'flex', alignItems:'center', justifyContent:'center', color:C.faint, fontFamily:mono, fontSize:12 } }, '…');
 
@@ -216,7 +207,7 @@ class Component extends DCLogic {
         onScroll();
         return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
       }, []);
-      const items = [['top','引言'],['q0','00 十秒版'],['q1','01 流匹配'],['q2','02 架构'],['q3','03 数据配方'],['q4','04 语言'],['q5','05 实验'],['q6','06 遗产']];
+      const items = [['top','引言'],['s0','00 十秒版'],['s1','01 提示词'],['s2','02 世界模型'],['s3','03 模型数据'],['s4','04 运行时'],['s5','05 实验'],['s6','06 涌现']];
       return h(React.Fragment, null,
         h('div', { style:{ position:'fixed', top:0, left:0, height:3, width:`${prog*100}%`, background:C.amber, zIndex:50, transition:'width .1s linear' } }),
         wide ? h('nav', { style:{ position:'fixed', top:'50%', transform:'translateY(-50%)', left:'calc(50vw - 530px - 150px)', zIndex:40, display:'flex', flexDirection:'column', gap:10 } },
@@ -225,165 +216,174 @@ class Component extends DCLogic {
             h('span', { style:{ fontFamily:mono, fontSize:11.5, color: active===id ? C.amber : C.faint } }, label)))) : null);
     };
 
-    // Hero: 50Hz chunk loop
+    // Hero: prompt assembling live
     W.Hero = ({ rm }) => {
       const [ref, vis] = useVis(0.25);
-      const [clk, setClk] = useState(0); // 100ms ticks, loop 50
+      const [clk, setClk] = useState(0);
       useEffect(() => {
         if (!vis || rm) return;
-        const iv = setInterval(() => setClk(c => (c + 1) % 50), 100);
+        const iv = setInterval(() => setClk(c => (c + 1) % 56), 100);
         return () => clearInterval(iv);
       }, [vis, rm]);
-      const ph = rm ? 1 : (clk < 12 ? 0 : clk < 24 ? 1 : 2); // 0 observe+denoise, 1 chunk ready, 2 execute
-      const dt = rm ? 1 : (ph === 0 ? clk/11 : 1);
-      const execN = ph === 2 ? Math.round((clk-24)/25*50) : 0;
-      const box = (title, color, active, body, fb='1 1 240px') => h('div', { style:{ flex:fb, minWidth:220, padding:'15px 17px', borderRadius:14, background: active?`${color}0d`:'#0B1322', border:`1.5px solid ${active?color:'rgba(148,166,210,.18)'}`, transition:'all .35s' } },
-        h('div', { style:{ fontFamily:mono, fontSize:11, color, marginBottom:9 } }, title), body);
+      const ph = rm ? 4 : Math.min(4, Math.floor(clk / 11)); // 0..4 assemble steps
+      const chips = [
+        { t:'Task: put food on table', c:'#B39DFF' },
+        { t:'Subtask: "open the microwave"', c:C.q },
+        { t:'[子目标图 ×3 · 世界模型生成]', c:C.g },
+        { t:'Speed: 2000 · Quality: 5 · Mistake: false', c:C.amber },
+        { t:'Control: joint', c:'#8FA0C0' },
+      ];
       return h('div', { ref, style:{ ...cardSty, padding:'26px 28px' } },
         h('div', { style:{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:8, marginBottom:16 } },
-          h('div', { style:lblSty }, 'LIVE · π0 的控制循环 —— 指令:「fold the shirt」'),
-          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, ['① 观测 + 10 步流匹配去噪','② 得到 50 步动作块','③ 50Hz 开环执行 1 秒'][ph])),
-        h('div', { style:{ display:'flex', gap:12, flexWrap:'wrap', alignItems:'stretch' } },
-          box('观测前缀', C.g, ph===0, h('div', { style:{ display:'flex', gap:6, flexWrap:'wrap' } },
-            ['基座相机','腕相机 ×2','指令 ℓ','关节 q'].map((c,i) => h('div', { key:i, style:{ padding:'8px 11px', borderRadius:8, background:'#101828', border:'1px solid rgba(148,166,210,.2)', fontSize:12, color:C.sub, fontFamily:mono } }, c)))),
-          h('div', { style:{ alignSelf:'center', color:C.faint, fontSize:17 } }, '→'),
-          box('动作专家 · 300M', C.amber, ph<=1, h('div', null,
-            h('svg', { viewBox:'0 0 280 84', style:{ width:'100%', display:'block' } },
-              h('polyline', { points:actPts(dt, 2, 280, 84), fill:'none', stroke:C.amber, strokeWidth:2.5, strokeLinecap:'round', opacity:.4+dt*.6 }),
-              h('polyline', { points:actPts(dt, 5, 280, 84), fill:'none', stroke:'rgba(86,200,245,.75)', strokeWidth:2, strokeLinecap:'round', opacity:.4+dt*.6 })),
-            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:6 } }, `噪声 ε → 去噪 ${Math.round(dt*10)}/10 步 → A_t ∈ ℝ^(50×18)`))),
-          h('div', { style:{ alignSelf:'center', color:C.faint, fontSize:17 } }, '→'),
-          box('机器人 · 50Hz', C.q, ph===2, h('div', null,
-            h('div', { style:{ display:'flex', gap:2, alignItems:'flex-end', height:48 } },
-              Array.from({length:25},(_,i) => h('div', { key:i, style:{ flex:1, borderRadius:2, background: C.q, height:`${25+70*Math.abs(Math.sin(i*0.6))}%`, opacity: ph===2 && i*2 <= execN ? 1 : .22, transition:'opacity .15s' } }))),
-            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:6 } }, ph===2 ? `执行第 ${Math.max(1,execN)}/50 步 · 同时可算下一块` : '等待动作块…')))),
-        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:14 } }, rm ? '（动效已关）' : '一次前向 = 一整秒的动作。这个「块状出手」的节奏成了 π 系标配。'));
+          h('div', { style:lblSty }, 'LIVE · 一条 π0.7 提示词的组装'),
+          h('div', { style:{ fontFamily:mono, fontSize:11, color:C.faint } }, ['① 总任务','② 高层想子任务','③ 世界模型画未来','④ 元数据定水准','⑤ 出动作'][Math.min(4,ph)])),
+        h('div', { style:{ display:'flex', flexWrap:'wrap', gap:8, alignItems:'center', padding:'16px 18px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}`, minHeight:56 } },
+          chips.slice(0, ph+1).map((c,i) => h('span', { key:i, style:{ padding:'7px 12px', borderRadius:9, fontFamily:mono, fontSize:12.5, background:`${c.c}12`, border:`1.5px solid ${c.c}88`, color:c.c } }, c.t)),
+          ph < 4 && h('span', { style:{ width:11, height:22, background:C.amber, borderRadius:2, animation: rm?'none':'kfBlink 1s infinite' } })),
+        h('div', { style:{ display:'flex', alignItems:'center', gap:12, marginTop:14, flexWrap:'wrap' } },
+          h('span', { style:{ fontFamily:mono, fontSize:12, color: ph>=4 ? C.amber : C.faint, transition:'color .3s' } }, ph>=4 ? '→ 动作专家：5 步去噪 → 50 步动作块 → 执行 15–25 步换新块（RTC 无缝衔接）' : '…'),
+        ),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:10 } }, rm ? '（动效已关）' : '训练时每种配料随机丢弃 → 推理时想用哪几样用哪几样。'));
     };
 
     // ===WIDGETS_B===
-    // Q1 flow lab
-    W.Flow = ({ rm }) => {
-      const [t, setT] = useState(0.2);
-      const [auto, setAuto] = useState(false);
-      const [mode, setMode] = useState(0); // 0 left grasp, 1 right grasp
-      useEffect(() => {
-        if (!auto || rm) return;
-        const iv = setInterval(() => setT(x => x >= 1 ? 0 : Math.min(1, x + 0.02)), 60);
-        return () => clearInterval(iv);
-      }, [auto, rm]);
+    // S1 prompt builder
+    W.Prompt = () => {
+      const [on, setOn] = useState({ sub:true, goal:true, meta:true, ctrl:true });
+      const T = (k) => setOn(o => ({ ...o, [k]: !o[k] }));
+      const parts = [
+        { k:'sub', n:'子任务文字 ˆℓ', color:C.q, chip:'Subtask: pick up the peeler.', d:'说「意图」。来自高层策略、人类口头调教，或直接省略。继承自 π0.5 的分层推理。' },
+        { k:'goal', n:'子目标图（世界模型）', color:C.g, chip:'<多视角子目标图 ×3>', d:'说「样子」。BAGEL 14B 初始化的世界模型按当前观测+子任务画出近未来。语言讲不清的抓握姿态，一张腕视角图讲清。' },
+        { k:'meta', n:'元数据', color:C.amber, chip:'Speed: 8000. Quality: 5. Mistake: false.', d:'说「水准」。速度按 500 步分档、质量 1–5 分、是否失误——人工粗标。正是它让失败数据也能安全入锅。' },
+        { k:'ctrl', n:'控制模式', color:'#B39DFF', chip:'Control Mode: joint.', d:'说「关节语言」。joint / ee 两套动作空间同训，跨本体时 ee 模式往往迁移得更好。' },
+      ];
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:14 } }, '实验 · 提示词装配台（点击开关配料）'),
+        h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:16 } },
+          parts.map(p => h('button', { key:p.k, onClick:()=>T(p.k), style:{ ...btnSty(on[p.k]), borderColor: on[p.k] ? p.color+'99' : 'rgba(148,166,210,.25)', color: on[p.k] ? p.color : C.faint, background: on[p.k] ? `${p.color}12` : '#0B1322' } }, (on[p.k]?'✓ ':'✗ ') + p.n))),
+        h('div', { style:{ padding:'16px 18px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}`, fontFamily:mono, fontSize:13, lineHeight:2.1, color:C.sub } },
+          h('span', { style:{ color:C.g } }, '<多视角观测 ×4 · 含 6 帧历史>'),
+          on.goal && h('span', { style:{ color:C.g } }, ' <多视角子目标图 ×3>'),
+          h('br'),
+          h('span', { style:{ color:'#B39DFF' } }, 'Task: peel vegetables. '),
+          on.sub && h('span', { style:{ color:C.q } }, 'Subtask: pick up the peeler. '),
+          on.meta && h('span', { style:{ color:C.amber } }, 'Speed: 8000. Quality: 5. Mistake: false. '),
+          on.ctrl && h('span', { style:{ color:'#B39DFF' } }, 'Control Mode: joint.'),
+          h('br'),
+          h('span', { style:{ color:C.faint } }, '<本体状态 q · 线性投影> → 动作专家 → a[t:t+50]')),
+        h('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, marginTop:14 } },
+          parts.map(p => h('div', { key:p.k, style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid ${on[p.k] ? p.color+'44' : 'rgba(148,166,210,.12)'}`, opacity:on[p.k]?1:.45, transition:'opacity .25s' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:p.color, marginBottom:5 } }, p.n),
+            h('div', { style:{ fontSize:13, color:C.sub, lineHeight:1.75 } }, p.d)))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12 } }, '训练时每样随机丢弃 → 上面任何组合模型都见过，推理时按需取用。'));
+    };
+
+    // S2 subgoal toggle
+    W.Subgoal = () => {
+      const [gc, setGc] = useState(true);
+      const cell = (r,c,gcOn) => {
+        // simple scene: fridge door opens in subgoal
+        const isDoor = c >= 5 && r <= 3;
+        const doorOpen = gcOn && isDoor;
+        return `rgb(${doorOpen?42:isDoor?70:24},${doorOpen?58:isDoor?86:34},${doorOpen?92:isDoor?120:56})`;
+      };
       return h('div', { style:{ ...cardSty } },
         h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
-          h('div', { style:lblSty }, '实验 · 从噪声积分出一条动作轨迹'),
-          h('div', { style:{ display:'flex', alignItems:'center', gap:10, flexWrap:'wrap' } },
-            h('span', { style:{ fontFamily:mono, fontSize:12, color:C.sub } }, 'τ ='),
-            h(Slider, { v:t, set:v=>{setAuto(false);setT(v);}, min:0, max:1, step:0.01 }),
-            h('span', { style:{ fontFamily:mono, fontSize:13, color:C.amber, width:34 } }, t.toFixed(2)),
-            h('button', { onClick:()=>setAuto(a=>!a), style:btnSty(auto) }, auto?'⏸':'▶ 积分'),
-            h('button', { onClick:()=>setMode(m=>1-m), style:btnSty(false) }, '换一种抓法 ⚄'))),
-        h('svg', { viewBox:'0 0 640 170', style:{ width:'100%', display:'block', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
-          h('polyline', { points:actPts(t, mode===0?2:9, 640, 170), fill:'none', stroke:C.amber, strokeWidth:3, strokeLinecap:'round' }),
-          h('polyline', { points:actPts(t, mode===0?5:13, 640, 170), fill:'none', stroke:'rgba(86,200,245,.8)', strokeWidth:2.2, strokeLinecap:'round' }),
-          h('text', { x:12, y:22, fill:C.faint, fontSize:11, fontFamily:mono }, `τ=${t.toFixed(2)} ${t<0.15?'· 纯噪声':t>0.9?'· 干净动作块 ✓':'· 去噪中'}`),
-          h('text', { x:628, y:160, fill:C.faint, fontSize:10, fontFamily:mono, textAnchor:'end' }, '50 步 · 两条关节曲线示意')),
-        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:12, lineHeight:1.85 } },
-          '「换一种抓法」= 同一观测下另一条同样合法的轨迹。流匹配可以完整保留这种', h('strong',{style:{color:C.txt}},'多峰性'), '——回归模型只会输出两种抓法的平均值：手伸向中间，两边都抓空。'));
-    };
-
-    // Q2 architecture sequence
-    W.Arch = () => {
-      const [hov, setHov] = useState(1);
-      const groups = [
-        { name:'观测前缀 · VLM 3B 权重', color:C.g, chips:['[图1 patch…]','[图2 patch…]','[图3 patch…]','fold the shirt'], note:'PaliGemma 底座处理图文——互联网语义住在这里。缺相机的机器人：空位遮蔽。' },
-        { name:'机器人 token · 动作专家 300M 权重', color:C.amber, chips:['[状态 q 18维]','[a₁ᵗ]','[a₂ᵗ]','… ×50'], note:'状态和 50 个动作 token 走独立的小权重（MoE 式分家），动作间双向注意力，可看全部前缀。实测比共用权重强。' },
-      ];
-      return h('div', { style:{ ...cardSty } },
-        h('div', { style:{ ...lblSty, marginBottom:14 } }, '一条序列，两套权重（悬停/点击查看）'),
-        h('div', { style:{ display:'flex', flexWrap:'wrap', gap:7, alignItems:'center', padding:'14px 16px', background:'#0B1322', borderRadius:12, border:`1px solid ${C.line}` } },
-          groups.flatMap((g,gi) => g.chips.map((c,ci) => h('span', { key:gi+'-'+ci, onMouseEnter:()=>setHov(gi), onClick:()=>setHov(gi), style:{ padding:'7px 11px', borderRadius:9, fontFamily:mono, fontSize:12, cursor:'pointer',
-            background: hov===gi ? `${g.color}14` : '#101828', border:`1.5px solid ${hov===gi ? g.color+'99' : 'rgba(148,166,210,.2)'}`, color: hov===gi ? g.color : C.sub, transition:'all .2s' } }, c)))),
-        h('div', { style:{ marginTop:14, padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${groups[hov].color}44` } },
-          h('div', { style:{ fontFamily:mono, fontSize:11, color:groups[hov].color, marginBottom:6 } }, groups[hov].name),
-          h('div', { style:{ fontSize:14, color:C.sub, lineHeight:1.85 } }, groups[hov].note)));
-    };
-
-    // Q3 data mixture
-    W.Data = () => {
-      const [st, setSt] = useState(0);
-      const mix = [
-        { n:'π 数据集 · 903M 步', v:90.9, color:C.amber, d:'自采 10,000 小时：106M 步单臂 + 797M 步双臂/移动，68 个「宽任务」。收桌一个任务就覆盖无数餐具组合。' },
-        { n:'OXE / Bridge / DROID · 9.1%', v:9.1, color:C.q, d:'开源跨机构数据：环境与物体见识广，但控制频率低（2–10Hz）、相机少——当维生素，不当主食。' },
-      ];
-      const S = [
-        { n:'阶段 1 · 预训练', d:'全部杂粮下锅（按 n^0.43 配比防止大任务霸盘）。目标：什么都会一点，见过各种失误和恢复。这个「底座」也可开箱直接用。', color:C.k },
-        { n:'阶段 2 · 后训练', d:'对目标任务用更小但更纯的数据微调：一致、流畅的高质量演示。简单任务 5 小时，复杂任务（叠衣）上百小时。杂粮教应变，细粮教精熟。', color:C.g },
-      ];
-      return h('div', { style:{ ...cardSty } },
-        h('div', { style:{ ...lblSty, marginBottom:12 } }, '预训练配比（按时间步）'),
-        mix.map((m,i) => h('div', { key:i, style:{ display:'flex', alignItems:'center', gap:12, margin:'8px 0' } },
-          h('span', { style:{ width:190, textAlign:'right', fontSize:13, color:C.sub } }, m.n),
-          h('div', { style:{ flex:1, height:20, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
-            h('div', { style:{ height:'100%', width:`${m.v}%`, background:m.color, borderRadius:6 } })),
-          h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:46 } }, m.v+'%'))),
-        h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.8, margin:'8px 0 16px' } }, mix[0].d + ' ' + mix[1].d),
-        h('div', { style:{ display:'flex', gap:8, marginBottom:12 } },
-          S.map((s,i) => h('button', { key:i, onClick:()=>setSt(i), style:btnSty(st===i) }, s.n))),
-        h('div', { style:{ padding:'14px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${S[st].color}44`, fontSize:14, color:C.sub, lineHeight:1.9 } }, S[st].d));
-    };
-
-    // Q4 language eval
-    W.Lang = () => {
-      const [model, setModel] = useState(0); // 0 π0, 1 π0-small
-      const data = [
-        { rows:[['flat · 只给总任务',42],['human · 人类逐步指挥',78],['HL · 高层 VLM 指挥',65]] },
-        { rows:[['flat · 只给总任务',35],['human · 人类逐步指挥',40],['HL · 高层 VLM 指挥',36]] },
-      ];
-      return h('div', { style:{ ...cardSty } },
-        h('div', { style:{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 } },
-          h('div', { style:lblSty }, '实验 · 三种指挥方式 ×（VLM 底座 vs 无 VLM）· 定性重绘'),
+          h('div', { style:lblSty }, '实验 · 有没有子目标图，差在哪'),
           h('div', { style:{ display:'flex', gap:8 } },
-            h('button', { onClick:()=>setModel(0), style:btnSty(model===0) }, 'π0（VLM 底座）'),
-            h('button', { onClick:()=>setModel(1), style:btnSty(model===1) }, 'π0-small（无 VLM）'))),
-        data[model].rows.map(([n,v],i) => h('div', { key:model+'-'+i, style:{ display:'flex', alignItems:'center', gap:12, margin:'9px 0' } },
-          h('span', { style:{ width:190, textAlign:'right', fontSize:13, color:C.sub } }, n),
-          h('div', { style:{ flex:1, height:20, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
-            h('div', { style:{ height:'100%', width:`${v}%`, background: model===0 ? (i===0?'rgba(86,200,245,.5)':C.amber) : '#8FA0C0', borderRadius:6, transition:'width .5s cubic-bezier(.2,.8,.2,1)' } })),
-          h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:60 } }, '语言跟随'))),
-        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:12, lineHeight:1.85 } },
-          model===0 ? 'π0 听得懂 2 秒粒度的细指令：人类指挥大幅加分，自动高层指挥次之——「会听话」让分层成为可能。'
-                    : 'π0-small 的语言能力有限：指挥再好也接不住。结论：语言跟随能力主要是 VLM 预训练带来的，不是机器人数据教的。'));
+            h('button', { onClick:()=>setGc(false), style:btnSty(!gc) }, '只有文字'),
+            h('button', { onClick:()=>setGc(true), style:btnSty(gc) }, '+ 子目标图 (GC)'))),
+        h('div', { style:{ display:'flex', gap:16, flexWrap:'wrap' } },
+          h('div', { style:{ flex:'1 1 260px' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.q, marginBottom:8 } }, '指令'),
+            h('div', { style:{ padding:'12px 14px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(86,200,245,.4)`, fontFamily:mono, fontSize:13.5, color:C.q } }, '"open the fridge door"'),
+            h('div', { style:{ fontSize:13.5, color:C.sub, lineHeight:1.85, marginTop:10 } }, gc
+              ? '世界模型补上了文字缺的细节：门开到哪个角度、手从哪侧抓把手——动作预测降维成「把现在变成那张图」的逆动力学。'
+              : '「打开」是个筐：抓哪里？开多大？往哪让位？全靠模型脑补——脑补错了就失败。')),
+          h('div', { style:{ flex:'1 1 300px' } },
+            h('div', { style:{ fontFamily:mono, fontSize:11, color:C.g, marginBottom:8 } }, gc ? '子目标图（世界模型生成 · 示意）' : '（无子目标图）'),
+            h('div', { style:{ display:'grid', gridTemplateColumns:'repeat(9,1fr)', gap:2, borderRadius:10, overflow:'hidden', opacity: gc?1:.25, transition:'opacity .3s' } },
+              Array.from({length:54},(_,i) => h('div', { key:i, style:{ aspectRatio:'1', background:cell(Math.floor(i/9), i%9, gc), transition:'background .4s' } }))),
+            h('div', { style:{ fontFamily:mono, fontSize:10.5, color:C.faint, marginTop:6 } }, gc ? '右上区域：门已呈打开状 —— 这就是「目标长这样」' : '模型只能凭语言想象目标'))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.sub, marginTop:14, lineHeight:1.85 } }, '实测（论文 Fig 10）：复杂指代指令（"拿起我会用来喝汤的东西"）上，π0.7(GC) 比纯文字版又高一截；训练收敛也显著更快。'));
     };
 
-    // Q5 results
+    // S4 runtime console
+    W.Runtime = () => {
+      const [q, setQ] = useState(5);
+      const [spd, setSpd] = useState(15);
+      const [mistake, setMistake] = useState(false);
+      const [cfg, setCfg] = useState(1);
+      const desc = [];
+      if (q >= 5) desc.push('质量拉满：动作干净利落，按最高分演示的分布出手');
+      else if (q >= 3) desc.push('中等质量：偶有迟疑与重试——它真的会「演」中等水平');
+      else desc.push('低质量档：磨蹭、失误频出——论文不建议，但它确实学会了这一档');
+      desc.push(spd <= 15 ? '速度取任务的 15 分位（论文默认）：比平均演示者快' : spd >= 60 ? '慢速档：动作保守拖沓' : '中速档');
+      if (mistake) desc.push('⚠ Mistake:true = 请求「带失误的行为」——纯属自虐，仅用于验证条件化真的生效');
+      if (cfg > 1) desc.push(`CFG β=${cfg.toFixed(1)}：对元数据条件外推加压，动作更「像」高质量数据——太大会过猛`);
+      return h('div', { style:{ ...cardSty } },
+        h('div', { style:{ ...lblSty, marginBottom:16 } }, '实验 · 部署控制台（不训练，只拧提示词）'),
+        h('div', { style:{ display:'flex', gap:22, flexWrap:'wrap', marginBottom:16 } },
+          h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginBottom:6 } }, `Quality: ${q}`),
+            h(Slider, { v:q, set:v=>setQ(Math.round(v)), min:1, max:5, step:1, w:150 })),
+          h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginBottom:6 } }, `Speed: ${spd} 分位`),
+            h(Slider, { v:spd, set:v=>setSpd(Math.round(v)), min:5, max:90, step:5, w:150 })),
+          h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginBottom:6 } }, 'Mistake'),
+            h('button', { onClick:()=>setMistake(m=>!m), style:btnSty(mistake) }, mistake ? 'true ⚠' : 'false ✓')),
+          h('div', null,
+            h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginBottom:6 } }, `CFG β: ${cfg.toFixed(1)}`),
+            h(Slider, { v:cfg, set:setCfg, min:1, max:3, step:0.1, w:150 }))),
+        h('div', { style:{ padding:'13px 16px', background:'#0B1322', borderRadius:11, border:`1px solid ${C.line}`, fontFamily:mono, fontSize:12.5, color:C.amber, marginBottom:12 } },
+          `Speed: ${spd}pct. Quality: ${q}. Mistake: ${mistake}. ${cfg>1 ? `+ CFG(β=${cfg.toFixed(1)})` : ''}`),
+        h('div', { style:{ fontSize:14, color:C.sub, lineHeight:2 } }, desc.map((d,i) => h('div', { key:i }, '▸ ' + d))),
+        h('div', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, marginTop:12, lineHeight:1.8 } }, '论文默认：Quality=5 · Speed=15 分位 · Mistake=false · 子任务由高层策略或人给 · 子目标图 4 秒一刷（异步）。'));
+    };
+
+    // S5 results
     W.Results = () => {
       const [tab, setTab] = useState(0);
       const Bar = ({label, v, color, note, hl}) => h('div', { style:{ display:'flex', alignItems:'center', gap:12, margin:'8px 0' } },
-        h('span', { style:{ width:200, textAlign:'right', fontSize:13, color: hl?C.txt:C.sub, fontWeight:hl?700:400 } }, label),
+        h('span', { style:{ width:210, textAlign:'right', fontSize:13, color: hl?C.txt:C.sub, fontWeight:hl?700:400 } }, label),
         h('div', { style:{ flex:1, height:19, background:'#0B1322', borderRadius:6, overflow:'hidden' } },
           h('div', { style:{ height:'100%', width:`${v}%`, background:color, borderRadius:6, transition:'width .5s cubic-bezier(.2,.8,.2,1)' } })),
         h('span', { style:{ fontFamily:mono, fontSize:11.5, color:C.faint, width:130 } }, note||''));
-      const tabs = ['① 开箱五连 vs 同行', '② 微调新任务', '③ 多阶段大活'];
+      const tabs = ['① vs RL 专家','② 听指挥','③ 换身体','④ 组合新活','⑤ 杂数据定律'];
       const bodies = [
         h('div', null,
-          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:720 } }, '预训练后直接考（不微调），叠 T 恤 / 收桌 / 装袋 / 取吐司平均表现：'),
-          h(Bar, { label:'π0（完整预训练）', v:80, color:C.amber, hl:true, note:'大幅领先' }),
-          h(Bar, { label:'π0-parity（缩短训练）', v:58, color:'#EDD9A8', note:'训练量对齐版' }),
-          h(Bar, { label:'π0-small（无 VLM）', v:35, color:'#8FA0C0' }),
-          h(Bar, { label:'OpenVLA 7B（同数据重训）', v:8, color:'#8FA0C0', note:'离散token+无动作块' }),
-          h(Bar, { label:'Octo 93M（同数据重训）', v:12, color:'#8FA0C0', note:'扩散但模型小' }),
-          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:10, lineHeight:1.8 } }, '当时的开源标杆在这些灵巧任务上几乎全军覆没——高频动作块 + 大模型 + 大数据，三者缺一不可。')),
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:740 } }, '同一个 π0.7、零微调，对阵各任务专门特训的专家（π*0.6 RL 专家 / π0.6 SFT 专家）：'),
+          h(Bar, { label:'咖啡 · π0.7 通才', v:95, color:C.amber, hl:true, note:'追平 RL 专家' }),
+          h(Bar, { label:'咖啡 · π*0.6 RL 专家', v:95, color:'#8FA0C0' }),
+          h(Bar, { label:'叠衣/装箱 · π0.7 通才', v:100, color:C.amber, hl:true, note:'吞吐反超专家' }),
+          h(Bar, { label:'叠衣/装箱 · RL 专家', v:88, color:'#8FA0C0' }),
+          h(Bar, { label:'花生酱三明治等 6 任务', v:93, color:C.amber, hl:true, note:'≈SFT 专家' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:10, lineHeight:1.8 } }, '通才吃掉了专家的数据（π*0.6 的 RL 评测数据在训练集里）——元数据标签让「蒸馏」变成顺手的事。消融：去掉评测数据或去掉厚提示词，成绩都显著回落（Fig 7）。')),
         h('div', null,
-          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:720 } }, '微调到预训练没有的新任务（叠毛巾/微波炉/换纸巾卷/Franka 抽屉…），预训练底座 vs 从零训练：'),
-          h(Bar, { label:'易类 · π0 微调', v:85, color:C.amber, hl:true, note:'与预训练相近的任务' }),
-          h(Bar, { label:'易类 · 从零训练', v:55, color:'#8FA0C0' }),
-          h(Bar, { label:'难类 · π0 微调', v:65, color:C.amber, hl:true, note:'纸巾卷/抽屉等全新' }),
-          h(Bar, { label:'难类 · 从零训练', v:25, color:'#8FA0C0' }),
-          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:10, lineHeight:1.8 } }, '任务越陌生，预训练带来的增益越大；数据量小到 1–5 小时也能起步——「底座 + 少量数据」的微调范式自此确立。')),
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:740 } }, '4 个陌生厨房 + 2 个陌生卧室、14 组 3–6 步连环指令，指令跟随成功率：'),
+          h(Bar, { label:'π0.7', v:85, color:C.amber, hl:true, note:'显著领先' }),
+          h(Bar, { label:'π0.6', v:55, color:'#8FA0C0' }),
+          h(Bar, { label:'π0.5', v:45, color:'#8FA0C0' }),
+          h('div', { style:{ fontSize:14, color:C.sub, lineHeight:1.85, margin:'12px 0' } }, '刁钻指代题（「桌上最大的碗」「我会用来喝汤的东西」）：三代都会做简单题，只有 π0.7 接得住怪题，加子目标图（GC）再上一截。还能反着数据偏置干活：把碗从水槽拿回桌上（Fig 11）——听指令赢过了惯性。')),
         h('div', null,
-          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:720 } }, '终极考：5–20 分钟的多阶段任务（叠多件衣物、移动叠衣、卸烘干机、收脏桌、组纸箱、装外卖盒）。满分计分制：'),
-          h(Bar, { label:'完整 π0（预训练+微调）', v:72, color:C.amber, hl:true, note:'全任务 >50% 满分' }),
-          h(Bar, { label:'仅微调（无预训练）', v:38, color:'#8FA0C0' }),
-          h(Bar, { label:'π0-small', v:30, color:'#8FA0C0' }),
-          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:10, lineHeight:1.8 } }, '最难任务上预训练的优势最悬殊。注：这一代的成功率还谈不上「实用」——把这些数字推到 90%+ 正是 π*0.6（RECAP）两年后的工作。')),
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:740 } }, '把任务搬到从没采过该任务数据的机器人上（零样本跨本体）：'),
+          h(Bar, { label:'π0.7 · 新机器人叠衣', v:75, color:C.amber, hl:true, note:'开箱即用' }),
+          h(Bar, { label:'π0.5/π0.6 · 同设置', v:40, color:'#8FA0C0', note:'差距随身体差异拉大' }),
+          h('div', { style:{ fontSize:14, color:C.sub, lineHeight:1.85, margin:'12px 0' } }, '更妙的是它不照抄源机器人的动作，而是长出适配新身体的策略（Fig 13）。人类受试者对比研究（附录 F）：π0.7(GC) 的叠衣观感已接近人类操作员水平。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:740 } }, '组合泛化 = 没采过数据的新任务：'),
+          h('div', { style:{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 } },
+            h('div', { style:{ padding:'13px 15px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(122,223,168,.3)` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.g,marginBottom:5}},'短任务 · 直接开箱'), h('div',{style:{fontSize:13.5,color:C.sub,lineHeight:1.8}},'按法压壶、往电饭煲盛米、拿布擦耳机、转桌面风扇——技能库里的零件自动拼出了新任务。')),
+            h('div', { style:{ padding:'13px 15px', background:'#0B1322', borderRadius:10, border:`1px solid rgba(86,200,245,.3)` } }, h('div',{style:{fontFamily:mono,fontSize:11,color:C.q,marginBottom:5}},'长任务 · 口头调教'), h('div',{style:{fontSize:13.5,color:C.sub,lineHeight:1.8}},'人一句句指挥它做完气炸锅烤红薯；把调教记录微调成高层策略 → 下次全自主。教机器人 = 说话，不再是采数据。'))),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:12, lineHeight:1.8 } }, '这是 VLA 领域久等的「grand challenge」级信号：技能开始像语言一样可组合。')),
+        h('div', null,
+          h('div', { style:{ fontSize:14.5, color:C.sub, lineHeight:1.85, marginBottom:12, maxWidth:740 } }, '控制实验：同一任务（叠 T 恤），按质量把数据切成 top30% / 50% / 80% / 100% 四档，各训一个模型：'),
+          h(Bar, { label:'带元数据 · top30%', v:55, color:C.amber, note:'数据最少' }),
+          h(Bar, { label:'带元数据 · 100%（最杂）', v:85, color:C.amber, hl:true, note:'越杂越强 ↑' }),
+          h(Bar, { label:'无元数据 · top30%', v:55, color:'#8FA0C0' }),
+          h(Bar, { label:'无元数据 · 100%（最杂）', v:42, color:C.k, note:'越杂越差 ↓' }),
+          h('div', { style:{ fontFamily:mono, fontSize:12, color:C.sub, marginTop:10, lineHeight:1.8 } }, '同一锅数据，有没有「水准标签」决定它是养料还是毒药（Fig 18 左）。另一半结论：去掉高多样性数据源，泛化大幅衰退（Fig 18 右）——多样性本身就是营养。')),
       ];
       return h('div', { style:{ ...cardSty } },
         h('div', { style:{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:16 } },
@@ -401,10 +401,9 @@ class Component extends DCLogic {
       showMath: this.props.showMath ?? true,
       rail: h(W.Rail, {}),
       hero: h(W.Hero, { rm }),
-      flow: h(W.Flow, { rm }),
-      arch: h(W.Arch, { rm }),
-      data: h(W.Data, { rm }),
-      lang: h(W.Lang, { rm }),
+      prompt: h(W.Prompt, { rm }),
+      subgoal: h(W.Subgoal, { rm }),
+      runtime: h(W.Runtime, { rm }),
       results: h(W.Results, { rm }),
     };
   }
@@ -412,7 +411,7 @@ class Component extends DCLogic {
 </script>
 <script type="text/plain" data-disabled-print-export="true">
 (async () => {
-  if (!document.title || !document.title.trim()) document.title = "π0 论文交互教学";
+  if (!document.title || !document.title.trim()) document.title = "π0.7 论文交互教学";
   // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
   // author CSS) keep source-order precedence over the baseline.
   const baseCss = document.createElement('style');

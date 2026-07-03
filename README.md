@@ -16,6 +16,7 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 - [Ego-Pi 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/ego-pi/)
 - [WAM DreamZero 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/wam-dreamzero/)
 - [π0.6 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/pi06/)
+- [π0.7 论文交互教学](https://heliang-pu.github.io/ai-learning-tutorials/tutorials/pi07/)
 
 ## 目录结构
 
@@ -41,12 +42,17 @@ https://heliang-pu.github.io/ai-learning-tutorials/
 │   ├── wam-dreamzero/
 │   │   ├── index.html
 │   │   └── support.js
-│   └── pi06/
+│   ├── pi06/
+│   │   ├── index.html
+│   │   ├── support.js
+│   │   └── figures/
+│   │       ├── fig1-recap-overview.jpg
+│   │       └── ...
+│   └── pi07/
 │       ├── index.html
 │       ├── support.js
 │       └── figures/
-│           ├── fig1-recap-overview.jpg
-│           └── ...
+│           └── pi07-fig-tasks.jpg
 └── docs/
     └── adding-tutorials.md
 ```
